@@ -100,11 +100,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 700;
-      font-size: 1.1rem;
       backdrop-filter: blur(8px);
       position: relative;
       z-index: 1;
+      overflow: hidden;
+    }
+
+    .logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      display: block;
     }
 
     .header-main {
@@ -1088,8 +1094,7 @@
   <!-- HEADER -->
   <header class="header">
     <div class="logo-circle">
-      <!-- Ganti dengan inisial perusahaan / logo -->
-      LOGO
+      <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="VIRSIM Logo" class="logo-img" />
     </div>
     <div class="header-main">
       <div class="header-row-top">
@@ -1408,7 +1413,7 @@
               <div class="risk-calc-score-main">
                 <div>
                   <div class="risk-calc-label">Risk Score</div>
-                  <div class="risk-calc-score risk-calc-score">0</div>
+                  <div class="risk-calc-score">0</div>
                 </div>
               </div>
               <div>
