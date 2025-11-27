@@ -1,0 +1,2017 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>HRA – Material Handling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Optional: Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #f4f5fb;
+      --bg-card: #ffffff;
+      --bg-soft: #f9fafc;
+      --accent: #5465ff;
+      --accent-soft: #e2e6ff;
+      --accent-dark: #323f9f;
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --border-soft: #e2e8f0;
+      --risk-low: #92d050;
+      --risk-med: #fff066;
+      --risk-high: #ff0066;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.09);
+      --transition-fast: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #fdfbff 0, #f4f5fb 45%, #eef2ff 100%);
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    body.dark-theme {
+      background: radial-gradient(circle at top left, #020617 0, #020617 40%, #0b1120 100%);
+      --bg-main: #020617;
+      --bg-card: #020617;
+      --bg-soft: #020617;
+      --accent: #a855f7;
+      --accent-soft: rgba(168,85,247,0.16);
+      --accent-dark: #e5e7ff;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-soft: #1f2937;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 24px auto 32px;
+      padding: 0 16px 32px;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, rgba(84, 101, 255, 0.95), #a855f7);
+      border-radius: 24px;
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: #f9fafb;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.dark-theme .header {
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 1);
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.45), transparent 70%);
+      top: -80px;
+      right: -80px;
+      opacity: 0.6;
+    }
+
+    .logo-circle {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 999px;
+      background: rgba(248, 250, 252, 0.2);
+      border: 1px solid rgba(248, 250, 252, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .header-main {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .header-row-top {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .header-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 2px;
+    }
+
+    .header-sub {
+      font-size: 0.9rem;
+      opacity: 0.95;
+      margin-bottom: 2px;
+    }
+
+    .header-meta {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 6px;
+    }
+
+    .tag-pill {
+      background: rgba(15, 23, 42, 0.16);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.75);
+      background: rgba(248, 250, 252, 0.92);
+      color: #111827;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.3);
+      background: #fefce8;
+    }
+
+    .download-btn-icon {
+      font-size: 1rem;
+    }
+
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.7);
+      background: rgba(15, 23, 42, 0.08);
+      color: #f9fafb;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+      transition: background var(--transition-fast), transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .print-btn:hover {
+      background: rgba(15, 23, 42, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .print-icon {
+      font-size: 1rem;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 250, 252, 0.7);
+      background: rgba(15, 23, 42, 0.08);
+      color: #f9fafb;
+      font-size: 0.78rem;
+      cursor: pointer;
+      outline: none;
+      transition: background var(--transition-fast), transform 0.12s ease, box-shadow 0.12s ease;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.25);
+    }
+
+    .theme-toggle:hover {
+      background: rgba(15, 23, 42, 0.16);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle-icon {
+      font-size: 1rem;
+    }
+
+    body.dark-theme .download-btn {
+      background: rgba(15, 23, 42, 0.92);
+      border-color: rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
+    }
+
+    body.dark-theme .theme-toggle {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
+    }
+
+    body.dark-theme .print-btn {
+      background: rgba(15, 23, 42, 0.7);
+      border-color: rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
+    }
+
+    /* LAYOUT */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 880px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .header {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      .header-main {
+        gap: 6px;
+      }
+    }
+
+    /* SIDENAV */
+    .sidenav {
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 14px 14px 16px;
+      box-shadow: 0 14px 32px rgba(148, 163, 184, 0.35);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 16px;
+      align-self: flex-start;
+    }
+
+    body.dark-theme .sidenav {
+      background: rgba(15, 23, 42, 0.92);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.9);
+      border: 1px solid rgba(30,64,175,0.7);
+    }
+
+    .sidenav-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed var(--border-soft);
+      margin-bottom: 8px;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .nav-item {
+      margin-bottom: 4px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: background var(--transition-fast), color var(--transition-fast), transform 0.12s ease;
+      cursor: pointer;
+    }
+
+    .nav-link span.index {
+      width: 32px;
+      height: 22px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      flex-shrink: 0;
+    }
+
+    .nav-link:hover {
+      background: #eef2ff;
+      color: var(--accent-dark);
+      transform: translateX(1px);
+    }
+
+    .nav-link.active {
+      background: var(--accent);
+      color: #eef2ff;
+      box-shadow: 0 14px 28px rgba(84, 101, 255, 0.35);
+    }
+
+    .nav-link.active span.index {
+      background: rgba(248, 250, 252, 0.15);
+      color: #fefce8;
+    }
+
+    .nav-sublist {
+      list-style: none;
+      margin: 4px 0 6px 30px;
+      border-left: 1px dashed var(--border-soft);
+      padding-left: 8px;
+    }
+
+    .nav-sublink {
+      display: block;
+      padding: 3px 4px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 8px;
+      margin-bottom: 3px;
+      transition: background var(--transition-fast), color var(--transition-fast);
+      cursor: pointer;
+    }
+
+    .nav-sublink:hover {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+    }
+
+    /* MAIN CONTENT */
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    section {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 16px 18px 18px;
+      box-shadow: 0 16px 38px rgba(148, 163, 184, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+    }
+
+    body.dark-theme section {
+      box-shadow: 0 18px 40px rgba(0,0,0,0.95);
+      border-color: rgba(30,64,175,0.6);
+    }
+
+    section h2 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    section h2 span.badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-dark);
+      background: var(--accent-soft);
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    section p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+      margin-bottom: 6px;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px dashed var(--border-soft);
+      color: var(--text-muted);
+    }
+
+    /* RISK SUMMARY DASHBOARD */
+    #risk-summary {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    @media (max-width: 880px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .summary-card {
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .summary-card-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .summary-card-value {
+      font-size: 1.3rem;
+      font-weight: 600;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .summary-pill {
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.04);
+    }
+
+    .summary-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+    }
+
+    .summary-dot.low { background: var(--risk-low); }
+    .summary-dot.med { background: var(--risk-med); }
+    .summary-dot.high { background: var(--risk-high); }
+
+    .top-risk-list {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .top-risk-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+
+    .top-risk-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .top-risk-filter {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .filter-chip {
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.74rem;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform 0.12s ease;
+    }
+
+    .filter-chip:hover {
+      transform: translateY(-1px);
+      background: #eef2ff;
+      color: var(--accent-dark);
+    }
+
+    .filter-chip.active {
+      background: var(--accent);
+      color: #f9fafb;
+      border-color: transparent;
+      box-shadow: 0 10px 24px rgba(84, 101, 255, 0.4);
+    }
+
+    body.dark-theme .filter-chip {
+      background: #020617;
+    }
+
+    .risk-card {
+      border-radius: var(--radius-md);
+      padding: 8px 9px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+    }
+
+    body.dark-theme .risk-card {
+      background: #020617;
+    }
+
+    .risk-card:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.5);
+      border-color: rgba(79, 70, 229, 0.7);
+    }
+
+    .risk-card-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .risk-card-code {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .risk-card-title {
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .risk-card-section {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .risk-score-badge {
+      border-radius: 999px;
+      padding: 4px 9px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(15, 23, 42, 0.04);
+    }
+
+    .risk-score-badge span.value {
+      min-width: 22px;
+      text-align: right;
+    }
+
+    .risk-level-chip {
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 23, 42, 0.06);
+    }
+
+    .risk-card.level-high {
+      border-left: 4px solid var(--risk-high);
+    }
+    .risk-card.level-med {
+      border-left: 4px solid var(--risk-med);
+    }
+    .risk-card.level-low {
+      border-left: 4px solid var(--risk-low);
+    }
+
+    .risk-level-chip.high {
+      background: rgba(255, 0, 102, 0.07);
+    }
+    .risk-level-chip.med {
+      background: rgba(255, 240, 102, 0.2);
+    }
+    .risk-level-chip.low {
+      background: rgba(146, 208, 80, 0.15);
+    }
+
+    /* Risk Matrix */
+    .risk-matrix-wrapper {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 880px) {
+      .risk-matrix-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .risk-table-container {
+      overflow-x: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+    }
+
+    table.risk-matrix {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 360px;
+      font-size: 0.82rem;
+    }
+
+    .risk-matrix th,
+    .risk-matrix td {
+      border: 1px solid var(--border-soft);
+      text-align: center;
+      padding: 6px 8px;
+    }
+
+    .risk-matrix th {
+      background: #e5e7f6;
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    body.dark-theme .risk-matrix th {
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    .risk-matrix td.label {
+      background: #f9fafb;
+      font-weight: 500;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    body.dark-theme .risk-matrix td.label {
+      background: #020617;
+      color: #e5e7eb;
+    }
+
+    .risk-low { background: var(--risk-low); }
+    .risk-med { background: var(--risk-med); }
+    .risk-high { background: var(--risk-high); color: #111827; }
+
+    .risk-legend {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: var(--bg-soft);
+      border-radius: var(--radius-md);
+      padding: 8px 10px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .risk-legend-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .risk-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px dashed var(--border-soft);
+    }
+
+    body.dark-theme .risk-chip {
+      background: #020617;
+    }
+
+    .risk-dot {
+      width: 16px;
+      height: 10px;
+      border-radius: 999px;
+    }
+
+    .risk-dot.low { background: var(--risk-low); }
+    .risk-dot.med { background: var(--risk-med); }
+    .risk-dot.high { background: var(--risk-high); }
+
+    /* RISK CALCULATOR */
+    .risk-calc {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 880px) {
+      .risk-calc {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .risk-calc-form {
+      border-radius: var(--radius-md);
+      padding: 10px 12px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .risk-calc-field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .risk-calc-field label {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .risk-calc-field select {
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      padding: 4px 8px;
+      font-size: 0.85rem;
+      background: #ffffff;
+      outline: none;
+    }
+
+    body.dark-theme .risk-calc-field select {
+      background: #020617;
+      color: var(--text-main);
+    }
+
+    .risk-calc-btn-row {
+      margin-top: 4px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    #btnCalc {
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #f9fafb;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(84, 101, 255, 0.35);
+      transition: background var(--transition-fast), transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    #btnCalc:hover {
+      background: #4338ca;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(84, 101, 255, 0.5);
+    }
+
+    .risk-calc-result {
+      border-radius: var(--radius-lg);
+      padding: 12px 14px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+    }
+
+    .risk-calc-result[data-level="low"] {
+      background: linear-gradient(135deg, rgba(146,208,80,0.2), var(--bg-soft));
+      border-color: rgba(146,208,80,0.9);
+    }
+
+    .risk-calc-result[data-level="med"] {
+      background: linear-gradient(135deg, rgba(255,240,102,0.28), var(--bg-soft));
+      border-color: rgba(255,240,102,0.9);
+      box-shadow: 0 14px 32px rgba(234,179,8,0.35);
+    }
+
+    .risk-calc-result[data-level="high"] {
+      background: linear-gradient(135deg, rgba(255,0,102,0.25), var(--bg-soft));
+      border-color: rgba(255,0,102,0.9);
+      box-shadow: 0 18px 40px rgba(220,38,38,0.5);
+      transform: translateY(-1px);
+    }
+
+    .risk-calc-score-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .risk-calc-score-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .risk-calc-label {
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .risk-calc-score {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    .risk-calc-level {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .risk-calc-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .risk-calc-chip {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.04);
+    }
+
+    /* ACCORDION for 3.1-3.8 */
+    .accordion {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .acc-item {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      background: #fbfcff;
+      overflow: hidden;
+      transition: box-shadow var(--transition-fast), transform 0.12s ease;
+    }
+
+    .acc-item:hover {
+      box-shadow: 0 12px 26px rgba(148, 163, 184, 0.35);
+      transform: translateY(-1px);
+    }
+
+    body.dark-theme .acc-item {
+      background: #020617;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.85);
+    }
+
+    .acc-header {
+      padding: 9px 11px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .acc-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .acc-title-main {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .acc-title-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .acc-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.9rem;
+      transition: transform var(--transition-fast), background var(--transition-fast);
+      flex-shrink: 0;
+    }
+
+    .acc-item.open .acc-icon {
+      transform: rotate(90deg);
+      background: var(--accent);
+      color: #f9fafb;
+    }
+
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 11px;
+      padding-bottom: 0;
+      transition: max-height 0.22s ease, padding-bottom 0.22s ease;
+    }
+
+    .acc-item.open .acc-body {
+      padding-bottom: 10px;
+    }
+
+    .acc-body p {
+      margin-top: 6px;
+      font-size: 0.86rem;
+    }
+
+    .acc-body ul {
+      margin-top: 4px;
+      padding-left: 16px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .acc-body li {
+      margin-bottom: 3px;
+    }
+
+    /* STEP LIST (Section 4) */
+    .steps {
+      margin-top: 4px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 10px;
+      align-items: flex-start;
+      padding: 8px 10px;
+      border-radius: var(--radius-md);
+      background: var(--bg-soft);
+      border: 1px solid var(--border-soft);
+    }
+
+    .step-index {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .step-content-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .step-content-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* SMALL UTILITIES */
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .mb-4 { margin-bottom: 4px; }
+    .mb-6 { margin-bottom: 6px; }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body {
+        background: #ffffff !important;
+      }
+      .header {
+        background: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: 1px solid #d1d5db;
+      }
+      .header::before {
+        display: none;
+      }
+      .download-btn,
+      .theme-toggle,
+      .print-btn,
+      .sidenav {
+        display: none !important;
+      }
+      .page {
+        margin: 0;
+        padding: 8mm 8mm 12mm;
+      }
+      section {
+        box-shadow: none !important;
+        border: 1px solid #e5e7eb;
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+      }
+      a::after {
+        content: "";
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo-circle">
+      <!-- Ganti dengan inisial perusahaan / logo -->
+      LOGO
+    </div>
+    <div class="header-main">
+      <div class="header-row-top">
+        <div class="header-title">HRA – Material Handling</div>
+        <div class="header-sub">High Risk Activity – Material Handling di Area Proyek Konstruksi</div>
+        <div class="header-meta">
+          <span class="tag-pill">EHS Management</span>
+          <span class="tag-pill">High Risk Activity (HRA)</span>
+          <span class="tag-pill">Material Handling SPS-106</span>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Ganti href dengan path file Excel kamu -->
+        <a href="HRA_Material_Handling_Risk_Assessment_CF.xlsx"
+           class="download-btn"
+           target="_blank"
+           rel="noopener">
+          <span class="download-btn-icon">⬇️</span>
+          <span>Download Excel HRA</span>
+        </a>
+
+        <button type="button" class="print-btn" id="printBtn">
+          <span class="print-icon">🖨️</span>
+          <span>Print / Save PDF</span>
+        </button>
+
+        <button type="button" class="theme-toggle" id="themeToggle">
+          <span class="theme-toggle-icon" id="themeToggleIcon">🌙</span>
+          <span class="theme-toggle-label" id="themeToggleLabel">Dark mode</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- SIDENAV -->
+    <aside class="sidenav">
+      <div class="sidenav-title">Daftar Isi</div>
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a class="nav-link active" data-target="scope">
+            <span class="index">1</span>
+            <span>Scope &amp; Asumsi</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-target="risk-matrix">
+            <span class="index">2</span>
+            <span>Risk Matrix</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-target="risk-calculator">
+            <span class="index">2.1</span>
+            <span>Risk Calculator</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-target="risk-assessment">
+            <span class="index">3</span>
+            <span>Risk Assessment HRA – Material Handling</span>
+          </a>
+          <ul class="nav-sublist">
+            <li><a class="nav-sublink" data-target="sec-3-1">3.1 Perencanaan &amp; HRA Forecasting</a></li>
+            <li><a class="nav-sublink" data-target="sec-3-2">3.2 Loading &amp; Unloading dari Truk</a></li>
+            <li><a class="nav-sublink" data-target="sec-3-3">3.3 Transport Material di Dalam Site</a></li>
+            <li><a class="nav-sublink" data-target="sec-3-4">3.4 Peralatan Bantu (Pallet Jack, Cart, dll.)</a></li>
+            <li><a class="nav-sublink" data-target="sec-3-5">3.5 Penyimpanan &amp; Stacking Material</a></li>
+            <li><a class="nav-sublink" data-target="sec-3-6">3.6 Inspeksi &amp; Maintenance Peralatan</a></li>
+            <li><a class="nav-sublink" data-target="sec-3-7">3.7 Interaksi dengan Pejalan Kaki</a></li>
+            <li><a class="nav-sublink" data-target="sec-3-8">3.8 Dokumentasi, Training &amp; Lessons Learned</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-target="next-steps">
+            <span class="index">4</span>
+            <span>Langkah Lanjut</span>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+      <!-- RINGKASAN RISIKO -->
+      <section id="risk-summary">
+        <h2>
+          Ringkasan Risiko
+          <span class="badge">Overview</span>
+        </h2>
+        <p class="muted">
+          Ringkasan ini membantu melihat gambaran umum tingkat risiko dari seluruh aktivitas material handling,
+          serta menyoroti beberapa skenario dengan <strong>risk score</strong> tertinggi.
+        </p>
+
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="summary-card-label">
+              <span class="summary-dot high"></span>
+              <span>High / Critical Risk</span>
+            </div>
+            <div class="summary-card-value">
+              <span id="countHigh">0</span>
+              <span class="summary-pill">R ≥ 16</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-label">
+              <span class="summary-dot med"></span>
+              <span>Medium Risk</span>
+            </div>
+            <div class="summary-card-value">
+              <span id="countMed">0</span>
+              <span class="summary-pill">9 ≤ R ≤ 15</span>
+            </div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-card-label">
+              <span class="summary-dot low"></span>
+              <span>Low Risk</span>
+            </div>
+            <div class="summary-card-value">
+              <span id="countLow">0</span>
+              <span class="summary-pill">R ≤ 8</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-risk-list">
+          <div class="top-risk-header">
+            <div class="top-risk-title">Top 5 Risiko Tertinggi</div>
+            <div class="top-risk-filter">
+              <button class="filter-chip active" data-filter="all">Semua</button>
+              <button class="filter-chip" data-filter="high">High</button>
+              <button class="filter-chip" data-filter="med">Medium</button>
+              <button class="filter-chip" data-filter="low">Low</button>
+            </div>
+          </div>
+
+          <div id="topRiskContainer"></div>
+        </div>
+      </section>
+
+      <!-- 1. SCOPE & ASUMSI -->
+      <section id="scope">
+        <h2>
+          Scope &amp; Asumsi
+          <span class="badge">1</span>
+        </h2>
+        <p>
+          HRA – Material Handling ini mengatur seluruh kegiatan pemindahan, penataan, dan penyimpanan material
+          menggunakan peralatan mekanis maupun manual di area proyek konstruksi. Dokumen ini menjadi rujukan
+          bagi semua pihak (AA, MHC, PA, Operator, Spotter, serta pekerja lain) dalam merencanakan dan
+          mengendalikan risiko yang timbul dari aktivitas material handling.
+        </p>
+
+        <div class="pill-row">
+          <span class="pill"><strong>Jenis Aktivitas:</strong> loading–unloading, transport internal, penyimpanan, manual handling terbatas</span>
+          <span class="pill"><strong>Peralatan:</strong> forklift, telehandler, reach truck, pallet jack, hand cart, dolly, dsb.</span>
+          <span class="pill"><strong>Area:</strong> yard, loading bay, jalan internal, koridor bangunan, area penyimpanan, lantai bangunan</span>
+          <span class="pill"><strong>Peran:</strong> AA, MHC, PA, Operator, Spotter, pekerja / pedestrian lain</span>
+        </div>
+
+        <p class="muted mb-4">
+          Catatan: lifting menggunakan crane (tower, mobile, crawler, gantry dan sejenisnya) dikelola dalam HRA
+          <em>Lifting Operation</em> tersendiri, namun tetap harus diselaraskan dengan pengaturan jalur material handling di dokumen ini.
+        </p>
+      </section>
+
+      <!-- 2. RISK MATRIX -->
+      <section id="risk-matrix">
+        <h2>
+          Risk Matrix
+          <span class="badge">2</span>
+        </h2>
+        <p>
+          Penilaian risiko dalam HRA ini menggunakan kombinasi <strong>Likelihood (L)</strong> dan
+          <strong>Consequences (C)</strong> dengan skala 1–5. Nilai <strong>Risk (R)</strong> diperoleh dari
+          <em>R = L × C</em>. Kategori warna mengikuti risk matrix perusahaan untuk memudahkan prioritas pengendalian.
+        </p>
+
+        <div class="risk-matrix-wrapper">
+          <div class="risk-table-container">
+            <table class="risk-matrix">
+              <thead>
+                <tr>
+                  <th rowspan="2">Likelihood (L)</th>
+                  <th colspan="5">Consequences (C)</th>
+                </tr>
+                <tr>
+                  <th>1</th>
+                  <th>2</th>
+                  <th>3</th>
+                  <th>4</th>
+                  <th>5</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="label">5</td>
+                  <td class="risk-med">5</td>
+                  <td class="risk-med">10</td>
+                  <td class="risk-med">15</td>
+                  <td class="risk-high">20</td>
+                  <td class="risk-high">25</td>
+                </tr>
+                <tr>
+                  <td class="label">4</td>
+                  <td class="risk-low">4</td>
+                  <td class="risk-med">8</td>
+                  <td class="risk-med">12</td>
+                  <td class="risk-high">16</td>
+                  <td class="risk-high">20</td>
+                </tr>
+                <tr>
+                  <td class="label">3</td>
+                  <td class="risk-low">3</td>
+                  <td class="risk-low">6</td>
+                  <td class="risk-med">9</td>
+                  <td class="risk-med">12</td>
+                  <td class="risk-med">15</td>
+                </tr>
+                <tr>
+                  <td class="label">2</td>
+                  <td class="risk-low">2</td>
+                  <td class="risk-low">4</td>
+                  <td class="risk-low">6</td>
+                  <td class="risk-low">8</td>
+                  <td class="risk-med">10</td>
+                </tr>
+                <tr>
+                  <td class="label">1</td>
+                  <td class="risk-low">1</td>
+                  <td class="risk-low">2</td>
+                  <td class="risk-low">3</td>
+                  <td class="risk-low">4</td>
+                  <td class="risk-low">5</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="risk-legend">
+            <div class="mb-4">
+              <strong>Kategori Risiko:</strong>
+            </div>
+            <div class="risk-legend-row">
+              <div class="risk-chip">
+                <span class="risk-dot low"></span>
+                <span>Low (R ≤ 8)</span>
+              </div>
+              <div class="risk-chip">
+                <span class="risk-dot med"></span>
+                <span>Medium (9 ≤ R ≤ 15)</span>
+              </div>
+              <div class="risk-chip">
+                <span class="risk-dot high"></span>
+                <span>High / Critical (R ≥ 16)</span>
+              </div>
+            </div>
+            <p class="muted mb-4" style="margin-top:8px;">
+              Nilai <strong>L</strong>, <strong>C</strong>, dan <strong>R</strong> dicatat di tabel Risk Assessment
+              HRA – Material Handling (per aktivitas). High risk wajib mendapat perhatian manajemen, pengendalian
+              tambahan, dan bila perlu <em>stop work</em> sampai pengendalian terpenuhi.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2.1 RISK CALCULATOR -->
+      <section id="risk-calculator">
+        <h2>
+          Risk Calculator Online
+          <span class="badge">2.1</span>
+        </h2>
+        <p>
+          Gunakan kalkulator ini untuk memperkirakan level risiko berdasarkan nilai <strong>Likelihood (L)</strong>
+          dan <strong>Consequences (C)</strong> yang kamu sepakati di tim. Hasilnya mengikuti risk matrix di atas.
+        </p>
+
+        <div class="risk-calc">
+          <div class="risk-calc-form">
+            <div class="risk-calc-field">
+              <label for="inputL">Likelihood (L)</label>
+              <select id="inputL">
+                <option value="1">1 - Sangat jarang</option>
+                <option value="2">2 - Jarang</option>
+                <option value="3">3 - Kadang-kadang</option>
+                <option value="4">4 - Sering</option>
+                <option value="5">5 - Sangat sering</option>
+              </select>
+              <small class="muted">Pilih seberapa sering kejadian dapat terjadi dalam kondisi kontrol saat ini.</small>
+            </div>
+
+            <div class="risk-calc-field">
+              <label for="inputC">Consequences (C)</label>
+              <select id="inputC">
+                <option value="1">1 - Nyaris tidak ada cedera/kerusakan</option>
+                <option value="2">2 - Cedera ringan / kerusakan minor</option>
+                <option value="3">3 - Cedera medis / kerusakan sedang</option>
+                <option value="4">4 - Cedera serius / kerusakan besar</option>
+                <option value="5">5 - Fatality / multi fatality / kerusakan sangat besar</option>
+              </select>
+              <small class="muted">Pilih dampak terburuk yang masih realistis untuk aktivitas tersebut.</small>
+            </div>
+
+            <div class="risk-calc-btn-row">
+              <button id="btnCalc">Hitung Risk</button>
+              <span class="muted">Formula: <strong>R = L × C</strong></span>
+            </div>
+          </div>
+
+          <div class="risk-calc-result" id="riskResult" data-level="low">
+            <div class="risk-calc-score-row">
+              <div class="risk-calc-score-main">
+                <div>
+                  <div class="risk-calc-label">Risk Score</div>
+                  <div class="risk-calc-score risk-calc-score">0</div>
+                </div>
+              </div>
+              <div>
+                <div class="risk-calc-label">Kategori</div>
+                <div class="risk-calc-level">-</div>
+              </div>
+            </div>
+            <div class="risk-calc-desc">
+              Pilih nilai Likelihood dan Consequences, kemudian klik <em>Hitung Risk</em> untuk melihat level risiko.
+            </div>
+            <div class="risk-calc-chip">
+              Tips: samakan nilai L dan C dengan yang kamu masukkan di Excel supaya konsisten.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. RISK ASSESSMENT HRA – MATERIAL HANDLING -->
+      <section id="risk-assessment">
+        <h2>
+          Risk Assessment HRA – Material Handling
+          <span class="badge">3</span>
+        </h2>
+        <p>
+          Bagian ini merangkum identifikasi bahaya, dampak potensial, serta pengendalian yang ada dan pengendalian
+          tambahan yang direkomendasikan untuk seluruh rangkaian aktivitas material handling.
+        </p>
+        <p class="muted mb-6">
+          Tabel detail (No, Aktivitas, Hazard, Dampak, Pengendalian yang Ada, Pengendalian Tambahan, PIC, L, C, R)
+          disusun di file Excel terpisah, sedangkan di sini ditampilkan ringkasan per sub-aspek 3.1–3.8.
+        </p>
+
+        <div class="accordion">
+          <!-- 3.1 -->
+          <div class="acc-item open" id="sec-3-1">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.1 Perencanaan &amp; HRA Forecasting</div>
+                <div class="acc-title-sub">Identifikasi aktivitas, jalur pergerakan, dan penetapan peran (AA, MHC, PA)</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Fokus utama pada penetapan lingkup pekerjaan material handling, penunjukan Material Handling
+                Coordinator (MHC), serta penyusunan HRA Plan dan Equipment Movement Plan yang terintegrasi dengan
+                Site-Specific EHS Plan dan Site Logistics EHS Plan.
+              </p>
+              <ul>
+                <li>Identifikasi seluruh aktivitas material handling berdasarkan jadwal proyek dan layout aktual.</li>
+                <li>Penetapan jalur pergerakan equipment dan area loading/unloading yang aman (termasuk exclusion zone).</li>
+                <li>Penentuan kebutuhan izin kerja dan emergency plan terkait material handling.</li>
+                <li>Pengelolaan perubahan layout melalui update gambar / BIM untuk menjaga validitas HRA.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.2 -->
+          <div class="acc-item" id="sec-3-2">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.2 Loading &amp; Unloading dari Truk</div>
+                <div class="acc-title-sub">Pengaturan masuk-keluar truk, stabilitas beban, dan proteksi pekerja</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Mengelola risiko saat truk masuk ke area loading/unloading, saat proses bongkar muat menggunakan
+                forklift/telehandler, serta saat pekerja berada di atas bak truk untuk pengikatan atau pelepasan ikatan.
+              </p>
+              <ul>
+                <li>Koordinasi kedatangan truk hanya melalui jalur dan slot bongkar-muat yang telah ditetapkan.</li>
+                <li>Penetapan exclusion zone di sekitar truk dan peralatan material handling untuk mencegah pekerja masuk blind spot.</li>
+                <li>Penggunaan peralatan yang sesuai kapasitas dan geometri beban serta memastikan load chart tersedia dan dipahami.</li>
+                <li>Penerapan fall protection dan platform kerja yang benar ketika pekerja harus bekerja di ketinggian di atas muatan.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.3 -->
+          <div class="acc-item" id="sec-3-3">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.3 Transport Material di Dalam Site</div>
+                <div class="acc-title-sub">Pergerakan forklift/telehandler di jalan internal, koridor, dan tepi slab</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Meliputi pergerakan equipment saat mengangkut material di area proyek, termasuk di jalur sempit,
+                area ramai pedestrian, tanjakan/turunan, dan area dekat tepi slab.
+              </p>
+              <ul>
+                <li>Penetapan speed limit dan safe distance dari tepi slab atau area berisiko jatuh.</li>
+                <li>Pemisahan fisik antara jalur pejalan kaki dan jalur equipment (barrier, marking, signage).</li>
+                <li>Penggunaan Spotter saat reversing, di area dengan visibilitas terbatas, dan di area ramai pekerja.</li>
+                <li>Pengaturan metode transport untuk beban tinggi yang menutup pandangan (misalnya berjalan mundur dengan bantuan Spotter).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.4 -->
+          <div class="acc-item" id="sec-3-4">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.4 Penggunaan Peralatan Bantu (Pallet Jack, Cart, dll.)</div>
+                <div class="acc-title-sub">Pemilihan alat bantu dan pencegahan overexertion / MSD</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Menangani risiko penggunaan pallet jack, hand cart, dan alat bantu lain, terutama di area miring,
+                sempit, dan dengan jarak tempuh yang panjang.
+              </p>
+              <ul>
+                <li>Pemilihan alat bantu berdasarkan kapasitas, dimensi beban, dan kondisi permukaan lantai.</li>
+                <li>Pengaturan batas kemiringan maksimal di mana pallet jack masih diperbolehkan digunakan.</li>
+                <li>Pelatihan teknik mendorong/menarik yang benar untuk mengurangi risiko musculoskeletal disorders (MSD).</li>
+                <li>Pemanfaatan cart atau sistem roller untuk mengurangi kebutuhan manual handling berulang.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.5 -->
+          <div class="acc-item" id="sec-3-5">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.5 Penyimpanan &amp; Stacking Material</div>
+                <div class="acc-title-sub">Konsep “nothing touches the ground”, kapasitas lantai, dan kompatibilitas material</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Fokus pada cara menyusun, menyimpan, dan mengamankan material agar tidak roboh, bergeser, atau
+                menyebabkan overloading pada lantai dan rak penyimpanan.
+              </p>
+              <ul>
+                <li>Penerapan konsep “nothing touches the ground”: material ditempatkan pada pallet, rack, atau cart.</li>
+                <li>Penetapan dan penandaan maksimum beban aman (floor &amp; rack safe load limit).</li>
+                <li>Pemisahan material yang tidak kompatibel (misalnya bahan kimia atau material mudah terbakar).</li>
+                <li>Penyusunan ketinggian maksimum untuk material tertentu (pipa, panel, cable drum, dsb.).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.6 -->
+          <div class="acc-item" id="sec-3-6">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.6 Inspeksi &amp; Maintenance Peralatan</div>
+                <div class="acc-title-sub">Pre-use check, tagging, dan perawatan yang aman</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Mengatur inspeksi harian sebelum penggunaan, penarikan peralatan yang defect dari operasi, serta
+                perawatan dan perbaikan peralatan oleh personel yang kompeten.
+              </p>
+              <ul>
+                <li>Pre-use inspection dengan checklist yang terdokumentasi untuk setiap forklift/telehandler/pallet jack.</li>
+                <li>Peralatan dengan temuan kerusakan harus segera ditandai dan ditarik dari operasi sampai diperbaiki.</li>
+                <li>Maintenance dilakukan sesuai manual pabrikan dan prosedur energi terisolasi (LOTO) bila diperlukan.</li>
+                <li>Penanganan bahan bakar dan pengisian baterai di area yang terventilasi dan bebas sumber api.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.7 -->
+          <div class="acc-item" id="sec-3-7">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.7 Interaksi dengan Pejalan Kaki &amp; Pekerja Lain</div>
+                <div class="acc-title-sub">Etika crossing, eye contact, dan penggunaan barrier</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Menekankan pengendalian interaksi antara mobile equipment dan pekerja lain/pedestrian, termasuk
+                kewajiban eye contact dan hak <em>stop work</em> bagi semua pekerja.
+              </p>
+              <ul>
+                <li>Pelatihan kewaspadaan terhadap jalur material handling bagi seluruh pekerja di site.</li>
+                <li>Aturan “no eye contact, no crossing” sebelum melintas di depan atau di belakang equipment.</li>
+                <li>Pemasangan barrier dan marking jalur pedestrian untuk memisahkan pejalan kaki dari traffic berat.</li>
+                <li>Penekanan hak dan kewajiban stop work jika melihat kondisi pergerakan material yang tidak aman.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.8 -->
+          <div class="acc-item" id="sec-3-8">
+            <div class="acc-header">
+              <div class="acc-title">
+                <div class="acc-title-main">3.8 Dokumentasi, Training &amp; Lessons Learned</div>
+                <div class="acc-title-sub">Pengelolaan HRA form, training record, audit, dan perbaikan berkelanjutan</div>
+              </div>
+              <div class="acc-icon">▶</div>
+            </div>
+            <div class="acc-body">
+              <p>
+                Mengelola bukti tertulis HRA Material Handling, kompetensi operator dan Spotter, serta tindak
+                lanjut hasil audit dan investigasi insiden/near miss.
+              </p>
+              <ul>
+                <li>Penyelesaian dan pengarsipan Hazard Analysis Form untuk setiap aktivitas material handling kritis.</li>
+                <li>Pemeliharaan training records untuk operator, Spotter, dan pekerja terkait sesuai requirement.</li>
+                <li>Pelaksanaan audit periodik material handling dan tindak lanjut temuan audit.</li>
+                <li>Pencatatan insiden dan near miss, analisis akar masalah, serta pembagian lessons learned ke seluruh tim.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. LANGKAH LANJUT -->
+      <section id="next-steps">
+        <h2>
+          Langkah Lanjut yang Bisa Kamu Lakukan
+          <span class="badge">4</span>
+        </h2>
+        <p>
+          Bagian ini memberikan panduan implementasi HRA – Material Handling di lapangan, sehingga dokumen tidak
+          berhenti pada level teori, tetapi benar-benar menjadi alat pengendali risiko harian.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-index">1</div>
+            <div>
+              <div class="step-content-title">Finalisasi Penilaian Risiko (L, C, R)</div>
+              <div class="step-content-text">
+                Lengkapi nilai Likelihood, Consequences, dan Risk untuk setiap aktivitas dalam tabel Excel
+                bersama AA, MHC, dan PA. Pastikan High Risk mendapat pengendalian tambahan dan, bila perlu,
+                penundaan pekerjaan sampai kontrol terpenuhi.
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">2</div>
+            <div>
+              <div class="step-content-title">Integrasi dengan Dokumen EHS Proyek</div>
+              <div class="step-content-text">
+                Lampirkan HRA – Material Handling dalam Site-Specific EHS Plan dan Site Logistics EHS Plan.
+                Pastikan jalur pergerakan material, lokasi storage, dan prosedur loading/unloading konsisten
+                di seluruh dokumen.
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">3</div>
+            <div>
+              <div class="step-content-title">Sosialisasi &amp; Training</div>
+              <div class="step-content-text">
+                Gunakan HRA ini sebagai materi toolbox meeting, induction, dan refresher training untuk operator,
+                Spotter, dan pekerja lain. Tekankan poin-poin praktis seperti eye contact, exclusion zone,
+                dan penggunaan alat bantu yang benar.
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">4</div>
+            <div>
+              <div class="step-content-title">Monitoring Lapangan &amp; Audit</div>
+              <div class="step-content-text">
+                Lakukan observasi rutin di area material handling untuk memastikan kontrol yang tertulis memang
+                dijalankan. Gunakan checklist atau form audit sederhana untuk merekam temuan dan tindak lanjut.
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-index">5</div>
+            <div>
+              <div class="step-content-title">Review &amp; Update Berkala</div>
+              <div class="step-content-text">
+                Tinjau kembali HRA ini ketika ada perubahan layout, metode kerja, jenis material, ataupun setelah
+                terjadinya insiden/near miss. Perubahan signifikan pada jalur material handling perlu dicerminkan
+                pada gambar layout/BIM dan HRA yang diperbarui.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+  // ==========================
+  // DATA RISK (EDIT DI SINI)
+  // ==========================
+  const riskData = [
+    {
+      code: "MH-01",
+      title: "Unloading material dengan forklift di area sempit",
+      sectionId: "sec-3-2",
+      risk: 20
+    },
+    {
+      code: "MH-02",
+      title: "Forklift membawa beban tinggi melewati area ramai pejalan kaki",
+      sectionId: "sec-3-3",
+      risk: 25
+    },
+    {
+      code: "MH-03",
+      title: "Pekerja naik ke atas bak truk tanpa platform kerja yang memadai",
+      sectionId: "sec-3-2",
+      risk: 16
+    },
+    {
+      code: "MH-04",
+      title: "Penyimpanan material berat di lantai tanpa verifikasi kapasitas",
+      sectionId: "sec-3-5",
+      risk: 12
+    },
+    {
+      code: "MH-05",
+      title: "Penggunaan pallet jack di ramp dengan kemiringan tinggi",
+      sectionId: "sec-3-4",
+      risk: 15
+    },
+    {
+      code: "MH-06",
+      title: "Transport material melewati tepi slab tanpa barrier",
+      sectionId: "sec-3-3",
+      risk: 18
+    },
+    {
+      code: "MH-07",
+      title: "Manual handling beban berat dan berulang tanpa alat bantu",
+      sectionId: "sec-3-4",
+      risk: 9
+    },
+    {
+      code: "MH-08",
+      title: "Pejalan kaki melintas di belakang forklift tanpa eye contact",
+      sectionId: "sec-3-7",
+      risk: 20
+    }
+  ];
+
+  function getRiskLevel(score) {
+    if (score >= 16) return "high";
+    if (score >= 9) return "med";
+    return "low";
+  }
+
+  // THEME TOGGLE
+  const themeToggle = document.getElementById("themeToggle");
+  const themeIcon = document.getElementById("themeToggleIcon");
+  const themeLabel = document.getElementById("themeToggleLabel");
+
+  function applyTheme(mode) {
+    const isDark = mode === "dark";
+    document.body.classList.toggle("dark-theme", isDark);
+    themeIcon.textContent = isDark ? "☀️" : "🌙";
+    themeLabel.textContent = isDark ? "Light mode" : "Dark mode";
+    try {
+      localStorage.setItem("hra-theme", mode);
+    } catch (e) {}
+  }
+
+  (function initTheme() {
+    let stored = null;
+    try {
+      stored = localStorage.getItem("hra-theme");
+    } catch (e) {
+      stored = null;
+    }
+    if (stored === "dark" || stored === "light") {
+      applyTheme(stored);
+    } else {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      applyTheme(prefersDark ? "dark" : "light");
+    }
+  })();
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const isDark = document.body.classList.contains("dark-theme");
+      applyTheme(isDark ? "light" : "dark");
+    });
+  }
+
+  // PRINT BUTTON
+  const printBtn = document.getElementById("printBtn");
+  if (printBtn) {
+    printBtn.addEventListener("click", () => {
+      window.print();
+    });
+  }
+
+  // NAVIGATION SCROLL
+  document.querySelectorAll(".nav-link, .nav-sublink").forEach(link => {
+    link.addEventListener("click", () => {
+      const targetId = link.getAttribute("data-target");
+      if (!targetId) return;
+      const section = document.getElementById(targetId);
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const offset = window.scrollY + rect.top - 16;
+      window.scrollTo({ top: offset, behavior: "smooth" });
+
+      if (link.classList.contains("nav-link")) {
+        document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+      }
+    });
+  });
+
+  // ACCORDION
+  document.querySelectorAll(".acc-item").forEach(item => {
+    const header = item.querySelector(".acc-header");
+    const body = item.querySelector(".acc-body");
+
+    if (item.classList.contains("open")) {
+      body.style.maxHeight = body.scrollHeight + "px";
+    }
+
+    header.addEventListener("click", () => {
+      const isOpen = item.classList.contains("open");
+
+      document.querySelectorAll(".acc-item").forEach(i => {
+        if (i !== item) {
+          i.classList.remove("open");
+          const b = i.querySelector(".acc-body");
+          if (b) b.style.maxHeight = 0;
+        }
+      });
+
+      if (!isOpen) {
+        item.classList.add("open");
+        body.style.maxHeight = body.scrollHeight + "px";
+      } else {
+        item.classList.remove("open");
+        body.style.maxHeight = 0;
+      }
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    document.querySelectorAll(".acc-item.open .acc-body").forEach(body => {
+      body.style.maxHeight = body.scrollHeight + "px";
+    });
+  });
+
+  // RISK SUMMARY LOGIC
+  function renderRiskSummary() {
+    const countHighEl = document.getElementById("countHigh");
+    const countMedEl = document.getElementById("countMed");
+    const countLowEl = document.getElementById("countLow");
+    const container = document.getElementById("topRiskContainer");
+    const filterChips = document.querySelectorAll(".filter-chip");
+
+    if (!container) return;
+
+    let high = 0, med = 0, low = 0;
+    riskData.forEach(r => {
+      const level = getRiskLevel(r.risk);
+      if (level === "high") high++;
+      else if (level === "med") med++;
+      else low++;
+    });
+
+    if (countHighEl) countHighEl.textContent = high;
+    if (countMedEl) countMedEl.textContent = med;
+    if (countLowEl) countLowEl.textContent = low;
+
+    const sorted = [...riskData].sort((a, b) => b.risk - a.risk);
+    const top5 = sorted.slice(0, 5);
+
+    let currentFilter = "all";
+
+    function renderList() {
+      container.innerHTML = "";
+
+      const list = top5.filter(item => {
+        const level = getRiskLevel(item.risk);
+        if (currentFilter === "all") return true;
+        return level === currentFilter;
+      });
+
+      if (list.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "muted";
+        empty.textContent = "Tidak ada risiko dengan filter ini.";
+        container.appendChild(empty);
+        return;
+      }
+
+      list.forEach(item => {
+        const level = getRiskLevel(item.risk);
+        const card = document.createElement("div");
+        card.className = `risk-card level-${level}`;
+        card.setAttribute("data-section-id", item.sectionId || "");
+
+        const levelLabel = level === "high" ? "High" : level === "med" ? "Medium" : "Low";
+
+        card.innerHTML = `
+          <div class="risk-card-main">
+            <div class="risk-card-code">${item.code || ""}</div>
+            <div class="risk-card-title">${item.title || ""}</div>
+            <div class="risk-card-section">${item.sectionId ? "Terkait " + item.sectionId.replace("sec-", "").replace(/-/g, ".") : ""}</div>
+          </div>
+          <div></div>
+          <div>
+            <div class="risk-score-badge">
+              <span class="value">${item.risk}</span>
+              <span>R</span>
+            </div>
+            <div class="risk-level-chip ${level}">
+              ${levelLabel} risk
+            </div>
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          const sectionId = card.getAttribute("data-section-id");
+          if (!sectionId) return;
+          const section = document.getElementById(sectionId);
+          if (!section) return;
+          const rect = section.getBoundingClientRect();
+          const offset = window.scrollY + rect.top - 16;
+          window.scrollTo({ top: offset, behavior: "smooth" });
+        });
+
+        container.appendChild(card);
+      });
+    }
+
+    renderList();
+
+    filterChips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        const filter = chip.getAttribute("data-filter");
+        currentFilter = filter || "all";
+
+        filterChips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        renderList();
+      });
+    });
+  }
+
+  // RISK CALCULATOR INIT
+  function initRiskCalculator() {
+    const inputL = document.getElementById("inputL");
+    const inputC = document.getElementById("inputC");
+    const btnCalc = document.getElementById("btnCalc");
+    const box = document.getElementById("riskResult");
+
+    if (!inputL || !inputC || !btnCalc || !box) return;
+
+    const scoreEl = box.querySelector(".risk-calc-score");
+    const levelEl = box.querySelector(".risk-calc-level");
+    const descEl = box.querySelector(".risk-calc-desc");
+
+    const levelText = {
+      low: "Low risk – dapat diterima dengan pengendalian yang ada dan monitoring berkala.",
+      med: "Medium risk – perlu pengendalian tambahan yang realistis dan tanggal target implementasi.",
+      high: "High / Critical risk – pekerjaan harus ditinjau kembali, mungkin ditunda sampai kontrol kritis diterapkan."
+    };
+
+    function update() {
+      const L = parseInt(inputL.value, 10) || 1;
+      const C = parseInt(inputC.value, 10) || 1;
+      const R = L * C;
+      const level = getRiskLevel(R);
+      box.setAttribute("data-level", level);
+      if (scoreEl) scoreEl.textContent = R;
+      if (levelEl) levelEl.textContent =
+        level === "high" ? "High / Critical" :
+        level === "med" ? "Medium" : "Low";
+      if (descEl) descEl.textContent = levelText[level];
+    }
+
+    btnCalc.addEventListener("click", (e) => {
+      e.preventDefault();
+      update();
+    });
+
+    inputL.addEventListener("change", update);
+    inputC.addEventListener("change", update);
+
+    update();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderRiskSummary();
+    initRiskCalculator();
+  });
+</script>
+</body>
+</html>
