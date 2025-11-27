@@ -823,7 +823,7 @@
 
       <div class="header-actions">
         <!-- Download Excel -->
-        <a href="https://hra-virsim.pages.dev/img/HRA_Material_Handling_Risk_Assessment.xlsx"
+        <a href="/img/HRA_Material_Handling_Risk_Assessment.xlsx"
            class="download-btn"
            target="_blank" rel="noopener">
           <span>⬇️</span>
@@ -1319,6 +1319,16 @@
               </div>
             </div>
           </div>
+          <!-- Added Step 6 for Permit to Work -->
+          <div class="step">
+            <div class="step-index">6</div>
+            <div>
+              <div class="step-content-title" data-i18n="step6Title">Evaluasi Kebutuhan Izin Kerja (Permit to Work)</div>
+              <div class="step-content-text" data-i18n="step6Text">
+                Izin kerja tidak selalu wajib, namun diperlukan jika aktivitas dikategorikan sebagai <strong>Critical Material Handling</strong>, melibatkan bahaya lain (seperti <em>Hot Work</em>, <em>Confined Space</em>, atau <em>LOTO</em>), atau menggunakan alat angkat khusus (Lift Permit).
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1465,11 +1475,15 @@
       step4Title: "Monitoring Lapangan & Audit",
       step4Text: "Lakukan observasi rutin di area material handling untuk memastikan kontrol yang tertulis memang dijalankan. Gunakan checklist atau form audit sederhana untuk merekam temuan dan tindak lanjut.",
       step5Title: "Review & Update Berkala",
-      step5Text: "Tinjau kembali HRA ini ketika ada perubahan layout, metode kerja, jenis material, ataupun setelah terjadinya insiden/near miss. Perubahan signifikan pada jalur material handling perlu dicerminkan pada gambar layout/BIM dan HRA yang diperbarui."
+      step5Text: "Tinjau kembali HRA ini ketika ada perubahan layout, metode kerja, jenis material, ataupun setelah terjadinya insiden/near miss. Perubahan signifikan pada jalur material handling perlu dicerminkan pada gambar layout/BIM dan HRA yang diperbarui.",
+      
+      // Step 6 (New)
+      step6Title: "Evaluasi Kebutuhan Izin Kerja (Permit to Work)",
+      step6Text: "Izin kerja tidak selalu wajib, namun diperlukan jika aktivitas dikategorikan sebagai <strong>Critical Material Handling</strong>, melibatkan bahaya lain (seperti <em>Hot Work</em>, <em>Confined Space</em>, atau <em>LOTO</em>), atau menggunakan alat angkat khusus (Lift Permit)."
     },
     en: {
       headerTitle: "HRA – Material Handling",
-      headerSub: "High Risk Activity – Material Handling in Construction Areas",
+      headerSub: "High Risk Activity – Material Handling in Construction Project Areas",
       btnDownload: "Download HRA Excel",
       btnPrint: "Print / PDF",
       navTitle: "Table of Contents",
@@ -1487,7 +1501,7 @@
       nav38: "3.8 Documentation & Training",
       nav4: "Next Steps",
       secSummaryTitle: "Risk Summary",
-      secSummaryDesc: "This summary provides an overview of the risk level for all material handling activities, and highlights several scenarios with the highest <strong>risk scores</strong>.",
+      secSummaryDesc: "This summary provides an overview of risk levels for all material handling activities and highlights several scenarios with the highest <strong>risk scores</strong>.",
       labelHigh: "High / Critical Risk",
       labelMed: "Medium Risk",
       labelLow: "Low Risk",
@@ -1495,7 +1509,7 @@
       filterAll: "All",
       sec1Title: "Scope & Assumptions",
       sec1Desc: "This HRA – Material Handling governs all material moving, arranging, and storing activities using mechanical or manual equipment in construction project areas. This document serves as a reference for all parties (AA, MHC, PA, Operator, Spotter, and other workers) in planning and controlling risks arising from material handling activities.",
-      scopePill1: "Activity Types: loading–unloading, internal transport, storage, limited manual handling",
+      scopePill1: "Activities: loading–unloading, internal transport, storage, limited manual handling",
       scopePill2: "Equipment: forklift, telehandler, reach truck, pallet jack, hand cart, dolly, etc.",
       scopePill3: "Areas: yard, loading bay, internal roads, building corridors, storage areas, building floors",
       scopePill4: "Roles: AA, MHC, PA, Operator, Spotter, other workers / pedestrians",
@@ -1530,7 +1544,7 @@
       // Accordion 3.3 EN
       acc33Title: "3.3 Internal Material Transport",
       acc33Sub: "Forklift/telehandler movement on internal roads, corridors, and slab edges",
-      acc33Body: "Covers equipment movement when transporting material in project areas, including narrow paths, crowded pedestrian areas, inclines/declines, and areas near slab edges.",
+      acc33Body: "Covers equipment movement during material transport in project areas, including narrow paths, crowded pedestrian areas, inclines/declines, and areas near slab edges.",
       acc33Li1: "Establish speed limits and safe distances from slab edges or fall hazard areas.",
       acc33Li2: "Physical separation between pedestrian paths and equipment paths (barriers, markings, signage).",
       acc33Li3: "Use of Spotters when reversing, in areas with limited visibility, and in areas crowded with workers.",
@@ -1565,10 +1579,10 @@
 
       // Accordion 3.7 EN
       acc37Title: "3.7 Interaction with Pedestrians & Other Workers",
-      acc37Sub: "Crossing ethics, eye contact, and barrier usage",
+      acc37Sub: "Crossing rules/etiquette, eye contact, and barrier usage",
       acc37Body: "Emphasizes control of interaction between mobile equipment and other workers/pedestrians, including mandatory eye contact and stop work rights for all workers.",
       acc37Li1: "Training on awareness of material handling paths for all workers on site.",
-      acc37Li2: "“No eye contact, no crossing” rule before passing in front of or behind equipment.",
+      acc37Li2: "“No eye contact, no crossing” rule before crossing in front of or behind equipment.",
       acc37Li3: "Installation of barriers and pedestrian path markings to separate pedestrians from heavy traffic.",
       acc37Li4: "Emphasis on rights and obligations to stop work if unsafe material handling conditions are observed.",
 
@@ -1593,24 +1607,68 @@
       step4Title: "Field Monitoring & Audit",
       step4Text: "Conduct routine observations in material handling areas to ensure written controls are actually implemented. Use checklists or simple audit forms to record findings and follow-ups.",
       step5Title: "Periodic Review & Update",
-      step5Text: "Review this HRA when there are changes in layout, work methods, material types, or after an incident/near miss occurs. Significant changes to material handling paths need to be reflected in updated layout drawings/BIM and HRA."
+      step5Text: "Review this HRA when there are changes in layout, work methods, material types, or after an incident/near miss occurs. Significant changes to material handling paths need to be reflected in updated layout drawings/BIM and HRA.",
+      
+      // Step 6 (New) EN
+      step6Title: "Evaluate Permit to Work Requirements",
+      step6Text: "Work permits are not automatically mandatory, but are required if the activity is categorized as <strong>Critical Material Handling</strong>, involves other hazards (such as <em>Hot Work</em>, <em>Confined Space</em>, or <em>LOTO</em>), or uses specific lifting equipment (Lift Permit)."
     }
   };
 
   let currentLang = 'id';
 
   // ==========================
-  // DATA RISK
+  // DATA RISK (BILINGUAL)
   // ==========================
   const riskData = [
-    { code: "MH-01", title: "Unloading material dengan forklift di area sempit", risk: 20 },
-    { code: "MH-02", title: "Forklift membawa beban tinggi melewati area ramai", risk: 25 },
-    { code: "MH-03", title: "Pekerja naik ke atas bak truk tanpa platform", risk: 16 },
-    { code: "MH-04", title: "Penyimpanan material berat di lantai tanpa verifikasi", risk: 12 },
-    { code: "MH-05", title: "Penggunaan pallet jack di ramp curam", risk: 15 },
-    { code: "MH-06", title: "Transport material melewati tepi slab", risk: 18 },
-    { code: "MH-07", title: "Manual handling beban berat berulang", risk: 9 },
-    { code: "MH-08", title: "Pedestrian melintas di blindspot alat", risk: 20 }
+    { 
+      code: "MH-01", 
+      title: "Unloading material dengan forklift di area sempit", 
+      titleEn: "Unloading material with forklift in narrow areas",
+      risk: 20 
+    },
+    { 
+      code: "MH-02", 
+      title: "Forklift membawa beban tinggi melewati area ramai", 
+      titleEn: "Forklift carrying high loads through crowded areas",
+      risk: 25 
+    },
+    { 
+      code: "MH-03", 
+      title: "Pekerja naik ke atas bak truk tanpa platform", 
+      titleEn: "Worker climbing onto truck bed without platform",
+      risk: 16 
+    },
+    { 
+      code: "MH-04", 
+      title: "Penyimpanan material berat di lantai tanpa verifikasi", 
+      titleEn: "Heavy material storage on floor without verification",
+      risk: 12 
+    },
+    { 
+      code: "MH-05", 
+      title: "Penggunaan pallet jack di ramp curam", 
+      titleEn: "Using pallet jack on steep ramps",
+      risk: 15 
+    },
+    { 
+      code: "MH-06", 
+      title: "Transport material melewati tepi slab", 
+      titleEn: "Transporting material past slab edges",
+      risk: 18 
+    },
+    { 
+      code: "MH-07", 
+      title: "Manual handling beban berat berulang", 
+      titleEn: "Repetitive heavy manual handling",
+      risk: 9 
+    },
+    { 
+      code: "MH-08", 
+      title: "Pedestrian melintas di blindspot alat", 
+      titleEn: "Pedestrian crossing in equipment blind spot",
+      risk: 20 
+    }
   ];
 
   function getRiskLevel(score) {
@@ -1740,13 +1798,15 @@
     list.forEach(item => {
       const level = getRiskLevel(item.risk);
       const levelLabel = level === "high" ? "High" : level === "med" ? "Medium" : "Low";
+      // Pick title based on lang
+      const title = currentLang === 'id' ? item.title : (item.titleEn || item.title);
       
       const div = document.createElement("div");
       div.className = `risk-card level-${level}`;
       div.innerHTML = `
         <div class="risk-card-main">
           <div class="risk-card-code">${item.code}</div>
-          <div class="risk-card-title">${item.title}</div>
+          <div class="risk-card-title">${title}</div>
         </div>
         <div></div>
         <div>
