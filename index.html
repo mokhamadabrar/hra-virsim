@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>HRA – Material Handling</title>
@@ -111,23 +111,23 @@
 
     .logo-circle {
       flex-shrink: 0;
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
       border-radius: 999px;
-      background: rgba(248, 250, 252, 0.2);
-      border: 1px solid rgba(248, 250, 252, 0.45);
+      background: #ffffff;
+      border: 4px solid rgba(255, 255, 255, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       position: relative;
       z-index: 1;
       overflow: hidden;
     }
 
     .logo-img {
-      width: 44px;
-      height: 44px;
+      width: 56px;
+      height: 56px;
       object-fit: contain;
       display: block;
     }
@@ -246,7 +246,6 @@
       padding: 14px 14px 16px;
       box-shadow: 0 14px 32px rgba(148, 163, 184, 0.35);
       backdrop-filter: blur(10px);
-      /* Default Desktop: Sticky */
       position: sticky;
       top: 16px;
       align-self: flex-start;
@@ -267,7 +266,7 @@
       padding-bottom: 6px;
       border-bottom: 1px dashed var(--border-soft);
       margin-bottom: 8px;
-      cursor: default; /* Desktop default */
+      cursor: default;
     }
 
     .sidenav-title {
@@ -279,7 +278,7 @@
     }
 
     .sidenav-toggle-icon {
-      display: none; /* Hidden on desktop */
+      display: none;
       font-size: 0.9rem;
       color: var(--accent);
       transition: transform 0.2s ease;
@@ -356,23 +355,43 @@
       color: var(--accent-dark);
     }
 
-    /* RESPONSIVE MOBILE FIX */
+    /* RESPONSIVE MOBILE FIX - CENTERED LAYOUT */
     @media (max-width: 880px) {
       .layout {
         grid-template-columns: minmax(0, 1fr);
       }
       .header {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 20px;
+        align-items: center; /* CENTER ITEMS */
+        text-align: center; /* CENTER TEXT */
+        padding: 24px 20px;
       }
-      .header-actions {
-        width: 100%;
+      
+      .logo-circle {
+        margin-bottom: 12px; /* Spacing below logo */
       }
 
-      /* SIDENAV MOBILE FIXES */
+      .header-main {
+        width: 100%;
+        align-items: center; /* Center flex children */
+      }
+
+      .header-row-top {
+        align-items: center; /* Center title block */
+      }
+
+      .header-meta {
+        justify-content: center; /* Center pills */
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: center; /* Center buttons */
+      }
+
+      /* SIDENAV MOBILE */
       .sidenav {
-        position: relative; /* Not sticky on mobile */
+        position: relative;
         top: 0;
         max-height: none;
         overflow: visible;
@@ -380,12 +399,11 @@
       }
       
       .sidenav-header-group {
-        cursor: pointer; /* Clickable on mobile */
+        cursor: pointer;
         margin-bottom: 0;
         border-bottom: none;
       }
 
-      /* Hide nav list by default on mobile */
       .nav-list {
         display: none;
         margin-top: 12px;
@@ -393,12 +411,10 @@
         border-top: 1px dashed var(--border-soft);
       }
 
-      /* Show toggle icon on mobile */
       .sidenav-toggle-icon {
         display: block; 
       }
 
-      /* Class to show menu */
       .sidenav.open .nav-list {
         display: block;
         animation: fadeIn 0.2s ease;
@@ -651,12 +667,15 @@
       border: 1px solid var(--border-soft);
       text-align: center;
       padding: 6px 8px;
+      color: #000000; /* BLACK TEXT FOR MATRIX CELLS */
     }
     .risk-matrix th { background: #e5e7f6; color: #4b5563; font-weight: 600; }
     body.dark-theme .risk-matrix th { background: #020617; color: #e5e7eb; }
+    
+    /* BACKGROUNDS FOR RISK CELLS */
     .risk-low { background: var(--risk-low); }
     .risk-med { background: var(--risk-med); }
-    .risk-high { background: var(--risk-high); color: #111827; }
+    .risk-high { background: var(--risk-high); }
 
     /* Risk Calculator */
     .risk-calc {
@@ -823,7 +842,7 @@
 
       <div class="header-actions">
         <!-- Download Excel -->
-        <a href="/img/HRA_Material_Handling_Risk_Assessment.xlsx"
+        <a href="https://hra-virsim.pages.dev/img/HRA_Material_Handling_Risk_Assessment.xlsx"
            class="download-btn"
            target="_blank" rel="noopener">
           <span>⬇️</span>
@@ -833,7 +852,7 @@
         <!-- Language Toggle -->
         <button type="button" class="header-btn" id="langToggle">
           <span>🌐</span>
-          <span id="langLabel">ID / EN</span>
+          <span id="langLabel">EN / ID</span>
         </button>
 
         <!-- Print -->
@@ -1509,7 +1528,7 @@
       filterAll: "All",
       sec1Title: "Scope & Assumptions",
       sec1Desc: "This HRA – Material Handling governs all material moving, arranging, and storing activities using mechanical or manual equipment in construction project areas. This document serves as a reference for all parties (AA, MHC, PA, Operator, Spotter, and other workers) in planning and controlling risks arising from material handling activities.",
-      scopePill1: "Activities: loading–unloading, internal transport, storage, limited manual handling",
+      scopePill1: "Activity Types: loading–unloading, internal transport, storage, limited manual handling",
       scopePill2: "Equipment: forklift, telehandler, reach truck, pallet jack, hand cart, dolly, etc.",
       scopePill3: "Areas: yard, loading bay, internal roads, building corridors, storage areas, building floors",
       scopePill4: "Roles: AA, MHC, PA, Operator, Spotter, other workers / pedestrians",
@@ -1615,7 +1634,7 @@
     }
   };
 
-  let currentLang = 'id';
+  let currentLang = 'en'; // Default language set to English
 
   // ==========================
   // DATA RISK (BILINGUAL)
@@ -1687,7 +1706,9 @@
 
   function setLanguage(lang) {
     currentLang = lang;
-    langLabel.textContent = lang === 'id' ? 'ID / EN' : 'EN / ID';
+    // If lang is English ('en'), button shows "EN / ID".
+    // If lang is Indonesian ('id'), button shows "ID / EN".
+    langLabel.textContent = lang === 'en' ? 'EN / ID' : 'ID / EN';
     
     // Update text content elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1902,9 +1923,8 @@
     if (!stored) stored = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     applyTheme(stored);
     
-    // Render
-    renderRiskSummary();
-    updateRiskCalculator(); // Initial calculation
+    // Set default language to English and render content
+    setLanguage('en');
     
     // Open first accordion
     const firstAcc = document.querySelector(".acc-item");
