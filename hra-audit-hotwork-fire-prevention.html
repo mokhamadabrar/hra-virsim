@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <!-- Accessibility Fix: Allow user scaling for better accessibility score -->
+  <!-- Accessibility Fix: Allow user scaling -->
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes" />
   
   <!-- ========= SEO & Meta Data ========= -->
-  <title>HRA AUDIT Hot Work & Fire Prevention</title>
+  <title>HRA AUDIT — Hot Work & Fire Prevention</title>
   <meta name="description" content="Digital Field Audit Form for Hot Work & Fire Prevention. Professional HSE inspection tool to ensure compliance with safety standards and fire prevention regulations (NFPA/OSHA)." />
   <meta name="keywords" content="HRA Audit, Hot Work, Fire Prevention, HSE, Safety Audit, Fire Safety, NFPA, Virsim, Iwan Kurniawan, K3, Inspection Form, Digital Audit" />
   <meta name="author" content="Virsim & Iwan Kurniawan" />
@@ -34,13 +34,13 @@
       --bg:#f3f4f8;
       --card:#ffffff;
       --ink:#0f172a;
-      --muted:#475569;
-      --accent:#0ea5e9;
+      --muted:#334155; /* Darkened for contrast */
+      --accent:#0284c7;
       --accent-soft:#e0f2fe;
-      --accent-2:#22c55e;
-      --warn:#f59e0b;
-      --danger:#ef4444;
-      --line:#e5e7eb;
+      --accent-2:#15803d; /* Darker Green for better contrast */
+      --warn:#b45309;    /* Darker Orange/Amber for better contrast */
+      --danger:#dc2626;
+      --line:#cbd5e1;
       --chip:#0ea5e91a;
       --radius:14px;
     }
@@ -50,20 +50,21 @@
       margin:0;
       background:radial-gradient(circle at top,#e0f2fe 0,#f9fafb 50%,#f3f4f8 100%);
       color:var(--ink);
-      font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Ubuntu,Cantarell;
+      font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Ubuntu,Cantarell;
       -webkit-font-smoothing: antialiased;
     }
     h1,h2,h3{margin:0 0 .5rem}
     h1{font-size:1.8rem;letter-spacing:.2px;}
-    h2{font-size:1.1rem;color:#e0f2ff;}
+    h2{font-size:1.25rem;color:#0f172a;font-weight:700;} /* Darker for accessibility */
+    h3{font-size:1rem;color:#1e293b;font-weight:600;}
     p,small{color:var(--muted)}
     a{color:var(--accent)}
 
-    /* ========= Layout & Desktop Defaults ========= */
+    /* ========= Layout ========= */
     .wrap{max-width:1280px;margin:24px auto 32px;padding:0 16px}
     
     header.hero{
-      background: linear-gradient(135deg, rgba(2, 132, 199, 0.9) 0%, rgba(34, 197, 94, 0.85) 100%), 
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.95) 0%, rgba(22, 163, 74, 0.9) 100%), 
                   url('https://hra-virsim.pages.dev/img/hot-work-fire-prevention.webp');
       background-size: cover;
       background-position: center;
@@ -80,10 +81,8 @@
     }
     .hero .title{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
     
-    /* LOGO STYLE */
     .hero-logo {
-      height: 90px;
-      width: 90px;
+      height: 90px; width: 90px;
       object-fit: contain;
       align-self: flex-start;
       margin-bottom: 12px;
@@ -97,7 +96,7 @@
     .hero .title h1 span{
       display:inline-flex;align-items:center;gap:6px;
       font-size:.8rem;font-weight:500;padding:4px 9px;
-      border-radius:999px;background:#0b11201f;border:1px solid #bae6fd3b;
+      border-radius:999px;background:#0b112033;border:1px solid #bae6fd3b; /* Darkened bg */
       vertical-align: middle;
     }
     .hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
@@ -106,7 +105,7 @@
       display:flex;align-items:center;gap:8px;backdrop-filter:saturate(140%) blur(4px);
       border:1px solid #bae6fd3b;font-size:.88rem;
     }
-    .meta .chip label{opacity:.85;font-weight:400;font-size:0.8rem}
+    .meta .chip label{opacity:.9;font-weight:400;font-size:0.8rem}
 
     /* Language Switcher */
     .lang-switch {
@@ -114,10 +113,10 @@
       top: 20px;
       right: 20px;
       z-index: 10;
-      background: rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.3); /* Darker for white text contrast */
       border: 1px solid rgba(255,255,255,0.4);
       color: white;
-      padding: 8px 14px; /* Larger touch target */
+      padding: 8px 14px;
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
@@ -125,16 +124,16 @@
       backdrop-filter: blur(4px);
       transition: background 0.2s;
     }
-    .lang-switch:hover { background: rgba(255,255,255,0.3); }
+    .lang-switch:hover { background: rgba(0,0,0,0.5); }
 
     .score-bar{
-      background:#0b11201f;border:1px solid #bae6fd40;padding:16px;border-radius:16px;
+      background:#0b112033;border:1px solid #bae6fd40;padding:16px;border-radius:16px;
       display:grid;grid-template-columns:1.2fr 1.2fr;gap:16px;align-items:center;
       position:relative;z-index:1;
       backdrop-filter: blur(4px);
     }
     .progress{
-      width:100%;height:12px;background:#0b11204d;
+      width:100%;height:12px;background:#0b112066;
       border-radius:999px;overflow:hidden;
       box-shadow:inset 0 0 0 1px #0f172a33;
     }
@@ -145,13 +144,13 @@
     }
     .score-kpi{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
     .score-kpi .kpi{
-      background:#0b11204d;
+      background:#0b112066; /* Darker for white text */
       border:1px solid #bae6fd40;padding:8px 12px;border-radius:10px;min-width:120px;
-      font-size:.87rem;
+      font-size:.87rem; color: #fff;
     }
-    .score-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
-    .score-value{font-size:1.1rem;font-weight:700;margin-top:2px}
-    .score-rating{font-size:.8rem;margin-top:4px;opacity:.95}
+    .score-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.9; color: #e2e8f0;}
+    .score-value{font-size:1.1rem;font-weight:700;margin-top:2px; color: #fff;}
+    .score-rating{font-size:.8rem;margin-top:4px;opacity:1; color: #f1f5f9;}
     
     .global-summary{
       margin-top:10px;
@@ -160,13 +159,13 @@
     .global-pill{
       display:inline-flex;align-items:center;gap:4px;
       padding:4px 10px;border-radius:999px;
-      background:#0b11204d;border:1px solid #bae6fd40;color:#e5f2ff;
+      background:#0b112080;border:1px solid #bae6fd40;color:#e5f2ff;
     }
-    /* Colors adjusted for contrast */
-    .global-pill.global-ok{ background:#1665344d;border-color:#bbf7d0;color:#dcfce7; }
-    .global-pill.global-na{ background:#854d0e4d;border-color:#facc15;color:#fefce8; }
-    .global-pill.global-empty{ background:#0b112066;border-color:#94a3b8;color:#e5e7eb; }
-    .global-pill.global-issue{ background:#9a34124d;border-color:#fed7aa;color:#ffedd5; }
+    /* Colors adjusted for contrast against dark header */
+    .global-pill.global-ok{ background:#16653480;border-color:#86efac;color:#dcfce7; }
+    .global-pill.global-na{ background:#854d0e80;border-color:#fde047;color:#fefce8; }
+    .global-pill.global-empty{ background:#33415580;border-color:#94a3b8;color:#f1f5f9; }
+    .global-pill.global-issue{ background:#9a341280;border-color:#fdba74;color:#ffedd5; }
 
     /* ========= Toolbar ========= */
     .toolbar-shell{
@@ -182,15 +181,16 @@
       border:1px solid #e2e8f0;
     }
     .toolbar-group{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .toolbar small{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:#64748b;font-weight:600}
+    .toolbar small{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;font-weight:700}
     
     .input,select,button{
-      border:1px solid var(--line);background:#fff;color:var(--ink);
-      padding:8px 12px;border-radius:10px;outline:none;min-height:44px; /* Min height 44px for accessibility */
+      border:1px solid #cbd5e1;background:#fff;color:var(--ink);
+      padding:8px 12px;border-radius:10px;outline:none;min-height:44px;
       font-size:.9rem;appearance: none;
     }
+    /* Fixed select arrow contrast */
     select {
-      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23334155%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
       background-repeat: no-repeat;
       background-position: right .7em top 50%;
       background-size: .65em auto;
@@ -204,10 +204,12 @@
       border-radius:999px; transition: filter 0.2s;
     }
     button:active { filter: brightness(0.9); transform: translateY(1px); }
-    button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
-    button.success{background:var(--accent-2)}
-    button.warn{background:var(--warn)}
-    button.toggle-active{ box-shadow:0 0 0 2px #fff, 0 0 0 4px #f97316; }
+    button.ghost{background:#fff;border:1px solid #94a3b8;color:#0f172a}
+    
+    /* FIX: High Contrast Colors for Buttons */
+    button.success{background:var(--accent-2); color:#fff;}
+    button.warn{background:var(--warn); color:#fff;}
+    button.toggle-active{ box-shadow:0 0 0 2px #fff, 0 0 0 4px #ea580c; }
 
     /* ========= Category & Cards ========= */
     .category{
@@ -221,46 +223,46 @@
       border-bottom:1px solid var(--line);
     }
     .cat-title{display:flex;align-items:center;gap:12px}
-    .cat-title h3{font-size:1.05rem;color:var(--ink);font-weight:700}
-    .cat-title small{font-size:.85rem;color:#64748b}
+    .cat-title h2 {font-size:1.1rem;color:var(--ink);font-weight:700;margin:0;} /* Changed to h2 */
+    .cat-title small{font-size:.85rem;color:#475569}
     .cat-meta-right{display:flex;align-items:center;gap:12px}
     .cat-stats{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
     .cat-stat-pill{
       border-radius:6px;border:1px solid #cbd5e1;
       padding:2px 8px;font-size:.75rem;
       display:inline-flex;align-items:center;gap:4px;
-      background:#fff;color:#475569;font-weight:500;
+      background:#fff;color:#334155;font-weight:600;
     }
-    /* Accessibility: Enhanced Contrast */
-    .cat-stat-ok{ background:#f0fdf4;border-color:#bbf7d0;color:#14532d; }
-    .cat-stat-na{ background:#fefce8;border-color:#fde047;color:#713f12; }
-    .cat-stat-empty{ background:#f8fafc;border-color:#e2e8f0;color:#475569; }
+    /* Contrast fix for stats */
+    .cat-stat-ok{ background:#dcfce7;border-color:#16a34a;color:#14532d; }
+    .cat-stat-na{ background:#fef9c3;border-color:#eab308;color:#713f12; }
+    .cat-stat-empty{ background:#f1f5f9;border-color:#94a3b8;color:#334155; }
 
     /* Category Colors */
-    .category[data-key="HOT_WORK"] .cat-head{border-left:5px solid #ef4444;}
-    .category[data-key="FIRE_PREVENTION"] .cat-head{border-left:5px solid #f97316;}
-    .category[data-key="TRAINING_DRILL"] .cat-head{border-left:5px solid #0ea5e9;}
-    .category[data-key="WATER_SUPPLY"] .cat-head{border-left:5px solid #6366f1;}
-    .category[data-key="SITE_ACCESS"] .cat-head{border-left:5px solid #22c55e;}
-    .category[data-key="EMERGENCY_REPORTING"] .cat-head{border-left:5px solid #ec4899;}
-    .category[data-key="TEMP_HEATING"] .cat-head{border-left:5px solid #eab308;}
-    .category[data-key="SMOKING"] .cat-head{border-left:5px solid #a855f7;}
-    .category[data-key="MOTORIZED_EQUIPMENT"] .cat-head{border-left:5px solid #0f766e;}
-    .category[data-key="HOUSEKEEPING"] .cat-head{border-left:5px solid #0284c7;}
-    .category[data-key="UTILITIES"] .cat-head{border-left:5px solid #10b981;}
-    .category[data-key="FLAMMABLE_LIQUIDS"] .cat-head{border-left:5px solid #fb923c;}
-    .category[data-key="STORAGE"] .cat-head{border-left:5px solid #64748b;}
-    .category[data-key="FIRE_PROTECTION"] .cat-head{border-left:5px solid #be123c;}
+    .category[data-key="HOT_WORK"] .cat-head{border-left:6px solid #dc2626;}
+    .category[data-key="FIRE_PREVENTION"] .cat-head{border-left:6px solid #ea580c;}
+    .category[data-key="TRAINING_DRILL"] .cat-head{border-left:6px solid #0284c7;}
+    .category[data-key="WATER_SUPPLY"] .cat-head{border-left:6px solid #4f46e5;}
+    .category[data-key="SITE_ACCESS"] .cat-head{border-left:6px solid #16a34a;}
+    .category[data-key="EMERGENCY_REPORTING"] .cat-head{border-left:6px solid #db2777;}
+    .category[data-key="TEMP_HEATING"] .cat-head{border-left:6px solid #ca8a04;}
+    .category[data-key="SMOKING"] .cat-head{border-left:6px solid #9333ea;}
+    .category[data-key="MOTORIZED_EQUIPMENT"] .cat-head{border-left:6px solid #0d9488;}
+    .category[data-key="HOUSEKEEPING"] .cat-head{border-left:6px solid #0891b2;}
+    .category[data-key="UTILITIES"] .cat-head{border-left:6px solid #059669;}
+    .category[data-key="FLAMMABLE_LIQUIDS"] .cat-head{border-left:6px solid #d97706;}
+    .category[data-key="STORAGE"] .cat-head{border-left:6px solid #475569;}
+    .category[data-key="FIRE_PROTECTION"] .cat-head{border-left:6px solid #be123c;}
 
     .cat-body{padding:16px}
     .badge{
-      background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;
-      padding:4px 10px;border-radius:6px;font-weight:600;font-size:.75rem;
+      background:#e0f2fe;color:#075985;border:1px solid #7dd3fc;
+      padding:4px 10px;border-radius:6px;font-weight:700;font-size:.75rem;
       display:inline-flex;align-items:center;gap:6px;white-space: nowrap;
     }
     .badge::before{content:"●";font-size:.6rem;}
-    /* Accessibility: Enhanced Contrast for Badges */
-    .possible{color:#064e3b;background:#d1fae5;border-color:#6ee7b7}
+    /* Contrast Fixes */
+    .possible{color:#064e3b;background:#d1fae5;border-color:#34d399}
     .na{color:#78350f;background:#fef3c7;border-color:#fcd34d}
 
     .grid{
@@ -270,7 +272,7 @@
     @media (max-width: 700px){ .grid{grid-template-columns:1fr} }
 
     .card{
-      border:1px solid var(--line);border-radius:16px;background:#fff;
+      border:1px solid #cbd5e1;border-radius:16px;background:#fff;
       display:flex;flex-direction:column;
       box-shadow:0 2px 4px rgba(0,0,0,.03);
       transition: all .2s cubic-bezier(0.4,0,0.2,1);
@@ -278,7 +280,7 @@
     .card:hover{
       transform:translateY(-3px);
       box-shadow:0 10px 15px -3px rgba(0,0,0,.08);
-      border-color:#cbd5e1;
+      border-color:#94a3b8;
     }
     .card.issue{
       border-color:#fdba74;
@@ -291,36 +293,38 @@
       padding:14px 14px 0;display:flex;justify-content:space-between;align-items:flex-start;
     }
     .card .body{padding:10px 14px 14px}
-    .q{font-weight:600;margin-bottom:12px;font-size:.95rem; line-height: 1.5;}
+    /* Semantic HTML Fix */
+    .q-text{
+      font-size:.95rem; line-height: 1.5; font-weight: 600; color: var(--ink); margin-bottom: 12px;
+    }
     
     .form-row{
       display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;
     }
     .form-row label{
-      display:block;font-size:.75rem;color:#64748b;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;
+      display:block;font-size:.75rem;color:#475569;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;
     }
     .form-row .input,.form-row select{width:100%}
     
     .findings{margin-top:12px}
-    .findings label{display:block;font-size:.75rem;color:#64748b;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;}
+    .findings label{display:block;font-size:.75rem;color:#475569;margin-bottom:4px;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;}
     textarea{
-      width:100%;min-height:85px;border:1px solid var(--line);border-radius:10px;
+      width:100%;min-height:85px;border:1px solid #cbd5e1;border-radius:10px;
       padding:10px;resize:vertical;font-family:inherit;font-size:.9rem;
       background:#f8fafc;
     }
     textarea:focus{border-color:var(--accent);background:#fff}
 
     .photo{
-      margin-top:12px;border:1px dashed #bae6fd;border-radius:12px;
+      margin-top:12px;border:1px dashed #7dd3fc;border-radius:12px;
       padding:10px;background:#f0f9ff;
     }
     .photo-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
-    .photo-head-title{font-weight:600;font-size:.85rem;color:#0369a1}
+    .photo-head-title{font-weight:700;font-size:.85rem;color:#0369a1}
     .thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     
-    /* Improved Tap Targets for Delete Button */
     .thumb{
-      width:70px;height:70px;background:#fff;border:1px solid var(--line);
+      width:70px;height:70px;background:#fff;border:1px solid #cbd5e1;
       border-radius:8px;overflow:hidden;
       display:flex;align-items:center;justify-content:center;position:relative;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -328,8 +332,8 @@
     .thumb img{width:100%;height:100%;object-fit:cover}
     .thumb button{
       position:absolute;top:0;right:0;
-      background:rgba(0,0,0,0.6);border:none;color:#fff;
-      padding:0;width:32px;height:32px; /* Bigger target */
+      background:rgba(0,0,0,0.7);border:none;color:#fff;
+      padding:0;width:32px;height:32px;
       border-bottom-left-radius:8px;
       font-size:1rem;
       display:flex;align-items:center;justify-content:center;
@@ -338,26 +342,21 @@
 
     .foot{
       display:flex;justify-content:space-between;align-items:center;
-      padding:12px 14px;border-top:1px solid var(--line);
+      padding:12px 14px;border-top:1px solid #e2e8f0;
       background:#f8fafc;border-radius:0 0 16px 16px;
       font-size:.8rem;
     }
-    .note{color:var(--muted);font-size:.75rem}
+    .note{color:#64748b;font-size:.75rem}
     .pill{
-      padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;
+      padding:4px 10px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;
       font-size:.75rem;display:inline-flex;align-items:center;gap:6px;font-weight:600;
     }
-    /* Accessibility: Enhanced Contrast */
-    .status-good{color:#064e3b;background:#d1fae5;border-color:#6ee7b7}
-    .status-mid{color:#78350f;background:#fef3c7;border-color:#fcd34d}
-    .status-low{color:#7f1d1d;background:#fee2e2;border-color:#fca5a5}
-
-    /* Footer Style */
+    
     footer.app-footer {
       text-align: center;
       margin-top: 40px;
       padding: 24px;
-      color: #64748b;
+      color: #475569;
       font-size: 0.85rem;
       border-top: 1px solid #e2e8f0;
       background: #f8fafc;
@@ -369,14 +368,14 @@
       transition: color 0.2s;
     }
     footer.app-footer a:hover {
-      color: #0284c7;
+      color: #0369a1;
       text-decoration: underline;
     }
     footer.app-footer p {
       margin: 4px 0;
     }
 
-    /* ========= MOBILE / TABLET RESPONSIVE TWEAKS ========= */
+    /* ========= MOBILE RESPONSIVE ========= */
     @media (max-width: 900px) {
       header.hero {
         grid-template-columns: 1fr; 
@@ -388,7 +387,6 @@
     }
 
     @media (max-width: 768px) {
-      /* Toolbar adjustments for mobile */
       .toolbar-shell {
         position: relative !important; 
         top: auto; 
@@ -404,24 +402,20 @@
       .toolbar-group input, .toolbar-group select { flex: 1; width: 100%; }
       .toolbar > button { flex: 1; justify-content: center; }
 
-      /* Score bar adjustments */
       .score-bar { grid-template-columns: 1fr; gap: 20px; }
       .score-kpi { justify-content: space-between; gap: 8px; }
       .score-kpi .kpi { flex: 1; text-align: center; padding: 8px; min-width: auto; }
       
-      /* Category Header */
       .cat-head { flex-direction: column; align-items: flex-start; gap: 12px; }
       .cat-meta-right { width: 100%; justify-content: space-between; }
       
-      /* LOGO MOBILE ADJUSTMENTS - Centered & Sized */
       .hero .title {
         align-items: center; 
         text-align: center;
       }
       .hero-logo { 
-        height: 70px;  /* Ukuran diperbesar untuk mobile */
-        width: 70px;   /* Tetap bulat */
-        align-self: center; /* Pastikan logo di tengah */
+        height: 70px; width: 70px;
+        align-self: center;
         margin-bottom: 12px;
       }
     }
@@ -429,12 +423,12 @@
     @media (max-width: 480px) {
       .wrap { padding: 0 12px; margin-top: 16px; }
       h1 { font-size: 1.3rem; }
-      h2 { font-size: 0.95rem; }
+      h2 { font-size: 1.1rem; }
       .form-row { grid-template-columns: 1fr; }
       .hero .meta { flex-direction: column; align-items: center; }
       .meta .chip { width: 100%; justify-content: center;}
       .thumbs .thumb { width: 60px; height: 60px; }
-      button, .input, select { min-height: 44px; } 
+      button, .input, select { min-height: 48px; } /* Larger touch target for smallest screens */
     }
 
     /* ========= Print styling ========= */
@@ -449,6 +443,8 @@
       }
       header.hero::after{display:none}
       .score-bar{background:#fff;border:1px solid #ccc;}
+      .score-kpi .kpi{color:#000; border:1px solid #ccc;}
+      .score-value, .score-rating {color:#000;}
       .grid { display: block; }
       .card { margin-bottom: 15px; }
       textarea { border: none; background: none; padding: 0; min-height: auto; resize: none; }
@@ -467,79 +463,82 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- ======= HERO ======= -->
-    <header class="hero">
-      <button class="lang-switch" onclick="toggleLang()" aria-label="Switch Language">🇮🇩 ID / 🇬🇧 EN</button>
-      <div class="title">
-        <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="Logo Virsim" class="hero-logo" width="90" height="90" />
-        <h1 id="appTitle">HRA AUDIT — Hot Work &amp; Fire Prevention</h1>
-        <div class="meta">
-          <div class="chip">
-            <label id="lbl_auditor">Auditor:</label>
-            <strong id="auditorName">Dedi Setiawan</strong>
-          </div>
-          <div class="chip">
-            <label id="lbl_date">Date:</label>
-            <span id="auditDate"></span>
-          </div>
-          <div class="chip actions">
-            <button class="icon ghost" id="btnPrint" title="Print PDF" aria-label="Print Document"><span>🖨️</span> <span id="btn_print">Print</span></button>
-            <button class="icon ghost" id="btnExportCsv" title="Download CSV" aria-label="Export CSV"><span>📤</span> <span id="btn_csv">CSV</span></button>
-            <button class="icon ghost" id="btnReset" title="Reset All Data" aria-label="Reset Data"><span>♻️</span> <span id="btn_reset">Reset</span></button>
-          </div>
-        </div>
-      </div>
-      <div class="score-bar">
-        <div class="score-kpi">
-          <div class="kpi">
-            <div class="score-label" id="kpi_possible">Possible</div>
-            <div class="score-value" id="kpiPossible">0</div>
-          </div>
-          <div class="kpi">
-            <div class="score-label" id="kpi_actual">Actual</div>
-            <div class="score-value" id="kpiActual">0</div>
-          </div>
-          <div class="kpi">
-            <div class="score-label" id="kpi_score">Score</div>
-            <div class="score-value" id="kpiPct">0%</div>
-            <div class="score-rating" id="kpiRating">—</div>
+    <!-- Main Landmark for Accessibility -->
+    <main>
+      <!-- ======= HERO ======= -->
+      <header class="hero">
+        <button class="lang-switch" onclick="toggleLang()" aria-label="Switch Language">🇮🇩 ID / 🇬🇧 EN</button>
+        <div class="title">
+          <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="Logo Virsim" class="hero-logo" width="90" height="90" />
+          <h1 id="appTitle">HRA AUDIT — Hot Work &amp; Fire Prevention</h1>
+          <div class="meta">
+            <div class="chip">
+              <label id="lbl_auditor">Auditor:</label>
+              <strong id="auditorName">Dedi Setiawan</strong>
+            </div>
+            <div class="chip">
+              <label id="lbl_date">Date:</label>
+              <span id="auditDate"></span>
+            </div>
+            <div class="chip actions">
+              <button class="icon ghost" id="btnPrint" title="Print PDF" aria-label="Print Document"><span>🖨️</span> <span id="btn_print">Print</span></button>
+              <button class="icon ghost" id="btnExportCsv" title="Download CSV" aria-label="Export CSV"><span>📤</span> <span id="btn_csv">CSV</span></button>
+              <button class="icon ghost" id="btnReset" title="Reset All Data" aria-label="Reset Data"><span>♻️</span> <span id="btn_reset">Reset</span></button>
+            </div>
           </div>
         </div>
-        <div>
-          <div class="progress"><span id="progressFill" style="width:0%"></span></div>
-          <div class="global-summary" id="globalSummary"></div>
+        <div class="score-bar">
+          <div class="score-kpi">
+            <div class="kpi">
+              <div class="score-label" id="kpi_possible">Possible</div>
+              <div class="score-value" id="kpiPossible">0</div>
+            </div>
+            <div class="kpi">
+              <div class="score-label" id="kpi_actual">Actual</div>
+              <div class="score-value" id="kpiActual">0</div>
+            </div>
+            <div class="kpi">
+              <div class="score-label" id="kpi_score">Score</div>
+              <div class="score-value" id="kpiPct">0%</div>
+              <div class="score-rating" id="kpiRating">—</div>
+            </div>
+          </div>
+          <div>
+            <div class="progress"><span id="progressFill" style="width:0%"></span></div>
+            <div class="global-summary" id="globalSummary"></div>
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <!-- ======= TOOLBAR ======= -->
-    <div class="toolbar-shell">
-      <div class="toolbar">
-        <div class="toolbar-group" style="flex:1;">
-          <small id="lbl_filter">Filter &amp; Search</small>
-          <label for="inputSearch" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Search</label>
-          <input class="input" id="inputSearch" placeholder="Search..." aria-label="Search" />
-          <label for="filterCategory" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Filter by Category</label>
-          <select id="filterCategory" class="input" aria-label="Filter Category"></select>
-          <label for="filterStatus" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Filter by Status</label>
-          <select id="filterStatus" class="input" aria-label="Filter Status"></select>
-        </div>
-        <div class="toolbar-group" style="width:auto;">
-          <small id="lbl_identity">Audit Identity</small>
-          <label for="inputAuditor" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Auditor Name</label>
-          <input class="input" id="inputAuditor" placeholder="Name..." aria-label="Auditor Name" />
-          <label for="inputDate" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Audit Date</label>
-          <input type="date" id="inputDate" class="input" aria-label="Audit Date" />
-        </div>
-        <div style="display:flex;gap:8px;flex:1;justify-content:flex-end;">
-          <button class="icon success" id="btnSave" aria-label="Save Data"><span>💾</span> <span id="btn_save">Save</span></button>
-          <button class="icon warn" id="btnIssues" aria-label="Highlight Issues"><span>⚠️</span> <span id="btn_issues">Highlight Issues</span></button>
+      <!-- ======= TOOLBAR ======= -->
+      <div class="toolbar-shell">
+        <div class="toolbar">
+          <div class="toolbar-group" style="flex:1;">
+            <small id="lbl_filter">Filter &amp; Search</small>
+            <label for="inputSearch" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Search</label>
+            <input class="input" id="inputSearch" placeholder="Search..." aria-label="Search" />
+            <label for="filterCategory" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Filter by Category</label>
+            <select id="filterCategory" class="input" aria-label="Filter Category"></select>
+            <label for="filterStatus" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Filter by Status</label>
+            <select id="filterStatus" class="input" aria-label="Filter Status"></select>
+          </div>
+          <div class="toolbar-group" style="width:auto;">
+            <small id="lbl_identity">Audit Identity</small>
+            <label for="inputAuditor" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Auditor Name</label>
+            <input class="input" id="inputAuditor" placeholder="Name..." aria-label="Auditor Name" />
+            <label for="inputDate" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Audit Date</label>
+            <input type="date" id="inputDate" class="input" aria-label="Audit Date" />
+          </div>
+          <div style="display:flex;gap:8px;flex:1;justify-content:flex-end;">
+            <button class="icon success" id="btnSave" aria-label="Save Data"><span>💾</span> <span id="btn_save">Save</span></button>
+            <button class="icon warn" id="btnIssues" aria-label="Highlight Issues"><span>⚠️</span> <span id="btn_issues">Highlight Issues</span></button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- ======= CONTAINER KATEGORI ======= -->
-    <div id="categories"></div>
+      <!-- ======= CONTAINER KATEGORI ======= -->
+      <div id="categories"></div>
+    </main>
 
     <footer class="app-footer">
       <p>Created @2025 by <strong>Virsim</strong> and <a href="https://id.linkedin.com/in/iwan-kurniawan-83532226" target="_blank" rel="noopener noreferrer">Iwan Kurniawan</a></p>
@@ -923,7 +922,7 @@
         head.className = 'cat-head';
         head.innerHTML = `
           <div class="cat-title">
-            <h3>${catName}</h3>
+            <h2>${catName}</h2>
             <small>(${cat.items.length} item)</small>
           </div>
           <div class="cat-meta-right">
@@ -984,7 +983,7 @@
               <div id="poss_${key}">${possBadge}</div>
             </div>
             <div class="body">
-              <div class="q">${itemText}</div>
+              <div class="q-text"><h3>${itemText}</h3></div>
               <div class="form-row">
                 <div>
                   <label for="actual_${key}">${T.card_actual}</label>
@@ -1005,7 +1004,7 @@
                   <div class="photo-head-title">${T.card_photo}</div>
                   <div style="position:relative;overflow:hidden;display:inline-block;">
                     <button type="button" class="ghost" style="font-size:0.8rem;padding:4px 10px;">${T.card_photo_btn}</button>
-                    <input type="file" accept="image/*" multiple capture="environment"
+                    <input type="file" accept="image/*" multiple capture="environment" aria-label="Upload Photo for Item ${it.docNo}"
                       style="position:absolute;left:0;top:0;opacity:0;cursor:pointer;width:100%;height:100%;"
                       onchange="onPhotosSelected('${key}', this.files)" />
                   </div>
@@ -1053,7 +1052,7 @@
       return `
         <div class="thumb">
           <img src="${url}" alt="${altText}" />
-          <button type="button" onclick="removePhoto('${key}', ${idx})" aria-label="Hapus Foto">✕</button>
+          <button type="button" onclick="removePhoto('${key}', ${idx})" aria-label="Delete Photo">✕</button>
         </div>
       `;
     }
