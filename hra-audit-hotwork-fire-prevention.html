@@ -352,27 +352,29 @@
       font-size:.75rem;display:inline-flex;align-items:center;gap:6px;font-weight:600;
     }
     
+    /* FIX: Improved Footer Accessibility */
     footer.app-footer {
       text-align: center;
       margin-top: 40px;
       padding: 24px;
-      color: #475569;
+      color: #334155; /* Darker Slate for Better Contrast */
       font-size: 0.85rem;
       border-top: 1px solid #e2e8f0;
       background: #f8fafc;
     }
     footer.app-footer a {
-      color: var(--accent);
+      color: #0369a1; /* Darker Blue Link */
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
       transition: color 0.2s;
     }
     footer.app-footer a:hover {
-      color: #0369a1;
+      color: #0c4a6e;
       text-decoration: underline;
     }
     footer.app-footer p {
       margin: 4px 0;
+      /* Removed opacity: 0.8 to ensure full contrast */
     }
 
     /* ========= MOBILE RESPONSIVE ========= */
@@ -542,7 +544,7 @@
 
     <footer class="app-footer">
       <p>Created @2025 by <strong>Virsim</strong> and <a href="https://id.linkedin.com/in/iwan-kurniawan-83532226" target="_blank" rel="noopener noreferrer">Iwan Kurniawan</a></p>
-      <p style="opacity: 0.8; font-size: 0.8rem;">Sustainability learning development</p>
+      <p style="font-size: 0.8rem;">Sustainability learning development</p>
     </footer>
   </div>
 
