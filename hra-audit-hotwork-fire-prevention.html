@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  
+  <!-- ========= SEO & Meta Data (Default: English) ========= -->
+  <title>HRA AUDIT — Hot Work & Fire Prevention</title>
+  <meta name="description" content="Digital Field Audit Form for Hot Work & Fire Prevention. Professional HSE inspection tool to ensure compliance with safety standards and fire prevention regulations (NFPA/OSHA)." />
+  <meta name="keywords" content="HRA Audit, Hot Work, Fire Prevention, HSE, Safety Audit, Fire Safety, NFPA, Virsim, Iwan Kurniawan, K3, Inspection Form, Digital Audit" />
+  <meta name="author" content="Virsim & Iwan Kurniawan" />
+  <meta name="theme-color" content="#0284c7" />
+
+  <!--Favicon-->
+  <link rel="icon" type="image/webp" href="https://hra-virsim.pages.dev/img/virsim_red.webp" />
+
+  <!-- Open Graph / Facebook / WhatsApp Share -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hra-virsim.pages.dev/" />
+  <meta property="og:title" content="HRA AUDIT — Hot Work & Fire Prevention" />
+  <meta property="og:description" content="Digital Field Audit Form for Hot Work & Fire Prevention. Ensure workplace safety with the latest HRA standards." />
+  <meta property="og:image" content="https://hra-virsim.pages.dev/img/hot-work-fire-prevention.webp" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="HRA AUDIT — Hot Work & Fire Prevention" />
+  <meta property="twitter:description" content="Digital Field Audit Form for Hot Work & Fire Prevention." />
+  <meta property="twitter:image" content="https://hra-virsim.pages.dev/img/hot-work-fire-prevention.webp" />
+
+  <style>
+    /* ========= Typography & Theme ========= */
+    :root{
+      --bg:#f3f4f8;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --accent:#0ea5e9;
+      --accent-soft:#e0f2fe;
+      --accent-2:#22c55e;
+      --warn:#f59e0b;
+      --danger:#ef4444;
+      --line:#e5e7eb;
+      --chip:#0ea5e91a;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:radial-gradient(circle at top,#e0f2fe 0,#f9fafb 50%,#f3f4f8 100%);
+      color:var(--ink);
+      font:15px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Ubuntu,Cantarell;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3{margin:0 0 .5rem}
+    h1{font-size:1.8rem;letter-spacing:.2px;}
+    h2{font-size:1.1rem;color:#e0f2ff;}
+    p,small{color:var(--muted)}
+    a{color:var(--accent)}
+
+    /* ========= Layout & Desktop Defaults ========= */
+    .wrap{max-width:1280px;margin:24px auto 32px;padding:0 16px}
+    
+    header.hero{
+      /* Background Image dengan Overlay Gradient Transparan */
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.9) 0%, rgba(34, 197, 94, 0.85) 100%), 
+                  url('https://hra-virsim.pages.dev/img/hot-work-fire-prevention.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      color:#fff;padding:24px;border-radius:var(--radius);
+      display:grid;grid-template-columns:1.4fr 1.1fr;gap:20px;align-items:center;
+      box-shadow:0 14px 40px rgba(15,23,42,.28);
+      position:relative;overflow:hidden;
+    }
+    header.hero::after{
+      content:"";position:absolute;inset:auto -40px -60px;
+      height:120px;background:radial-gradient(circle at top,#ffffff2b 0,#ffffff00 60%);
+      opacity:.7;pointer-events: none;
+    }
+    .hero .title{display:flex;flex-direction:column;gap:8px;position:relative;z-index:1}
+    
+    /* LOGO STYLE */
+    .hero-logo {
+      height: 90px;
+      width: 90px;
+      object-fit: contain;
+      align-self: flex-start;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+      background: rgba(255,255,255,0.95);
+      padding: 12px; 
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .hero .title h1 span{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:.8rem;font-weight:500;padding:4px 9px;
+      border-radius:999px;background:#0b11201f;border:1px solid #bae6fd3b;
+      vertical-align: middle;
+    }
+    .hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .meta .chip{
+      background:#ffffff24;color:#f9fafb;padding:8px 12px;border-radius:999px;font-weight:500;
+      display:flex;align-items:center;gap:8px;backdrop-filter:saturate(140%) blur(4px);
+      border:1px solid #bae6fd3b;font-size:.88rem;
+    }
+    .meta .chip label{opacity:.85;font-weight:400;font-size:0.8rem}
+
+    /* Language Switcher Button */
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
+    }
+    .lang-switch:hover { background: rgba(255,255,255,0.3); }
+
+    .score-bar{
+      background:#0b11201f;border:1px solid #bae6fd40;padding:16px;border-radius:16px;
+      display:grid;grid-template-columns:1.2fr 1.2fr;gap:16px;align-items:center;
+      position:relative;z-index:1;
+      backdrop-filter: blur(4px);
+    }
+    .progress{
+      width:100%;height:12px;background:#0b11204d;
+      border-radius:999px;overflow:hidden;
+      box-shadow:inset 0 0 0 1px #0f172a33;
+    }
+    .progress>span{
+      display:block;height:100%;
+      background:linear-gradient(90deg,#f97316,#22c55e,#0ea5e9);
+      transition:width .3s ease-out;
+    }
+    .score-kpi{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
+    .score-kpi .kpi{
+      background:#0b11204d;
+      border:1px solid #bae6fd40;padding:8px 12px;border-radius:10px;min-width:120px;
+      font-size:.87rem;
+    }
+    .score-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.8}
+    .score-value{font-size:1.1rem;font-weight:700;margin-top:2px}
+    .score-rating{font-size:.8rem;margin-top:4px;opacity:.95}
+    
+    .global-summary{
+      margin-top:10px;
+      display:flex;flex-wrap:wrap;gap:6px;font-size:.78rem;
+    }
+    .global-pill{
+      display:inline-flex;align-items:center;gap:4px;
+      padding:4px 10px;border-radius:999px;
+      background:#0b11204d;border:1px solid #bae6fd40;color:#e5f2ff;
+    }
+    .global-pill .icon{font-size:.85rem}
+    .global-pill.global-ok{ background:#22c55e4d;border-color:#bbf7d0;color:#dcfce7; }
+    .global-pill.global-na{ background:#eab3084d;border-color:#facc15;color:#fefce8; }
+    .global-pill.global-empty{ background:#0b11204d;border-color:#94a3b8;color:#e5e7eb; }
+    .global-pill.global-issue{ background:#f973164d;border-color:#fed7aa;color:#ffedd5; }
+
+    /* ========= Toolbar ========= */
+    .toolbar-shell{
+      position:sticky;top:0;z-index:100;
+      padding-top:14px;margin-top:14px;
+      backdrop-filter:blur(8px);
+      transition: top 0.3s;
+    }
+    .toolbar{
+      margin:0 0 18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+      background:rgba(255,255,255,0.95);border-radius:999px;padding:8px 12px;
+      box-shadow:0 10px 25px -5px rgba(15,23,42,.1);
+      border:1px solid #e2e8f0;
+    }
+    .toolbar-group{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .toolbar small{font-size:.75rem;text-transform:uppercase;letter-spacing:.05em;color:#64748b;font-weight:600}
+    
+    .input,select,button{
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      padding:8px 12px;border-radius:10px;outline:none;min-height:40px;
+      font-size:.9rem;appearance: none;
+    }
+    select {
+      background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+      background-repeat: no-repeat;
+      background-position: right .7em top 50%;
+      background-size: .65em auto;
+      padding-right: 1.5em;
+    }
+    .input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--chip)}
+    
+    button{
+      border:none;background:var(--accent);color:#fff;font-weight:600;cursor:pointer;
+      display:inline-flex;align-items:center;gap:6px;font-size:.9rem;padding-inline:16px;
+      border-radius:999px; transition: filter 0.2s;
+    }
+    button:active { filter: brightness(0.9); transform: translateY(1px); }
+    button.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+    button.success{background:var(--accent-2)}
+    button.warn{background:var(--warn)}
+    button.toggle-active{ box-shadow:0 0 0 2px #fff, 0 0 0 4px #f97316; }
+
+    /* ========= Category & Cards ========= */
+    .category{
+      margin-top:20px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
+      background:var(--card);
+      box-shadow:0 4px 6px -1px rgba(0,0,0,.05);
+    }
+    .cat-head{
+      padding:14px 18px;display:flex;justify-content:space-between;align-items:center;
+      background:linear-gradient(90deg,#f8fafc,#f1f5f9);
+      border-bottom:1px solid var(--line);
+    }
+    .cat-title{display:flex;align-items:center;gap:12px}
+    .cat-title h3{font-size:1.05rem;color:var(--ink);font-weight:700}
+    .cat-title small{font-size:.85rem;color:#64748b}
+    .cat-meta-right{display:flex;align-items:center;gap:12px}
+    .cat-stats{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+    .cat-stat-pill{
+      border-radius:6px;border:1px solid #cbd5e1;
+      padding:2px 8px;font-size:.75rem;
+      display:inline-flex;align-items:center;gap:4px;
+      background:#fff;color:#475569;font-weight:500;
+    }
+    .cat-stat-ok{ background:#f0fdf4;border-color:#bbf7d0;color:#15803d; }
+    .cat-stat-na{ background:#fefce8;border-color:#fde047;color:#854d0e; }
+    .cat-stat-empty{ background:#f8fafc;border-color:#e2e8f0;color:#64748b; }
+
+    /* Category Colors */
+    .category[data-key="HOT_WORK"] .cat-head{border-left:5px solid #ef4444;}
+    .category[data-key="FIRE_PREVENTION"] .cat-head{border-left:5px solid #f97316;}
+    .category[data-key="TRAINING_DRILL"] .cat-head{border-left:5px solid #0ea5e9;}
+    .category[data-key="WATER_SUPPLY"] .cat-head{border-left:5px solid #6366f1;}
+    .category[data-key="SITE_ACCESS"] .cat-head{border-left:5px solid #22c55e;}
+    .category[data-key="EMERGENCY_REPORTING"] .cat-head{border-left:5px solid #ec4899;}
+    .category[data-key="TEMP_HEATING"] .cat-head{border-left:5px solid #eab308;}
+    .category[data-key="SMOKING"] .cat-head{border-left:5px solid #a855f7;}
+    .category[data-key="MOTORIZED_EQUIPMENT"] .cat-head{border-left:5px solid #0f766e;}
+    .category[data-key="HOUSEKEEPING"] .cat-head{border-left:5px solid #0284c7;}
+    .category[data-key="UTILITIES"] .cat-head{border-left:5px solid #10b981;}
+    .category[data-key="FLAMMABLE_LIQUIDS"] .cat-head{border-left:5px solid #fb923c;}
+    .category[data-key="STORAGE"] .cat-head{border-left:5px solid #64748b;}
+    .category[data-key="FIRE_PROTECTION"] .cat-head{border-left:5px solid #be123c;}
+
+    .cat-body{padding:16px}
+    .badge{
+      background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;
+      padding:4px 10px;border-radius:6px;font-weight:600;font-size:.75rem;
+      display:inline-flex;align-items:center;gap:6px;white-space: nowrap;
+    }
+    .badge::before{content:"●";font-size:.6rem;}
+    .possible{color:#047857;background:#d1fae5;border-color:#6ee7b7}
+    .na{color:#b45309;background:#fef3c7;border-color:#fcd34d}
+
+    .grid{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+    }
+    @media (max-width: 1200px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width: 700px){ .grid{grid-template-columns:1fr} }
+
+    .card{
+      border:1px solid var(--line);border-radius:16px;background:#fff;
+      display:flex;flex-direction:column;
+      box-shadow:0 2px 4px rgba(0,0,0,.03);
+      transition: all .2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 15px -3px rgba(0,0,0,.08);
+      border-color:#cbd5e1;
+    }
+    .card.issue{
+      border-color:#fdba74;
+      box-shadow:0 0 0 1px #fdba74, 0 10px 15px -3px rgba(249,115,22,.1);
+    }
+    body.issues-on .card{opacity:.3; pointer-events: none;}
+    body.issues-on .card.issue{opacity:1; pointer-events: auto;}
+
+    .card .head{
+      padding:14px 14px 0;display:flex;justify-content:space-between;align-items:flex-start;
+    }
+    .card .body{padding:10px 14px 14px}
+    .q{font-weight:600;margin-bottom:12px;font-size:.95rem; line-height: 1.5;}
+    
+    .form-row{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;
+    }
+    .form-row label{
+      display:block;font-size:.75rem;color:#64748b;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;
+    }
+    .form-row .input,.form-row select{width:100%}
+    
+    .findings{margin-top:12px}
+    .findings label{display:block;font-size:.75rem;color:#64748b;margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;}
+    textarea{
+      width:100%;min-height:85px;border:1px solid var(--line);border-radius:10px;
+      padding:10px;resize:vertical;font-family:inherit;font-size:.9rem;
+      background:#f8fafc;
+    }
+    textarea:focus{border-color:var(--accent);background:#fff}
+
+    .photo{
+      margin-top:12px;border:1px dashed #bae6fd;border-radius:12px;
+      padding:10px;background:#f0f9ff;
+    }
+    .photo-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .photo-head-title{font-weight:600;font-size:.85rem;color:#0369a1}
+    .thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .thumb{
+      width:70px;height:70px;background:#fff;border:1px solid var(--line);
+      border-radius:8px;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;position:relative;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .thumb button{
+      position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);border:none;color:#fff;
+      padding:0;width:20px;height:20px;border-radius:50%;font-size:.7rem;
+      display:flex;align-items:center;justify-content:center;
+    }
+
+    .foot{
+      display:flex;justify-content:space-between;align-items:center;
+      padding:12px 14px;border-top:1px solid var(--line);
+      background:#f8fafc;border-radius:0 0 16px 16px;
+      font-size:.8rem;
+    }
+    .note{color:var(--muted);font-size:.75rem}
+    .pill{
+      padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;
+      font-size:.75rem;display:inline-flex;align-items:center;gap:6px;font-weight:600;
+    }
+    .status-good{color:#059669;background:#d1fae5;border-color:#6ee7b7}
+    .status-mid{color:#d97706;background:#fef3c7;border-color:#fcd34d}
+    .status-low{color:#dc2626;background:#fee2e2;border-color:#fca5a5}
+
+    /* Footer Style */
+    footer.app-footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 24px;
+      color: #64748b;
+      font-size: 0.85rem;
+      border-top: 1px solid #e2e8f0;
+      background: #f8fafc;
+    }
+    footer.app-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    footer.app-footer a:hover {
+      color: #0284c7;
+      text-decoration: underline;
+    }
+    footer.app-footer p {
+      margin: 4px 0;
+    }
+
+    /* ========= MOBILE / TABLET RESPONSIVE TWEAKS ========= */
+    @media (max-width: 900px) {
+      header.hero {
+        grid-template-columns: 1fr; 
+        padding: 20px;
+        gap: 15px;
+      }
+      .hero .title h1 { font-size: 1.4rem; }
+      .score-bar { padding: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      /* Toolbar adjustments for mobile */
+      .toolbar-shell {
+        position: relative !important; 
+        top: auto; 
+        margin-top: 10px; margin-bottom: 20px;
+        backdrop-filter: none; padding-top: 0;
+      }
+      .toolbar {
+        border-radius: 16px; padding: 12px;
+        gap: 12px; flex-direction: column; align-items: stretch;
+      }
+      .toolbar-group { width: 100%; justify-content: space-between; }
+      .toolbar-group small { display: block; width: 100%; margin-bottom: 4px; }
+      .toolbar-group input, .toolbar-group select { flex: 1; width: 100%; }
+      .toolbar > button { flex: 1; justify-content: center; }
+
+      /* Score bar adjustments */
+      .score-bar { grid-template-columns: 1fr; gap: 20px; }
+      .score-kpi { justify-content: space-between; gap: 8px; }
+      .score-kpi .kpi { flex: 1; text-align: center; padding: 8px; min-width: auto; }
+      
+      /* Category Header */
+      .cat-head { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .cat-meta-right { width: 100%; justify-content: space-between; }
+      
+      /* LOGO MOBILE ADJUSTMENTS - Centered & Sized */
+      .hero .title {
+        align-items: center; 
+        text-align: center;
+      }
+      .hero-logo { 
+        height: 70px;  /* Ukuran diperbesar untuk mobile */
+        width: 70px;   /* Tetap bulat */
+        align-self: center; /* Pastikan logo di tengah */
+        margin-bottom: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wrap { padding: 0 12px; margin-top: 16px; }
+      h1 { font-size: 1.3rem; }
+      h2 { font-size: 0.95rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero .meta { flex-direction: column; align-items: center; }
+      .meta .chip { width: 100%; justify-content: center;}
+      .thumbs .thumb { width: 60px; height: 60px; }
+      button, .input, select { min-height: 44px; } 
+    }
+
+    /* ========= Print styling ========= */
+    @media print{
+      body{background:#fff; font-size: 12px;}
+      .wrap{max-width:none; margin:0; padding:0;}
+      .toolbar-shell,.hero .meta .chip.actions, .photo-head div:last-child {display:none !important}
+      .card{break-inside:avoid; page-break-inside:avoid; box-shadow:none; border:1px solid #ccc; margin-bottom: 10px;}
+      header.hero{
+        color:#000;background:#fff;border:1px solid #ccc;box-shadow:none;
+        grid-template-columns:1fr 1fr; padding: 10px;
+      }
+      header.hero::after{display:none}
+      .score-bar{background:#fff;border:1px solid #ccc;}
+      .grid { display: block; }
+      .card { margin-bottom: 15px; }
+      textarea { border: none; background: none; padding: 0; min-height: auto; resize: none; }
+      .lang-switch { display: none; }
+      
+      footer.app-footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: white;
+        border-top: 1px solid #ccc;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- ======= HERO ======= -->
+    <header class="hero">
+      <button class="lang-switch" onclick="toggleLang()">🇮🇩 ID / 🇬🇧 EN</button>
+      <div class="title">
+        <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="Logo Virsim" class="hero-logo" />
+        <h1 id="appTitle">HRA AUDIT — Hot Work &amp; Fire Prevention</h1>
+        <div class="meta">
+          <div class="chip">
+            <label id="lbl_auditor">Auditor:</label>
+            <strong id="auditorName">Dedi Setiawan</strong>
+          </div>
+          <div class="chip">
+            <label id="lbl_date">Tanggal:</label>
+            <span id="auditDate"></span>
+          </div>
+          <div class="chip actions">
+            <button class="icon ghost" id="btnPrint" title="Cetak PDF"><span>🖨️</span> <span id="btn_print">Print</span></button>
+            <button class="icon ghost" id="btnExportCsv" title="Download CSV"><span>📤</span> <span id="btn_csv">CSV</span></button>
+            <button class="icon ghost" id="btnReset" title="Reset Semua"><span>♻️</span> <span id="btn_reset">Reset</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="score-bar">
+        <div class="score-kpi">
+          <div class="kpi">
+            <div class="score-label" id="kpi_possible">Possible</div>
+            <div class="score-value" id="kpiPossible">0</div>
+          </div>
+          <div class="kpi">
+            <div class="score-label" id="kpi_actual">Actual</div>
+            <div class="score-value" id="kpiActual">0</div>
+          </div>
+          <div class="kpi">
+            <div class="score-label" id="kpi_score">Score</div>
+            <div class="score-value" id="kpiPct">0%</div>
+            <div class="score-rating" id="kpiRating">—</div>
+          </div>
+        </div>
+        <div>
+          <div class="progress"><span id="progressFill" style="width:0%"></span></div>
+          <div class="global-summary" id="globalSummary"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ======= TOOLBAR ======= -->
+    <div class="toolbar-shell">
+      <div class="toolbar">
+        <div class="toolbar-group" style="flex:1;">
+          <small id="lbl_filter">Filter &amp; Pencarian</small>
+          <input class="input" id="inputSearch" placeholder="Search..." />
+          <select id="filterCategory" class="input"></select>
+          <select id="filterStatus" class="input"></select>
+        </div>
+        <div class="toolbar-group" style="width:auto;">
+          <small id="lbl_identity">Identitas Audit</small>
+          <input class="input" id="inputAuditor" placeholder="Name..." />
+          <input type="date" id="inputDate" class="input" />
+        </div>
+        <div style="display:flex;gap:8px;flex:1;justify-content:flex-end;">
+          <button class="icon success" id="btnSave"><span>💾</span> <span id="btn_save">Simpan</span></button>
+          <button class="icon warn" id="btnIssues"><span>⚠️</span> <span id="btn_issues">Highlight Issue</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= CONTAINER KATEGORI ======= -->
+    <div id="categories"></div>
+
+    <footer class="app-footer">
+      <p>Created @2025 by <strong>Virsim</strong> and <a href="https://id.linkedin.com/in/iwan-kurniawan-83532226" target="_blank">Iwan Kurniawan</a></p>
+      <p style="opacity: 0.8; font-size: 0.8rem;">Sustainability learning development</p>
+    </footer>
+  </div>
+
+  <script>
+    // ========= Translation Dictionary =========
+    const TRANSLATIONS = {
+      id: {
+        title: "HRA AUDIT — Hot Work & Fire Prevention",
+        lbl_auditor: "Auditor:",
+        lbl_date: "Tanggal:",
+        btn_print: "Cetak",
+        btn_csv: "CSV",
+        btn_reset: "Reset",
+        kpi_possible: "Maksimal",
+        kpi_actual: "Aktual",
+        kpi_score: "Skor",
+        lbl_filter: "Filter & Pencarian",
+        input_search: "Cari item...",
+        all_cat: "Semua Kategori",
+        all_stat: "Semua Status",
+        stat_complete: "Sudah dinilai",
+        stat_na: "Ditandai N/A",
+        stat_empty: "Belum diisi",
+        lbl_identity: "Identitas Audit",
+        input_auditor_ph: "Nama Auditor",
+        btn_save: "Simpan",
+        btn_issues: "Sorot Masalah",
+        footer_note: "Catatan: Jika item ditandai N/A (Not Applicable) harap isi justifikasi pada kolom temuan.",
+        card_actual: "Poin Aktual",
+        card_status: "Status",
+        card_findings: "Temuan & Bukti",
+        card_findings_ph: "Catatan temuan...",
+        card_photo: "Foto Bukti",
+        card_photo_btn: "+ Foto",
+        status_note: "Status:",
+        opt_app: "Applicable",
+        opt_na: "N/A (butuh justifikasi)",
+        badge_poss_na: "Possible: N/A",
+        msg_saved: "Data tersimpan.",
+        msg_max: "Maksimal poin adalah",
+        msg_neg: "Tidak boleh negatif",
+        msg_export: "Item N/A wajib memiliki catatan temuan:",
+        rating_excellent: "Sangat Baik",
+        rating_good: "Baik",
+        rating_need_improvement: "Perlu Perbaikan",
+        rating_critical: "Kritis",
+        hide_show: "Sembunyi/Tampil",
+        total: "Total",
+        issues: "Masalah"
+      },
+      en: {
+        title: "HRA AUDIT — Hot Work & Fire Prevention",
+        lbl_auditor: "Auditor:",
+        lbl_date: "Date:",
+        btn_print: "Print",
+        btn_csv: "CSV",
+        btn_reset: "Reset",
+        kpi_possible: "Possible",
+        kpi_actual: "Actual",
+        kpi_score: "Score",
+        lbl_filter: "Filter & Search",
+        input_search: "Search item...",
+        all_cat: "All Categories",
+        all_stat: "All Status",
+        stat_complete: "Completed",
+        stat_na: "Marked N/A",
+        stat_empty: "Empty",
+        lbl_identity: "Audit Identity",
+        input_auditor_ph: "Auditor Name",
+        btn_save: "Save",
+        btn_issues: "Highlight Issues",
+        footer_note: "Note: If item is marked N/A, please provide justification in findings.",
+        card_actual: "Actual Point",
+        card_status: "Status",
+        card_findings: "Findings & Evidence",
+        card_findings_ph: "Findings note...",
+        card_photo: "Photo Evidence",
+        card_photo_btn: "+ Photo",
+        status_note: "Status:",
+        opt_app: "Applicable",
+        opt_na: "N/A (needs justification)",
+        badge_poss_na: "Possible: N/A",
+        msg_saved: "Data saved.",
+        msg_max: "Max point is",
+        msg_neg: "Cannot be negative",
+        msg_export: "N/A items must have findings note:",
+        rating_excellent: "Excellent",
+        rating_good: "Good",
+        rating_need_improvement: "Needs Improvement",
+        rating_critical: "Critical",
+        hide_show: "Hide/Show",
+        total: "Total",
+        issues: "Issues"
+      }
+    };
+
+    // ========= Data Master (Dual Language) =========
+    const DATA = [
+      {
+        key:'HOT_WORK', name_en:'HOT WORK', name_id:'HOT WORK',
+        items:[
+          {docNo:1, 
+           text_en:'Extinguishers are available in potential fire hazard areas such as warehouses, generators, hot work area, etc.', 
+           text_id:'APAR tersedia di area potensi bahaya kebakaran seperti gudang, generator, area kerja panas, dll.', possible:2},
+          {docNo:2, 
+           text_en:'Hot work permit available', 
+           text_id:'Ijin kerja panas tersedia', possible:2},
+          {docNo:3, 
+           text_en:'Extinguishers, fire blankets, are available for every welding and cutting torch.', 
+           text_id:'APAR, selimut api tersedia untuk setiap pengelasan dan pemotongan.', possible:2},
+          {docNo:4, 
+           text_en:'Extinguishers are checked regularly', 
+           text_id:'APAR diperiksa secara berkala', possible:2},
+          {docNo:5, 
+           text_en:'Flashback arresters are installed on gas delivery hoses.', 
+           text_id:'Flashback arrester terpasang pada selang pengiriman gas.', possible:2},
+          {docNo:6, 
+           text_en:'Fire hazard warning signs installed in potential fire locations', 
+           text_id:'Tanda peringatan bahaya kebakaran dipasang di lokasi potensi kebakaran', possible:2},
+          {docNo:7, 
+           text_en:'Extinguishers are easily accessible and access to equipment is available', 
+           text_id:'APAR mudah diakses dan akses ke peralatan tersedia', possible:2},
+          {docNo:8, 
+           text_en:'Extinguishers are in good condition (seals & locking needles in place, hoses not cracked, pressure in green mark, not expired)', 
+           text_id:'APAR dalam kondisi baik (segel & jarum pengunci ada, selang tidak retak, tekanan di tanda hijau, tidak kadaluarsa)', possible:2},
+          {docNo:9, 
+           text_en:'Extinguisher signs installed and in good condition', 
+           text_id:'Tanda APAR terpasang dan dalam kondisi baik', possible:2},
+          {docNo:10, 
+           text_en:'PPE for hot work is in good condition and worn properly', 
+           text_id:'APD untuk kerja panas dalam kondisi baik dan dipakai dengan benar', possible:2},
+          {docNo:11, 
+           text_en:'Hot work equipment and tools are proper and in good condition for use', 
+           text_id:'Peralatan dan alat kerja panas layak dan dalam kondisi baik untuk digunakan', possible:2},
+        ]
+      },
+      {
+        key:'FIRE_PREVENTION', name_en:'FIRE PREVENTION', name_id:'PENCEGAHAN KEBAKARAN',
+        items:[
+          {docNo:12, text_en:'The owner has designated a person to be a fire prevention program superintendent?', text_id:'Pemilik telah menunjuk seseorang sebagai penanggung jawab program pencegahan kebakaran?', possible:2},
+          {docNo:13, text_en:'Superintendent has authority to enforce Model Code and NFPA standards as necessary?', text_id:'Penanggung jawab memiliki wewenang untuk menegakkan standar Model Code dan NFPA?', possible:2},
+          {docNo:14, text_en:'Where guard service is provided, superintendent is responsible for the guard service?', text_id:'Jika ada layanan penjagaan, penanggung jawab bertanggung jawab atas layanan tersebut?', possible:2},
+          {docNo:15, text_en:'Out of hours and night work control', text_id:'Kontrol kerja di luar jam kerja dan malam hari', possible:2},
+          {docNo:16, text_en:'Documentation and review', text_id:'Dokumentasi dan peninjauan', possible:2},
+          {docNo:17, text_en:'Superintendent shall develop & maintain an approved pre-fire plan with AHJ?', text_id:'Penanggung jawab harus mengembangkan & memelihara rencana pra-kebakaran yang disetujui dengan AHJ?', possible:2},
+          {docNo:18, text_en:'AHJ / fire code official to be notified of any changes affecting those plans?', text_id:'Pejabat AHJ / kode kebakaran diberitahu tentang perubahan yang mempengaruhi rencana tersebut?', possible:2},
+        ]
+      },
+      {
+        key:'TRAINING_DRILL', name_en:'TRAINING & DRILL', name_id:'PELATIHAN & LATIHAN',
+        items:[
+          {docNo:19, text_en:'Training of qualified & competent personnel is the responsibility of superintendent?', text_id:'Pelatihan personel yang berkualifikasi & kompeten adalah tanggung jawab penanggung jawab?', possible:2},
+          {docNo:20, text_en:'Method exists to identify individuals who completed this training?', text_id:'Ada metode untuk mengidentifikasi individu yang telah menyelesaikan pelatihan ini?', possible:2},
+          {docNo:21, text_en:'Conducted fire emergency drill by internal or external?', text_id:'Melakukan latihan darurat kebakaran oleh internal atau eksternal?', possible:2},
+        ]
+      },
+      {
+        key:'WATER_SUPPLY', name_en:'WATER SUPPLY', name_id:'PASOKAN AIR',
+        items:[
+          {docNo:22, text_en:'Approved water supply for fire protection available as soon as combustibles arrive on site?', text_id:'Pasokan air yang disetujui untuk proteksi kebakaran tersedia segera setelah bahan mudah terbakar tiba di lokasi?', possible:2},
+          {docNo:23, text_en:'Care to prevent blocking or obscuration of building water supply?', text_id:'Perhatian untuk mencegah penyumbatan atau pengaburan pasokan air bangunan?', possible:2},
+          {docNo:24, text_en:'Hydrants in service prior to combustibles accumulating on site?', text_id:'Hidran beroperasi sebelum bahan mudah terbakar menumpuk di lokasi?', possible:2},
+          {docNo:25, text_en:'Hydrants flagged with vertical 2x4 painted red for visibility?', text_id:'Hidran ditandai dengan tiang vertikal dicat merah untuk visibilitas?', possible:2},
+          {docNo:26, text_en:'Any impairment to water supply / automatic sprinklers addressed immediately?', text_id:'Setiap gangguan pada pasokan air / sprinkler otomatis segera ditangani?', possible:2},
+          {docNo:27, text_en:'Where hydrants are subject to vehicle impact, guard posts or protection provided?', text_id:'Jika hidran rentan tertabrak kendaraan, disediakan tiang pelindung?', possible:2},
+        ]
+      },
+      {
+        key:'SITE_ACCESS', name_en:'SITE ACCESS', name_id:'AKSES LOKASI',
+        items:[
+          {docNo:28, text_en:'Address numbers / lot numbers plainly visible at fire apparatus access point?', text_id:'Nomor alamat / nomor lot terlihat jelas di titik akses pemadam kebakaran?', possible:2},
+          {docNo:29, text_en:'Access roads sufficient width and clearance for fire department use?', text_id:'Jalan akses memiliki lebar dan ruang yang cukup untuk penggunaan pemadam kebakaran?', possible:2},
+          {docNo:30, text_en:'Vehicle access via roads capable of supporting fire apparatus loading?', text_id:'Akses kendaraan melalui jalan mampu menahan beban alat pemadam kebakaran?', possible:2},
+          {docNo:31, text_en:'Roadway subbase + 6" base compacted ≥95%; grades of 15%?', text_id:'Subbase jalan + 6" base dipadatkan ≥95%; kemiringan 15%?', possible:2},
+          {docNo:32, text_en:'Grades that exceed 15% shall be paved?', text_id:'Kemiringan yang melebihi 15% harus diaspal?', possible:2},
+          {docNo:33, text_en:'Minimum 14 ft clearance to allow aerial apparatus maneuver?', text_id:'Ruang minimum 14 kaki untuk manuver alat udara?', possible:2},
+          {docNo:34, text_en:'Dead-end fire access roads >150 ft provided with approved turnarounds?', text_id:'Jalan akses buntu >150 kaki dilengkapi dengan area putar balik yang disetujui?', possible:2},
+          {docNo:35, text_en:'Approved vehicle access within 100 ft of building access?', text_id:'Akses kendaraan yang disetujui dalam jarak 100 kaki dari akses bangunan?', possible:2},
+          {docNo:36, text_en:'Security fences/gates not placed across fire access roads without fire dept approval?', text_id:'Pagar keamanan/gerbang tidak ditempatkan melintasi jalan akses kebakaran tanpa persetujuan pemadam kebakaran?', possible:2},
+        ]
+      },
+      {
+        key:'EMERGENCY_REPORTING', name_en:'EMERGENCY REPORTING', name_id:'PELAPORAN DARURAT',
+        items:[
+          {docNo:37, text_en:'Readily accessible emergency telephone provided at construction site; address & fire dept numbers posted?', text_id:'Telepon darurat yang mudah diakses disediakan di lokasi konstruksi; alamat & nomor pemadam kebakaran dipasang?', possible:2},
+        ]
+      },
+      {
+        key:'TEMP_HEATING', name_en:'TEMPORARY HEATING EQUIPMENT', name_id:'PERALATAN PEMANAS SEMENTARA',
+        items:[
+          {docNo:38, text_en:'All devices listed/labeled per IMC or IFGC?', text_id:'Semua perangkat terdaftar/dilabeli sesuai IMC atau IFGC?', possible:2},
+          {docNo:39, text_en:'Install/maintain/use temporary heating devices per listing terms?', text_id:'Pasang/pelihara/gunakan perangkat pemanas sementara sesuai ketentuan?', possible:2},
+          {docNo:40, text_en:'Fuel supplies for LP gas fired heaters comply with IFGC Chapter 38?', text_id:'Pasokan bahan bakar untuk pemanas gas LP mematuhi IFGC Bab 38?', possible:2},
+          {docNo:41, text_en:'Use of temporary heating devices supervised/maintained by competent personnel only?', text_id:'Penggunaan perangkat pemanas sementara diawasi/dipelihara oleh personel kompeten saja?', possible:2},
+          {docNo:42, text_en:'Equipment located so exhausts do not discharge against combustibles?', text_id:'Peralatan ditempatkan agar gas buang tidak mengarah ke bahan mudah terbakar?', possible:2},
+          {docNo:43, text_en:'Exhausts piped to outside of building?', text_id:'Gas buang disalurkan ke luar bangunan?', possible:2},
+          {docNo:44, text_en:'Equipment shall not be refueled while in operation?', text_id:'Peralatan tidak boleh diisi ulang saat beroperasi?', possible:2},
+          {docNo:45, text_en:'Fuel stored in approved area outside of building?', text_id:'Bahan bakar disimpan di area yang disetujui di luar bangunan?', possible:2},
+        ]
+      },
+      {
+        key:'SMOKING', name_en:'SMOKING', name_id:'MEROKOK',
+        items:[
+          {docNo:46, text_en:'Smoking prohibited unless in approved areas?', text_id:'Dilarang merokok kecuali di area yang disetujui?', possible:2},
+          {docNo:47, text_en:'Approved smoking areas clearly designated?', text_id:'Area merokok yang disetujui ditandai dengan jelas?', possible:2},
+          {docNo:48, text_en:'Appropriate signs posted as per site layout?', text_id:'Tanda yang sesuai dipasang sesuai tata letak lokasi?', possible:2},
+        ]
+      },
+      {
+        key:'MOTORIZED_EQUIPMENT', name_en:'MOTORIZED EQUIPMENT', name_id:'PERALATAN BERMOTOR',
+        items:[
+          {docNo:49, text_en:'Exterior areas of the property illuminated?', text_id:'Area eksterior properti diterangi?', possible:2},
+          {docNo:50, text_en:'Perimeter of the property protected by a fence?', text_id:'Keliling properti dilindungi oleh pagar?', possible:2},
+        ]
+      },
+      {
+        key:'HOUSEKEEPING', name_en:'HOUSEKEEPING', name_id:'KEBERSIHAN',
+        items:[
+          {docNo:51, text_en:'Trees/vegetation cut back to provide ≥100 ft clearance around perimeter?', text_id:'Pohon/vegetasi dipangkas untuk memberikan jarak ≥100 kaki di sekitar keliling?', possible:2},
+          {docNo:52, text_en:'Combustible materials & trash removed regularly?', text_id:'Bahan mudah terbakar & sampah dibuang secara teratur?', possible:2},
+          {docNo:53, text_en:'Good housekeeping incl. cleaning dust >1/8 in (3.18 mm) depth?', text_id:'Kebersihan yang baik termasuk membersihkan debu >1/8 inci (3,18 mm)?', possible:2},
+          {docNo:54, text_en:'If smoking allowed, restricted to certain areas?', text_id:'Jika merokok diizinkan, dibatasi pada area tertentu?', possible:2},
+          {docNo:55, text_en:'Storage rooms/trash rooms separated by 1-hour barriers or protected by sprinklers?', text_id:'Ruang penyimpanan/ruang sampah dipisahkan oleh penghalang 1 jam atau dilindungi oleh sprinkler?', possible:2},
+        ]
+      },
+      {
+        key:'UTILITIES', name_en:'UTILITIES', name_id:'UTILITAS',
+        items:[
+          {docNo:56, text_en:'Electrical appliances in flammable atmospheres listed/approved (UL etc.)?', text_id:'Peralatan listrik di atmosfer mudah terbakar terdaftar/disetujui (UL dll.)?', possible:2},
+          {docNo:57, text_en:'Electrical systems in areas with flammable liquids listed/approved for Class I, Div 2?', text_id:'Sistem listrik di area dengan cairan mudah terbakar terdaftar/disetujui untuk Kelas I, Div 2?', possible:2},
+          {docNo:58, text_en:'Electrical equipment in wet areas have GFCI / isolated supplies?', text_id:'Peralatan listrik di area basah memiliki GFCI / pasokan terisolasi?', possible:2},
+          {docNo:59, text_en:'Gas/oil fired equipment maintained per manufacturer recommendations?', text_id:'Peralatan berbahan bakar gas/minyak dipelihara sesuai rekomendasi pabrikan?', possible:2},
+          {docNo:60, text_en:'Wood-fired boilers present?', text_id:'Boiler berbahan bakar kayu ada?', possible:2},
+          {docNo:61, text_en:'Temporary heating devices operated per recommended safe practices?', text_id:'Perangkat pemanas sementara dioperasikan sesuai praktik aman yang direkomendasikan?', possible:2},
+        ]
+      },
+      {
+        key:'FLAMMABLE_LIQUIDS', name_en:'FLAMMABLE & COMBUSTIBLE LIQUIDS', name_id:'CAIRAN MUDAH TERBAKAR',
+        items:[
+          {docNo:62, text_en:'Storage/use/handling at construction sites per IFC; ventilation provided?', text_id:'Penyimpanan/penggunaan/penanganan di lokasi konstruksi sesuai IFC; ventilasi disediakan?', possible:2},
+          {docNo:63, text_en:'Storage areas clear of vegetation & waste; not used for combustibles?', text_id:'Area penyimpanan bersih dari vegetasi & limbah; tidak digunakan untuk bahan mudah terbakar?', possible:2},
+          {docNo:64, text_en:'Sources of ignition & smoking prohibited in storage areas; signage per IFC?', text_id:'Sumber pengapian & merokok dilarang di area penyimpanan; tanda sesuai IFC?', possible:2},
+          {docNo:65, text_en:'Liquids kept in approved safety containers?', text_id:'Cairan disimpan dalam wadah keselamatan yang disetujui?', possible:2},
+          {docNo:66, text_en:'Leaking vessels repaired or removed; spills cleaned & disposed properly?', text_id:'Wadah bocor diperbaiki atau dipindahkan; tumpahan dibersihkan & dibuang dengan benar?', possible:2},
+          {docNo:67, text_en:'Flammable liquids/gases in listed/approved containers?', text_id:'Cairan/gas mudah terbakar dalam wadah terdaftar/disetujui?', possible:2},
+          {docNo:68, text_en:'Equipment using gasoline/diesel stored in separate building or segregated room w/ firewalls & auto-closing fire doors?', text_id:'Peralatan menggunakan bensin/diesel disimpan di bangunan terpisah atau ruangan terpisah dengan dinding api & pintu api otomatis?', possible:2},
+          {docNo:69, text_en:'Refueling by trained/designated personnel only and in specified ventilated areas?', text_id:'Pengisian ulang oleh personel terlatih/ditunjuk saja dan di area berventilasi yang ditentukan?', possible:2},
+          {docNo:70, text_en:'Proper bonding/grounding before transferring flammable liquids?', text_id:'Bonding/grounding yang tepat sebelum memindahkan cairan mudah terbakar?', possible:2},
+          {docNo:71, text_en:'Compressed gases stored separately, away from ignition sources and secured?', text_id:'Gas bertekanan disimpan secara terpisah, jauh dari sumber pengapian dan diamankan?', possible:2},
+          {docNo:72, text_en:'If blasting operations performed, explosives stored per recommended practices?', text_id:'Jika operasi peledakan dilakukan, bahan peledak disimpan sesuai praktik yang direkomendasikan?', possible:2},
+        ]
+      },
+      {
+        key:'STORAGE', name_en:'STORAGE', name_id:'PENYIMPANAN',
+        items:[
+          {docNo:73, text_en:'Lumber for framing/forms stored in separate facilities, preferably outside?', text_id:'Kayu untuk rangka/bekisting disimpan di fasilitas terpisah, sebaiknya di luar?', possible:2},
+          {docNo:74, text_en:'Lumber stored horizontally and wrapped in tight bundles?', text_id:'Kayu disimpan secara horizontal dan dibungkus dalam bundel yang rapat?', possible:2},
+        ]
+      },
+      {
+        key:'FIRE_PROTECTION', name_en:'FIRE PROTECTION', name_id:'PROTEKSI KEBAKARAN',
+        items:[
+          {docNo:75, text_en:'Sufficient number of listed/approved portable fire extinguishers properly located & maintained (NFPA 10/Model Code)?', text_id:'Jumlah APAR portabel terdaftar/disetujui yang cukup, ditempatkan & dipelihara dengan benar (NFPA 10/Model Code)?', possible:2},
+          {docNo:76, text_en:'Employees trained in the use of portable fire extinguishers?', text_id:'Karyawan terlatih dalam penggunaan APAR portabel?', possible:2},
+          {docNo:77, text_en:'Fire alarms/detectors/fixed protection (sprinklers) installed in temporary structures?', text_id:'Alarm kebakaran/detektor/proteksi tetap (sprinkler) dipasang di struktur sementara?', possible:2},
+          {docNo:78, text_en:'In buildings ≥4 stories, at least one standpipe for FD during construction?', text_id:'Di bangunan ≥4 lantai, setidaknya satu standpipe untuk pemadam kebakaran selama konstruksi?', possible:2},
+        ]
+      }
+    ];
+
+    // ========= State & Persistence =========
+    const KEY = 'HRA_AUDIT_HOTWORK_STATE_v5_MultiLang';
+    const state = { 
+      auditor:'Dedi Setiawan', 
+      date:null, 
+      lang: 'en', // Changed default to 'en'
+      items:{} 
+    };
+    let highlightIssues = false;
+
+    const defaultItemState = (meta) => ({
+      actual:'',
+      findings:'',
+      na: false, 
+      photos:[]
+    });
+
+    function loadState(){
+      try{
+        const s = JSON.parse(localStorage.getItem(KEY));
+        if(s && typeof s === 'object'){
+          if(s.auditor !== undefined) state.auditor = s.auditor;
+          if(s.date !== undefined) state.date = s.date;
+          if(s.lang !== undefined) state.lang = s.lang;
+          if(s.items && typeof s.items === 'object') state.items = s.items;
+        }
+      }catch(e){}
+      
+      document.getElementById('inputAuditor').value = state.auditor || '';
+      document.getElementById('auditorName').textContent = state.auditor || '—';
+      if(state.date) {
+        document.getElementById('inputDate').value = state.date.split('T')[0];
+      }
+    }
+    function saveState(showToast = true){
+      localStorage.setItem(KEY, JSON.stringify(state));
+      if(showToast) toast(TRANSLATIONS[state.lang].msg_saved);
+    }
+
+    // Helper Translation Function
+    function t(key){ return TRANSLATIONS[state.lang][key] || key; }
+
+    function toggleLang(){
+      state.lang = state.lang === 'id' ? 'en' : 'id';
+      saveState(false);
+      render(); // Re-render everything
+    }
+
+    // ========= Rendering =========
+    function render(){
+      const T = TRANSLATIONS[state.lang];
+      
+      // Dynamic Title Update
+      document.title = T.title;
+
+      // Update UI Labels
+      document.getElementById('appTitle').textContent = T.title;
+      document.getElementById('lbl_auditor').textContent = T.lbl_auditor;
+      document.getElementById('lbl_date').textContent = T.lbl_date;
+      document.getElementById('btn_print').textContent = T.btn_print;
+      document.getElementById('btn_csv').textContent = T.btn_csv;
+      document.getElementById('btn_reset').textContent = T.btn_reset;
+      document.getElementById('kpi_possible').textContent = T.kpi_possible;
+      document.getElementById('kpi_actual').textContent = T.kpi_actual;
+      document.getElementById('kpi_score').textContent = T.kpi_score;
+      
+      document.getElementById('lbl_filter').textContent = T.lbl_filter;
+      document.getElementById('inputSearch').placeholder = T.input_search;
+      document.getElementById('lbl_identity').textContent = T.lbl_identity;
+      document.getElementById('inputAuditor').placeholder = T.input_auditor_ph;
+      document.getElementById('btn_save').textContent = T.btn_save;
+      document.getElementById('btn_issues').textContent = T.btn_issues;
+
+      // Dropdown Options
+      const fc = document.getElementById('filterCategory');
+      fc.innerHTML = `<option value="">${T.all_cat}</option>` +
+        DATA.map(c=>`<option value="${c.key}">${state.lang === 'id' ? c.name_id : c.name_en}</option>`).join('');
+
+      const fs = document.getElementById('filterStatus');
+      fs.innerHTML = `
+        <option value="">${T.all_stat}</option>
+        <option value="complete">${T.stat_complete}</option>
+        <option value="na">${T.stat_na}</option>
+        <option value="empty">${T.stat_empty}</option>
+      `;
+
+      if(!state.date){
+        state.date = new Date().toISOString();
+      }
+      const d = new Date(state.date);
+      // Format date locale
+      const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
+      document.getElementById('auditDate').textContent = 
+        d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+      const wrap = document.getElementById('categories');
+      wrap.innerHTML = '';
+      
+      DATA.forEach(cat=>{
+        const catDiv = document.createElement('section');
+        catDiv.className = 'category';
+        catDiv.dataset.key = cat.key;
+        
+        const catName = state.lang === 'id' ? (cat.name_id || cat.name_en) : cat.name_en;
+
+        const head = document.createElement('div');
+        head.className = 'cat-head';
+        head.innerHTML = `
+          <div class="cat-title">
+            <h3>${catName}</h3>
+            <small>(${cat.items.length} item)</small>
+          </div>
+          <div class="cat-meta-right">
+            <div class="cat-stats" id="catStats_${cat.key}"></div>
+            <button class="ghost" style="padding:4px 10px;font-size:0.8rem" onclick="toggleCategory('${cat.key}')">${T.hide_show}</button>
+          </div>
+        `;
+        const body = document.createElement('div');
+        body.className = 'cat-body';
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+
+        cat.items.forEach(it=>{
+          const key  = `${cat.key}_${it.docNo}`;
+          const meta = it;
+          let saved = state.items[key];
+          if(!saved){
+             saved = defaultItemState(meta);
+             state.items[key] = saved;
+          }
+
+          const maxPoint = (meta.possible===null)?2:meta.possible;
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.dataset.key = key;
+          card.dataset.category = cat.key;
+
+          // Localized Item Text
+          const itemText = state.lang === 'id' ? (it.text_id || it.text_en) : it.text_en;
+
+          // Badge Logic
+          let possBadge = saved.na 
+            ? `<span class="badge na">${T.badge_poss_na}</span>`
+            : `<span class="badge possible">${T.kpi_possible}: ${maxPoint}</span>`;
+
+          const disabledAttr = saved.na ? 'disabled' : '';
+          const actualValue  = saved.na ? '' : 
+            (saved.actual !== undefined && saved.actual !== null ? saved.actual : '');
+          
+          const actualField = `
+            <input type="number" class="input" min="0" max="${maxPoint}" step="1"
+              ${disabledAttr}
+              value="${actualValue}"
+              placeholder="${saved.na ? '—' : '0'}"
+              oninput="onActualChange('${key}', this.value)" />
+          `;
+
+          const statusField = `
+            <select class="input" onchange="onNAChange('${key}', this.value==='na')">
+              <option value="ok" ${saved.na ? '' : 'selected'}>${T.opt_app}</option>
+              <option value="na" ${saved.na ? 'selected' : ''}>${T.opt_na}</option>
+            </select>
+          `;
+
+          card.innerHTML = `
+            <div class="head">
+              <div class="badge" style="background:#f1f5f9;color:#475569;border-color:#e2e8f0">No. ${it.docNo}</div>
+              <div id="poss_${key}">${possBadge}</div>
+            </div>
+            <div class="body">
+              <div class="q">${itemText}</div>
+              <div class="form-row">
+                <div>
+                  <label>${T.card_actual}</label>
+                  ${actualField}
+                </div>
+                <div>
+                  <label>${T.card_status}</label>
+                  ${statusField}
+                </div>
+              </div>
+              <div class="findings">
+                <label>${T.card_findings}</label>
+                <textarea placeholder="${T.card_findings_ph}" 
+                  oninput="onFindingsChange('${key}', this.value)">${saved.findings||''}</textarea>
+              </div>
+              <div class="photo">
+                <div class="photo-head">
+                  <div class="photo-head-title">${T.card_photo}</div>
+                  <div style="position:relative;overflow:hidden;display:inline-block;">
+                    <button type="button" class="ghost" style="font-size:0.8rem;padding:4px 10px;">${T.card_photo_btn}</button>
+                    <input type="file" accept="image/*" multiple 
+                      style="position:absolute;left:0;top:0;opacity:0;cursor:pointer;width:100%;height:100%;"
+                      onchange="onPhotosSelected('${key}', this.files)" />
+                  </div>
+                </div>
+                <div class="thumbs" id="thumbs_${key}">
+                  ${saved.photos.map((p,idx)=>thumbHTML(key, idx, p.dataURL)).join('')}
+                </div>
+              </div>
+            </div>
+            <div class="foot">
+              <div class="note">${T.status_note}</div>
+              <div class="pill ${statusClass(saved, meta)}" id="status_${key}">
+                <span>${statusText(saved, meta)}</span>
+              </div>
+            </div>
+          `;
+          grid.appendChild(card);
+        });
+
+        body.appendChild(grid);
+        catDiv.appendChild(head);
+        catDiv.appendChild(body);
+        wrap.appendChild(catDiv);
+      });
+
+      // Update footer note
+      const footerP = document.querySelector('.wrap > p');
+      if(footerP) footerP.textContent = T.footer_note;
+
+      recalcScore();
+      applyFilters();
+    }
+
+    // ========= Helpers, Logic & Events (UNCHANGED LOGIC, JUST TRANSLATION HOOKS) =========
+    function escapeHTML(s){ return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+    function getMeta(key){
+      for(const cat of DATA){
+        const found = cat.items.find(i => `${cat.key}_${i.docNo}` === key);
+        if(found) return found;
+      }
+      return null;
+    }
+    function thumbHTML(key, idx, url){
+      return `
+        <div class="thumb">
+          <img src="${url}" alt="Foto" />
+          <button type="button" onclick="removePhoto('${key}', ${idx})">✕</button>
+        </div>
+      `;
+    }
+    function getMaxPoint(meta){ return (meta.possible === null) ? 2 : meta.possible; }
+    
+    function statusClass(saved, meta){
+      if(!meta) return 'status-mid';
+      if(saved.na) return 'status-mid';
+      const hasActual = saved.actual !== '' && saved.actual !== null && saved.actual !== undefined;
+      if(!hasActual) return 'status-mid';
+      const act = Number(saved.actual||0);
+      const pos = getMaxPoint(meta);
+      const ratio = pos>0 ? act/pos : 0;
+      if(ratio>=0.75) return 'status-good';
+      if(ratio>=0.4) return 'status-mid';
+      return 'status-low';
+    }
+    function statusText(saved, meta){
+      const T = TRANSLATIONS[state.lang];
+      if(!meta) return 'N/A';
+      if(saved.na) return 'N/A';
+      const hasActual = saved.actual !== '' && saved.actual !== null && saved.actual !== undefined;
+      if(!hasActual) return `⚠️ ${T.stat_empty}`;
+      const act = Number(saved.actual||0);
+      const pos = getMaxPoint(meta);
+      return `${T.kpi_score}: ${act}/${pos}`;
+    }
+    function isIssue(meta, saved){
+      if(!meta) return false;
+      if(saved.na){
+        const notes = (saved.findings || '').trim();
+        return !notes;
+      }
+      const hasActual = saved.actual !== '' && saved.actual !== null && saved.actual !== undefined;
+      if(!hasActual) return true;
+      const actual = Number(saved.actual);
+      const pos = getMaxPoint(meta);
+      if(pos > 0 && actual < pos) return true;
+      return false;
+    }
+
+    function recalcScore(){
+      const T = TRANSLATIONS[state.lang];
+      let possible = 0, actual = 0;
+      DATA.forEach(cat=>{
+        cat.items.forEach(it=>{
+          const key = `${cat.key}_${it.docNo}`;
+          const saved = state.items[key] || defaultItemState(it);
+          if(saved.na) return;
+          possible += getMaxPoint(it);
+          actual += Number(saved.actual||0);
+        });
+      });
+      const pct = possible>0 ? Math.round((actual/possible)*100) : 0;
+      document.getElementById('kpiPossible').textContent = possible;
+      document.getElementById('kpiActual').textContent = actual;
+      document.getElementById('kpiPct').textContent = pct+'%';
+      document.getElementById('progressFill').style.width = pct+'%';
+
+      let rating = '—';
+      if(possible>0){
+        if(pct>=85) rating = T.rating_excellent;
+        else if(pct>=70) rating = T.rating_good;
+        else if(pct>=50) rating = T.rating_need_improvement;
+        else rating = T.rating_critical;
+      }
+      document.getElementById('kpiRating').textContent = rating;
+
+      recalcCategoryStats();
+      recalcGlobalStats();
+    }
+
+    function recalcCategoryStats(){
+      const T = TRANSLATIONS[state.lang];
+      DATA.forEach(cat=>{
+        let complete = 0, na = 0, empty = 0;
+        cat.items.forEach(it=>{
+          const key = `${cat.key}_${it.docNo}`;
+          const saved = state.items[key] || defaultItemState(it);
+          if(saved.na) na++;
+          else if(saved.actual !== '' && saved.actual !== null) complete++;
+          else empty++;
+        });
+        const container = document.getElementById(`catStats_${cat.key}`);
+        if(container){
+          container.innerHTML = `
+            <span class="cat-stat-pill cat-stat-ok">✅ ${complete}</span>
+            <span class="cat-stat-pill cat-stat-na">N/A ${na}</span>
+            <span class="cat-stat-pill cat-stat-empty">○ ${empty}</span>
+          `;
+        }
+      });
+    }
+
+    function recalcGlobalStats(){
+      const T = TRANSLATIONS[state.lang];
+      let total = 0, issues = 0;
+      DATA.forEach(cat=>{
+        cat.items.forEach(it=>{
+          total++;
+          const key = `${cat.key}_${it.docNo}`;
+          const saved = state.items[key] || defaultItemState(it);
+          if(isIssue(it, saved)) issues++;
+        });
+      });
+      const el = document.getElementById('globalSummary');
+      if(el){
+        el.innerHTML = `
+          <span class="global-pill">${T.total}: ${total}</span>
+          <span class="global-pill global-issue">⚠️ ${issues} ${T.issues}</span>
+        `;
+      }
+    }
+
+    function onActualChange(key, val){
+      const T = TRANSLATIONS[state.lang];
+      const v = Number(val||0);
+      const meta = getMeta(key);
+      const item = (state.items[key] ||= defaultItemState(meta));
+      const maxP = getMaxPoint(meta);
+      if(v > maxP){ alert(`${T.msg_max} ${maxP}`); return; }
+      if(v < 0){ alert(T.msg_neg); return; }
+      item.actual = val;
+      updateCardStatus(key);
+      recalcScore();
+      saveState(false);
+      applyFilters();
+    }
+
+    function onFindingsChange(key, text){
+      const meta = getMeta(key);
+      const item = (state.items[key] ||= defaultItemState(meta));
+      item.findings = text;
+      updateCardStatus(key);
+      saveState(false);
+      recalcScore();
+      applyFilters();
+    }
+
+    function onNAChange(key, isNA){
+      const meta = getMeta(key);
+      const item = (state.items[key] ||= defaultItemState(meta));
+      item.na = isNA;
+      const card = document.querySelector(`.card[data-key="${key}"]`);
+      if(card){
+        const input = card.querySelector('input[type="number"]');
+        if(input){
+          if(isNA){
+            item.actual = '';
+            input.value = '';
+            input.placeholder = '—';
+            input.disabled = true;
+          }else{
+            input.placeholder = '0';
+            input.disabled = false;
+          }
+        }
+      }
+      updateCardStatus(key);
+      recalcScore();
+      saveState(false);
+      applyFilters();
+    }
+
+    function onPhotosSelected(key, files){
+      const meta = getMeta(key);
+      const item = (state.items[key] ||= defaultItemState(meta));
+      [...files].forEach(file=>{
+        const reader = new FileReader();
+        reader.onload = e=>{
+          item.photos.push({dataURL:e.target.result});
+          const thumbs = document.getElementById(`thumbs_${key}`);
+          if(thumbs) thumbs.insertAdjacentHTML('beforeend', thumbHTML(key, item.photos.length-1, e.target.result));
+          saveState(false);
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function removePhoto(key, idx){
+      const item = state.items[key];
+      if(!item) return;
+      item.photos.splice(idx,1);
+      const thumbs = document.getElementById(`thumbs_${key}`);
+      if(thumbs){
+        thumbs.innerHTML = item.photos.map((p,i)=>thumbHTML(key, i, p.dataURL)).join('');
+      }
+      saveState(false);
+    }
+
+    function updateCardStatus(key){
+      const T = TRANSLATIONS[state.lang];
+      const card = document.querySelector(`.card[data-key="${key}"]`);
+      if(!card) return;
+      const status = card.querySelector(`#status_${key}`);
+      const meta = getMeta(key);
+      const saved = state.items[key] || defaultItemState(meta);
+      
+      if(status) {
+        status.className = `pill ${statusClass(saved, meta)}`;
+        const spanText = status.querySelector('span');
+        if(spanText) spanText.textContent = statusText(saved, meta);
+      }
+
+      const possContainer = card.querySelector(`#poss_${key}`);
+      if(possContainer){
+         const maxPoint = getMaxPoint(meta);
+         possContainer.innerHTML = saved.na 
+           ? `<span class="badge na">${T.badge_poss_na}</span>`
+           : `<span class="badge possible">${T.kpi_possible}: ${maxPoint}</span>`;
+      }
+    }
+
+    function toggleCategory(catKey){
+      const sec = document.querySelector(`.category[data-key="${catKey}"] .cat-body`);
+      if(sec) sec.style.display = (sec.style.display==='none') ? '' : 'none';
+    }
+
+    function applyFilters(){
+      const q    = document.getElementById('inputSearch').value.trim().toLowerCase();
+      const fCat = document.getElementById('filterCategory').value;
+      const fSts = document.getElementById('filterStatus').value;
+
+      document.querySelectorAll('.card').forEach(card=>{
+        const key    = card.dataset.key;
+        const catKey = card.dataset.category;
+        const meta   = getMeta(key) || {};
+        const saved  = state.items[key] || defaultItemState(meta);
+        
+        // Search text depends on language shown
+        const textStr = state.lang === 'id' ? (meta.text_id || meta.text_en) : meta.text_en;
+        
+        const matchText = !q || textStr.toLowerCase().includes(q) || key.toLowerCase().includes(q);
+        const matchCat  = !fCat || fCat === catKey;
+        let matchSts = true;
+        if(fSts === 'complete') matchSts = !saved.na && saved.actual !== '' && saved.actual !== null;
+        else if(fSts === 'na') matchSts = saved.na === true;
+        else if(fSts === 'empty') matchSts = !saved.na && (saved.actual === '' || saved.actual === null);
+
+        const issueFlag = isIssue(meta, saved);
+        card.classList.toggle('issue', issueFlag);
+        const vis = matchText && matchCat && matchSts && (!highlightIssues || issueFlag);
+        card.style.display = vis ? '' : 'none';
+      });
+    }
+
+    function validateExport(){
+      const T = TRANSLATIONS[state.lang];
+      const missing = [];
+      DATA.forEach(cat=>{
+        cat.items.forEach(it=>{
+          const key = `${cat.key}_${it.docNo}`;
+          const saved = state.items[key] || {};
+          if(saved.na && (!saved.findings || !saved.findings.trim())){
+            missing.push(`${state.lang==='id'?cat.name_id:cat.name_en} — No. ${it.docNo}`);
+          }
+        });
+      });
+      if(missing.length){
+        alert(T.msg_export + '\n\n' + missing.join('\n'));
+        return false;
+      }
+      return true;
+    }
+
+    function exportCSV(){
+      if(!validateExport()) return;
+      const T = TRANSLATIONS[state.lang];
+      const rows = [[
+        state.lang==='id'?'Kategori':'Category',
+        'No',
+        state.lang==='id'?'Item':'Item',
+        T.kpi_possible,
+        T.kpi_actual,
+        T.card_status,
+        state.lang==='id'?'Temuan':'Findings',
+        state.lang==='id'?'Jml Foto':'Photo Count'
+      ]];
+      DATA.forEach(cat=>{
+        cat.items.forEach(it=>{
+          const key = `${cat.key}_${it.docNo}`;
+          const s = state.items[key] || {};
+          const maxP = getMaxPoint(it);
+          const itemText = state.lang === 'id' ? (it.text_id || it.text_en) : it.text_en;
+          const catName = state.lang === 'id' ? (cat.name_id || cat.name_en) : cat.name_en;
+          
+          rows.push([
+            catName, it.docNo, itemText.replace(/\n/g,' '),
+            s.na ? 'NA' : maxP,
+            s.actual ?? '',
+            s.na ? 'N/A' : `${s.actual}/${maxP}`,
+            (s.findings||'').replace(/\n/g,' '),
+            s.photos?.length || 0
+          ]);
+        });
+      });
+      const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = `HRA_Audit_${state.lang}_${new Date().toISOString().slice(0,10)}.csv`;
+      a.click();
+    }
+
+    function doPrint(){ if(validateExport()) window.print(); }
+    
+    function resetAll(){
+      if(confirm('Hapus semua data? / Delete all data?')){
+        localStorage.removeItem(KEY);
+        location.reload();
+      }
+    }
+
+    function toast(msg){
+      const div = document.createElement('div');
+      div.textContent = msg;
+      Object.assign(div.style, {
+        position:'fixed', bottom:'20px', left:'50%', transform:'translateX(-50%)',
+        background:'#0f172a', color:'#fff', padding:'10px 20px', borderRadius:'30px',
+        zIndex:9999, fontSize:'0.85rem', boxShadow:'0 10px 25px rgba(0,0,0,0.3)', opacity:0, transition:'0.3s'
+      });
+      document.body.appendChild(div);
+      setTimeout(()=>div.style.opacity=1, 10);
+      setTimeout(()=>{ div.style.opacity=0; setTimeout(()=>div.remove(),300); }, 2000);
+    }
+
+    // Init
+    loadState();
+    render();
+
+    // Listeners
+    document.getElementById('inputAuditor').addEventListener('input', e=>{
+      state.auditor = e.target.value;
+      document.getElementById('auditorName').textContent = state.auditor || '—';
+      saveState(false);
+    });
+    document.getElementById('inputDate').addEventListener('change', e=>{
+      state.date = e.target.value;
+      const d = new Date(state.date);
+      const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
+      document.getElementById('auditDate').textContent = 
+        d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+      saveState(false);
+    });
+
+    document.getElementById('inputSearch').addEventListener('input', applyFilters);
+    document.getElementById('filterCategory').addEventListener('change', applyFilters);
+    document.getElementById('filterStatus').addEventListener('change', applyFilters);
+    document.getElementById('btnSave').addEventListener('click', ()=>saveState(true));
+    document.getElementById('btnPrint').addEventListener('click', doPrint);
+    document.getElementById('btnExportCsv').addEventListener('click', exportCSV);
+    document.getElementById('btnReset').addEventListener('click', resetAll);
+    document.getElementById('btnIssues').addEventListener('click', ()=>{
+      highlightIssues = !highlightIssues;
+      document.body.classList.toggle('issues-on', highlightIssues);
+      document.getElementById('btnIssues').classList.toggle('toggle-active', highlightIssues);
+      applyFilters();
+    });
+  </script>
+</body>
+</html>
