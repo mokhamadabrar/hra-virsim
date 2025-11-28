@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <!-- Accessibility Fix: Allow user scaling for better accessibility score -->
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes" />
   
-  <!-- ========= SEO & Meta Data (Default: English) ========= -->
-  <title>HRA AUDIT — Hot Work & Fire Prevention</title>
+  <!-- ========= SEO & Meta Data ========= -->
+  <title>HRA AUDIT Hot Work & Fire Prevention</title>
   <meta name="description" content="Digital Field Audit Form for Hot Work & Fire Prevention. Professional HSE inspection tool to ensure compliance with safety standards and fire prevention regulations (NFPA/OSHA)." />
   <meta name="keywords" content="HRA Audit, Hot Work, Fire Prevention, HSE, Safety Audit, Fire Safety, NFPA, Virsim, Iwan Kurniawan, K3, Inspection Form, Digital Audit" />
   <meta name="author" content="Virsim & Iwan Kurniawan" />
@@ -14,7 +15,7 @@
   <!--Favicon-->
   <link rel="icon" type="image/webp" href="https://hra-virsim.pages.dev/img/virsim_red.webp" />
 
-  <!-- Open Graph / Facebook / WhatsApp Share -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hra-virsim.pages.dev/" />
   <meta property="og:title" content="HRA AUDIT — Hot Work & Fire Prevention" />
@@ -62,13 +63,11 @@
     .wrap{max-width:1280px;margin:24px auto 32px;padding:0 16px}
     
     header.hero{
-      /* Background Image dengan Overlay Gradient Transparan */
       background: linear-gradient(135deg, rgba(2, 132, 199, 0.9) 0%, rgba(34, 197, 94, 0.85) 100%), 
                   url('https://hra-virsim.pages.dev/img/hot-work-fire-prevention.webp');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-
       color:#fff;padding:24px;border-radius:var(--radius);
       display:grid;grid-template-columns:1.4fr 1.1fr;gap:20px;align-items:center;
       box-shadow:0 14px 40px rgba(15,23,42,.28);
@@ -109,7 +108,7 @@
     }
     .meta .chip label{opacity:.85;font-weight:400;font-size:0.8rem}
 
-    /* Language Switcher Button */
+    /* Language Switcher */
     .lang-switch {
       position: absolute;
       top: 20px;
@@ -118,7 +117,7 @@
       background: rgba(255,255,255,0.2);
       border: 1px solid rgba(255,255,255,0.4);
       color: white;
-      padding: 6px 12px;
+      padding: 8px 14px; /* Larger touch target */
       border-radius: 20px;
       font-size: 0.85rem;
       font-weight: 600;
@@ -163,11 +162,11 @@
       padding:4px 10px;border-radius:999px;
       background:#0b11204d;border:1px solid #bae6fd40;color:#e5f2ff;
     }
-    .global-pill .icon{font-size:.85rem}
-    .global-pill.global-ok{ background:#22c55e4d;border-color:#bbf7d0;color:#dcfce7; }
-    .global-pill.global-na{ background:#eab3084d;border-color:#facc15;color:#fefce8; }
-    .global-pill.global-empty{ background:#0b11204d;border-color:#94a3b8;color:#e5e7eb; }
-    .global-pill.global-issue{ background:#f973164d;border-color:#fed7aa;color:#ffedd5; }
+    /* Colors adjusted for contrast */
+    .global-pill.global-ok{ background:#1665344d;border-color:#bbf7d0;color:#dcfce7; }
+    .global-pill.global-na{ background:#854d0e4d;border-color:#facc15;color:#fefce8; }
+    .global-pill.global-empty{ background:#0b112066;border-color:#94a3b8;color:#e5e7eb; }
+    .global-pill.global-issue{ background:#9a34124d;border-color:#fed7aa;color:#ffedd5; }
 
     /* ========= Toolbar ========= */
     .toolbar-shell{
@@ -187,7 +186,7 @@
     
     .input,select,button{
       border:1px solid var(--line);background:#fff;color:var(--ink);
-      padding:8px 12px;border-radius:10px;outline:none;min-height:40px;
+      padding:8px 12px;border-radius:10px;outline:none;min-height:44px; /* Min height 44px for accessibility */
       font-size:.9rem;appearance: none;
     }
     select {
@@ -232,9 +231,10 @@
       display:inline-flex;align-items:center;gap:4px;
       background:#fff;color:#475569;font-weight:500;
     }
-    .cat-stat-ok{ background:#f0fdf4;border-color:#bbf7d0;color:#15803d; }
-    .cat-stat-na{ background:#fefce8;border-color:#fde047;color:#854d0e; }
-    .cat-stat-empty{ background:#f8fafc;border-color:#e2e8f0;color:#64748b; }
+    /* Accessibility: Enhanced Contrast */
+    .cat-stat-ok{ background:#f0fdf4;border-color:#bbf7d0;color:#14532d; }
+    .cat-stat-na{ background:#fefce8;border-color:#fde047;color:#713f12; }
+    .cat-stat-empty{ background:#f8fafc;border-color:#e2e8f0;color:#475569; }
 
     /* Category Colors */
     .category[data-key="HOT_WORK"] .cat-head{border-left:5px solid #ef4444;}
@@ -259,8 +259,9 @@
       display:inline-flex;align-items:center;gap:6px;white-space: nowrap;
     }
     .badge::before{content:"●";font-size:.6rem;}
-    .possible{color:#047857;background:#d1fae5;border-color:#6ee7b7}
-    .na{color:#b45309;background:#fef3c7;border-color:#fcd34d}
+    /* Accessibility: Enhanced Contrast for Badges */
+    .possible{color:#064e3b;background:#d1fae5;border-color:#6ee7b7}
+    .na{color:#78350f;background:#fef3c7;border-color:#fcd34d}
 
     .grid{
       display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
@@ -316,6 +317,8 @@
     .photo-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
     .photo-head-title{font-weight:600;font-size:.85rem;color:#0369a1}
     .thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    
+    /* Improved Tap Targets for Delete Button */
     .thumb{
       width:70px;height:70px;background:#fff;border:1px solid var(--line);
       border-radius:8px;overflow:hidden;
@@ -324,9 +327,13 @@
     }
     .thumb img{width:100%;height:100%;object-fit:cover}
     .thumb button{
-      position:absolute;top:2px;right:2px;background:rgba(0,0,0,0.6);border:none;color:#fff;
-      padding:0;width:20px;height:20px;border-radius:50%;font-size:.7rem;
+      position:absolute;top:0;right:0;
+      background:rgba(0,0,0,0.6);border:none;color:#fff;
+      padding:0;width:32px;height:32px; /* Bigger target */
+      border-bottom-left-radius:8px;
+      font-size:1rem;
       display:flex;align-items:center;justify-content:center;
+      cursor: pointer;
     }
 
     .foot{
@@ -340,9 +347,10 @@
       padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;
       font-size:.75rem;display:inline-flex;align-items:center;gap:6px;font-weight:600;
     }
-    .status-good{color:#059669;background:#d1fae5;border-color:#6ee7b7}
-    .status-mid{color:#d97706;background:#fef3c7;border-color:#fcd34d}
-    .status-low{color:#dc2626;background:#fee2e2;border-color:#fca5a5}
+    /* Accessibility: Enhanced Contrast */
+    .status-good{color:#064e3b;background:#d1fae5;border-color:#6ee7b7}
+    .status-mid{color:#78350f;background:#fef3c7;border-color:#fcd34d}
+    .status-low{color:#7f1d1d;background:#fee2e2;border-color:#fca5a5}
 
     /* Footer Style */
     footer.app-footer {
@@ -461,9 +469,9 @@
   <div class="wrap">
     <!-- ======= HERO ======= -->
     <header class="hero">
-      <button class="lang-switch" onclick="toggleLang()">🇮🇩 ID / 🇬🇧 EN</button>
+      <button class="lang-switch" onclick="toggleLang()" aria-label="Switch Language">🇮🇩 ID / 🇬🇧 EN</button>
       <div class="title">
-        <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="Logo Virsim" class="hero-logo" />
+        <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="Logo Virsim" class="hero-logo" width="90" height="90" />
         <h1 id="appTitle">HRA AUDIT — Hot Work &amp; Fire Prevention</h1>
         <div class="meta">
           <div class="chip">
@@ -471,13 +479,13 @@
             <strong id="auditorName">Dedi Setiawan</strong>
           </div>
           <div class="chip">
-            <label id="lbl_date">Tanggal:</label>
+            <label id="lbl_date">Date:</label>
             <span id="auditDate"></span>
           </div>
           <div class="chip actions">
-            <button class="icon ghost" id="btnPrint" title="Cetak PDF"><span>🖨️</span> <span id="btn_print">Print</span></button>
-            <button class="icon ghost" id="btnExportCsv" title="Download CSV"><span>📤</span> <span id="btn_csv">CSV</span></button>
-            <button class="icon ghost" id="btnReset" title="Reset Semua"><span>♻️</span> <span id="btn_reset">Reset</span></button>
+            <button class="icon ghost" id="btnPrint" title="Print PDF" aria-label="Print Document"><span>🖨️</span> <span id="btn_print">Print</span></button>
+            <button class="icon ghost" id="btnExportCsv" title="Download CSV" aria-label="Export CSV"><span>📤</span> <span id="btn_csv">CSV</span></button>
+            <button class="icon ghost" id="btnReset" title="Reset All Data" aria-label="Reset Data"><span>♻️</span> <span id="btn_reset">Reset</span></button>
           </div>
         </div>
       </div>
@@ -508,19 +516,24 @@
     <div class="toolbar-shell">
       <div class="toolbar">
         <div class="toolbar-group" style="flex:1;">
-          <small id="lbl_filter">Filter &amp; Pencarian</small>
-          <input class="input" id="inputSearch" placeholder="Search..." />
-          <select id="filterCategory" class="input"></select>
-          <select id="filterStatus" class="input"></select>
+          <small id="lbl_filter">Filter &amp; Search</small>
+          <label for="inputSearch" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Search</label>
+          <input class="input" id="inputSearch" placeholder="Search..." aria-label="Search" />
+          <label for="filterCategory" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Filter by Category</label>
+          <select id="filterCategory" class="input" aria-label="Filter Category"></select>
+          <label for="filterStatus" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Filter by Status</label>
+          <select id="filterStatus" class="input" aria-label="Filter Status"></select>
         </div>
         <div class="toolbar-group" style="width:auto;">
-          <small id="lbl_identity">Identitas Audit</small>
-          <input class="input" id="inputAuditor" placeholder="Name..." />
-          <input type="date" id="inputDate" class="input" />
+          <small id="lbl_identity">Audit Identity</small>
+          <label for="inputAuditor" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Auditor Name</label>
+          <input class="input" id="inputAuditor" placeholder="Name..." aria-label="Auditor Name" />
+          <label for="inputDate" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">Audit Date</label>
+          <input type="date" id="inputDate" class="input" aria-label="Audit Date" />
         </div>
         <div style="display:flex;gap:8px;flex:1;justify-content:flex-end;">
-          <button class="icon success" id="btnSave"><span>💾</span> <span id="btn_save">Simpan</span></button>
-          <button class="icon warn" id="btnIssues"><span>⚠️</span> <span id="btn_issues">Highlight Issue</span></button>
+          <button class="icon success" id="btnSave" aria-label="Save Data"><span>💾</span> <span id="btn_save">Save</span></button>
+          <button class="icon warn" id="btnIssues" aria-label="Highlight Issues"><span>⚠️</span> <span id="btn_issues">Highlight Issues</span></button>
         </div>
       </div>
     </div>
@@ -529,7 +542,7 @@
     <div id="categories"></div>
 
     <footer class="app-footer">
-      <p>Created @2025 by <strong>Virsim</strong> and <a href="https://id.linkedin.com/in/iwan-kurniawan-83532226" target="_blank">Iwan Kurniawan</a></p>
+      <p>Created @2025 by <strong>Virsim</strong> and <a href="https://id.linkedin.com/in/iwan-kurniawan-83532226" target="_blank" rel="noopener noreferrer">Iwan Kurniawan</a></p>
       <p style="opacity: 0.8; font-size: 0.8rem;">Sustainability learning development</p>
     </footer>
   </div>
@@ -806,7 +819,7 @@
     const state = { 
       auditor:'Dedi Setiawan', 
       date:null, 
-      lang: 'en', // Changed default to 'en'
+      lang: 'en', // Default language
       items:{} 
     };
     let highlightIssues = false;
@@ -951,7 +964,7 @@
             (saved.actual !== undefined && saved.actual !== null ? saved.actual : '');
           
           const actualField = `
-            <input type="number" class="input" min="0" max="${maxPoint}" step="1"
+            <input id="actual_${key}" type="number" class="input" min="0" max="${maxPoint}" step="1"
               ${disabledAttr}
               value="${actualValue}"
               placeholder="${saved.na ? '—' : '0'}"
@@ -959,7 +972,7 @@
           `;
 
           const statusField = `
-            <select class="input" onchange="onNAChange('${key}', this.value==='na')">
+            <select id="status_sel_${key}" class="input" onchange="onNAChange('${key}', this.value==='na')">
               <option value="ok" ${saved.na ? '' : 'selected'}>${T.opt_app}</option>
               <option value="na" ${saved.na ? 'selected' : ''}>${T.opt_na}</option>
             </select>
@@ -974,11 +987,11 @@
               <div class="q">${itemText}</div>
               <div class="form-row">
                 <div>
-                  <label>${T.card_actual}</label>
+                  <label for="actual_${key}">${T.card_actual}</label>
                   ${actualField}
                 </div>
                 <div>
-                  <label>${T.card_status}</label>
+                  <label for="status_sel_${key}">${T.card_status}</label>
                   ${statusField}
                 </div>
               </div>
@@ -992,7 +1005,7 @@
                   <div class="photo-head-title">${T.card_photo}</div>
                   <div style="position:relative;overflow:hidden;display:inline-block;">
                     <button type="button" class="ghost" style="font-size:0.8rem;padding:4px 10px;">${T.card_photo_btn}</button>
-                    <input type="file" accept="image/*" multiple 
+                    <input type="file" accept="image/*" multiple capture="environment"
                       style="position:absolute;left:0;top:0;opacity:0;cursor:pointer;width:100%;height:100%;"
                       onchange="onPhotosSelected('${key}', this.files)" />
                   </div>
@@ -1036,10 +1049,11 @@
       return null;
     }
     function thumbHTML(key, idx, url){
+      const altText = `Foto bukti ${idx + 1}`;
       return `
         <div class="thumb">
-          <img src="${url}" alt="Foto" />
-          <button type="button" onclick="removePhoto('${key}', ${idx})">✕</button>
+          <img src="${url}" alt="${altText}" />
+          <button type="button" onclick="removePhoto('${key}', ${idx})" aria-label="Hapus Foto">✕</button>
         </div>
       `;
     }
