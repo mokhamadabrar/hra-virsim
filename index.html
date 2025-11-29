@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <title>HRA – Material Handling</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Standard Description (Fixed for PageSpeed) -->
+  <meta name="description" content="High Risk Activity – Material Handling in construction project areas. Safety guidelines, risk assessment HRA, top 5 highest risks, and risk matrix." />
 
   <!-- SEO & Social Media Sharing (Open Graph) -->
   <meta property="og:title" content="HRA – Material Handling Risk Assessment" />
@@ -11,7 +14,7 @@
   <meta property="og:image" content="https://hra-virsim.pages.dev/img/material-handling.webp" />
   <meta property="og:url" content="https://hra-virsim.pages.dev" />
   <meta property="og:type" content="website" />
-  
+   
   <!-- Favicon -->
   <link rel="icon" href="https://hra-virsim.pages.dev/img/virsim_red.webp" type="image/webp" />
 
@@ -23,11 +26,13 @@
       --bg-main: #f4f5fb;
       --bg-card: #ffffff;
       --bg-soft: #f9fafc;
-      --accent: #5465ff;
+      /* FIXED: Darkened accent color for better contrast (WCAG AA Pass) */
+      /* Old was #5465ff which is too light for white text */
+      --accent: #3545cc; 
       --accent-soft: #e2e6ff;
-      --accent-dark: #323f9f;
+      --accent-dark: #2a37a3;
       --text-main: #1f2933;
-      --text-muted: #6b7280;
+      --text-muted: #4b5563; /* Darkened slightly for readability */
       --border-soft: #e2e8f0;
       --risk-low: #92d050;
       --risk-med: #fff066;
@@ -56,8 +61,8 @@
       --bg-main: #020617;
       --bg-card: #020617;
       --bg-soft: #020617;
-      --accent: #a855f7;
-      --accent-soft: rgba(168,85,247,0.16);
+      --accent: #6d28d9; /* Adjusted for dark mode contrast */
+      --accent-soft: rgba(109, 40, 217, 0.25);
       --accent-dark: #e5e7ff;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
@@ -73,7 +78,7 @@
 
     /* HEADER */
     .header {
-      background: linear-gradient(135deg, rgba(84, 101, 255, 0.90), rgba(168, 85, 247, 0.85)), 
+      background: linear-gradient(135deg, rgba(53, 69, 204, 0.95), rgba(109, 40, 217, 0.90)), 
                   url('https://hra-virsim.pages.dev/img/material-handling.webp');
       background-size: cover;
       background-position: center;
@@ -366,7 +371,7 @@
         text-align: center; /* CENTER TEXT */
         padding: 24px 20px;
       }
-      
+       
       .logo-circle {
         margin-bottom: 12px; /* Spacing below logo */
       }
@@ -397,7 +402,7 @@
         overflow: visible;
         margin-bottom: 10px;
       }
-      
+       
       .sidenav-header-group {
         cursor: pointer;
         margin-bottom: 0;
@@ -423,13 +428,13 @@
       .sidenav.open .sidenav-toggle-icon {
         transform: rotate(180deg);
       }
-      
+       
       .sidenav.open .sidenav-header-group {
          border-bottom: 1px dashed var(--border-soft);
          padding-bottom: 8px;
       }
     }
-    
+     
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(-5px); }
       to { opacity: 1; transform: translateY(0); }
@@ -595,7 +600,7 @@
     }
 
     body.dark-theme .filter-chip { background: #020617; }
-    
+     
     .risk-card {
       border-radius: var(--radius-md);
       padding: 8px 9px;
@@ -649,14 +654,14 @@
       gap: 12px;
     }
     @media (max-width: 880px) { .risk-matrix-wrapper { grid-template-columns: 1fr; } }
-    
+     
     .risk-table-container {
       overflow-x: auto;
       border-radius: var(--radius-md);
       border: 1px solid var(--border-soft);
       background: var(--bg-soft);
     }
-    
+     
     table.risk-matrix {
       width: 100%;
       border-collapse: collapse;
@@ -672,6 +677,9 @@
     .risk-matrix th { background: #e5e7f6; color: #4b5563; font-weight: 600; }
     body.dark-theme .risk-matrix th { background: #020617; color: #e5e7eb; }
     
+    /* FIXED: Likelihood labels white in dark mode */
+    body.dark-theme .risk-matrix td.label { color: #e5e7eb; font-weight: 600; }
+     
     /* BACKGROUNDS FOR RISK CELLS */
     .risk-low { background: var(--risk-low); }
     .risk-med { background: var(--risk-med); }
@@ -695,7 +703,7 @@
       flex-direction: column;
       gap: 8px;
     }
-    
+     
     .risk-calc-field label { font-size: 0.85rem; font-weight: 600; display:block; margin-bottom:4px;}
     .risk-calc-field select {
       width: 100%;
@@ -827,7 +835,8 @@
   <!-- HEADER -->
   <header class="header">
     <div class="logo-circle">
-      <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="VIRSIM Logo" class="logo-img" />
+      <!-- FIXED: Added width and height attributes for CLS optimization -->
+      <img src="https://hra-virsim.pages.dev/img/virsim_red.webp" alt="VIRSIM Logo" class="logo-img" width="56" height="56" />
     </div>
     <div class="header-main">
       <div class="header-row-top">
@@ -877,44 +886,45 @@
         <div class="sidenav-title" data-i18n="navTitle">Daftar Isi</div>
         <span class="sidenav-toggle-icon">▼</span>
       </div>
-      
+       
+      <!-- FIXED: Added href attributes to all links for SEO/Crawler visibility -->
       <ul class="nav-list">
         <li class="nav-item">
-          <a class="nav-link active" data-target="scope">
+          <a class="nav-link active" href="#scope" data-target="scope">
             <span class="index">1</span>
             <span data-i18n="nav1">Scope &amp; Asumsi</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-target="risk-matrix">
+          <a class="nav-link" href="#risk-matrix" data-target="risk-matrix">
             <span class="index">2</span>
             <span data-i18n="nav2">Risk Matrix</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-target="risk-calculator">
+          <a class="nav-link" href="#risk-calculator" data-target="risk-calculator">
             <span class="index">2.1</span>
             <span data-i18n="nav21">Risk Calculator</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-target="risk-assessment">
+          <a class="nav-link" href="#risk-assessment" data-target="risk-assessment">
             <span class="index">3</span>
             <span data-i18n="nav3">Risk Assessment HRA</span>
           </a>
           <ul class="nav-sublist">
-            <li><a class="nav-sublink" data-target="sec-3-1" data-i18n="nav31">3.1 Perencanaan &amp; Forecasting</a></li>
-            <li><a class="nav-sublink" data-target="sec-3-2" data-i18n="nav32">3.2 Loading &amp; Unloading</a></li>
-            <li><a class="nav-sublink" data-target="sec-3-3" data-i18n="nav33">3.3 Transport Internal</a></li>
-            <li><a class="nav-sublink" data-target="sec-3-4" data-i18n="nav34">3.4 Peralatan Bantu</a></li>
-            <li><a class="nav-sublink" data-target="sec-3-5" data-i18n="nav35">3.5 Penyimpanan &amp; Stacking</a></li>
-            <li><a class="nav-sublink" data-target="sec-3-6" data-i18n="nav36">3.6 Inspeksi &amp; Maintenance</a></li>
-            <li><a class="nav-sublink" data-target="sec-3-7" data-i18n="nav37">3.7 Interaksi Pedestrian</a></li>
-            <li><a class="nav-sublink" data-target="sec-3-8" data-i18n="nav38">3.8 Dokumentasi &amp; Training</a></li>
+            <li><a class="nav-sublink" href="#sec-3-1" data-target="sec-3-1" data-i18n="nav31">3.1 Perencanaan &amp; Forecasting</a></li>
+            <li><a class="nav-sublink" href="#sec-3-2" data-target="sec-3-2" data-i18n="nav32">3.2 Loading &amp; Unloading</a></li>
+            <li><a class="nav-sublink" href="#sec-3-3" data-target="sec-3-3" data-i18n="nav33">3.3 Transport Internal</a></li>
+            <li><a class="nav-sublink" href="#sec-3-4" data-target="sec-3-4" data-i18n="nav34">3.4 Peralatan Bantu</a></li>
+            <li><a class="nav-sublink" href="#sec-3-5" data-target="sec-3-5" data-i18n="nav35">3.5 Penyimpanan &amp; Stacking</a></li>
+            <li><a class="nav-sublink" href="#sec-3-6" data-target="sec-3-6" data-i18n="nav36">3.6 Inspeksi &amp; Maintenance</a></li>
+            <li><a class="nav-sublink" href="#sec-3-7" data-target="sec-3-7" data-i18n="nav37">3.7 Interaksi Pedestrian</a></li>
+            <li><a class="nav-sublink" href="#sec-3-8" data-target="sec-3-8" data-i18n="nav38">3.8 Dokumentasi &amp; Training</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-target="next-steps">
+          <a class="nav-link" href="#next-steps" data-target="next-steps">
             <span class="index">4</span>
             <span data-i18n="nav4">Langkah Lanjut</span>
           </a>
@@ -971,6 +981,7 @@
           <div class="top-risk-header">
             <div class="top-risk-title" data-i18n="topRiskTitle">Top 5 Risiko Tertinggi</div>
             <div class="top-risk-filter">
+              <!-- Note: Contrast fixed via --accent css variable -->
               <button class="filter-chip active" data-filter="all" data-i18n="filterAll">Semua</button>
               <button class="filter-chip" data-filter="high">High</button>
               <button class="filter-chip" data-filter="med">Medium</button>
@@ -1055,7 +1066,7 @@
         <p data-i18n="calcDesc">
           Gunakan kalkulator ini untuk memperkirakan level risiko berdasarkan nilai <strong>Likelihood (L)</strong> dan <strong>Consequences (C)</strong> yang kamu sepakati di tim. Hasilnya mengikuti risk matrix di atas.
         </p>
-        
+         
         <div class="risk-calc">
           <div class="risk-calc-form">
             <div class="risk-calc-field">
@@ -1109,7 +1120,7 @@
         <p class="muted mb-6" data-i18n="sec3Desc2">
           Tabel detail (No, Aktivitas, Hazard, Dampak, Pengendalian yang Ada, Pengendalian Tambahan, PIC, L, C, R) disusun di file Excel terpisah, sedangkan di sini ditampilkan ringkasan per sub-aspek 3.1–3.8.
         </p>
-        
+         
         <div class="accordion">
           <!-- 3.1 -->
           <div class="acc-item open" id="sec-3-1">
@@ -1409,7 +1420,7 @@
       sec3Title: "Risk Assessment HRA – Material Handling",
       sec3Desc: "Bagian ini merangkum identifikasi bahaya, dampak potensial, serta pengendalian yang ada dan pengendalian tambahan yang direkomendasikan untuk seluruh rangkaian aktivitas material handling.",
       sec3Desc2: "Tabel detail (No, Aktivitas, Hazard, Dampak, Pengendalian yang Ada, Pengendalian Tambahan, PIC, L, C, R) disusun di file Excel terpisah, sedangkan di sini ditampilkan ringkasan per sub-aspek 3.1–3.8.",
-      
+       
       // Accordion 3.1
       acc31Title: "3.1 Perencanaan & Forecasting",
       acc31Sub: "Identifikasi aktivitas, jalur pergerakan, dan penetapan peran (AA, MHC, PA)",
@@ -1495,7 +1506,7 @@
       step4Text: "Lakukan observasi rutin di area material handling untuk memastikan kontrol yang tertulis memang dijalankan. Gunakan checklist atau form audit sederhana untuk merekam temuan dan tindak lanjut.",
       step5Title: "Review & Update Berkala",
       step5Text: "Tinjau kembali HRA ini ketika ada perubahan layout, metode kerja, jenis material, ataupun setelah terjadinya insiden/near miss. Perubahan signifikan pada jalur material handling perlu dicerminkan pada gambar layout/BIM dan HRA yang diperbarui.",
-      
+       
       // Step 6 (New)
       step6Title: "Evaluasi Kebutuhan Izin Kerja (Permit to Work)",
       step6Text: "Izin kerja tidak selalu wajib, namun diperlukan jika aktivitas dikategorikan sebagai <strong>Critical Material Handling</strong>, melibatkan bahaya lain (seperti <em>Hot Work</em>, <em>Confined Space</em>, atau <em>LOTO</em>), atau menggunakan alat angkat khusus (Lift Permit)."
@@ -1627,7 +1638,7 @@
       step4Text: "Conduct routine observations in material handling areas to ensure written controls are actually implemented. Use checklists or simple audit forms to record findings and follow-ups.",
       step5Title: "Periodic Review & Update",
       step5Text: "Review this HRA when there are changes in layout, work methods, material types, or after an incident/near miss occurs. Significant changes to material handling paths need to be reflected in updated layout drawings/BIM and HRA.",
-      
+       
       // Step 6 (New) EN
       step6Title: "Evaluate Permit to Work Requirements",
       step6Text: "Work permits are not automatically mandatory, but are required if the activity is categorized as <strong>Critical Material Handling</strong>, involves other hazards (such as <em>Hot Work</em>, <em>Confined Space</em>, or <em>LOTO</em>), or uses specific lifting equipment (Lift Permit)."
@@ -1699,7 +1710,7 @@
   // ==========================
   // LOGIC
   // ==========================
-  
+   
   // 1. Language Toggle
   const langToggle = document.getElementById("langToggle");
   const langLabel = document.getElementById("langLabel");
@@ -1709,7 +1720,7 @@
     // If lang is English ('en'), button shows "EN / ID".
     // If lang is Indonesian ('id'), button shows "ID / EN".
     langLabel.textContent = lang === 'en' ? 'EN / ID' : 'ID / EN';
-    
+     
     // Update text content elements
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
@@ -1746,7 +1757,7 @@
       applyTheme(isDark ? "light" : "dark");
     });
   }
-  
+   
   // 3. Print
   const printBtn = document.getElementById("printBtn");
   if (printBtn) printBtn.addEventListener("click", () => window.print());
@@ -1756,7 +1767,7 @@
     header.addEventListener("click", () => {
       const item = header.parentElement;
       const isOpen = item.classList.contains("open");
-      
+       
       // Close others
       document.querySelectorAll(".acc-item").forEach(i => {
         if (i !== item) {
@@ -1783,7 +1794,7 @@
     const countMedEl = document.getElementById("countMed");
     const countLowEl = document.getElementById("countLow");
     const container = document.getElementById("topRiskContainer");
-    
+     
     let high = 0, med = 0, low = 0;
     riskData.forEach(r => {
       const level = getRiskLevel(r.risk);
@@ -1798,13 +1809,13 @@
 
     const sorted = [...riskData].sort((a, b) => b.risk - a.risk);
     const top5 = sorted.slice(0, 5);
-    
+     
     // Check active filter
     const activeChip = document.querySelector('.filter-chip.active');
     const filter = activeChip ? activeChip.getAttribute('data-filter') : 'all';
 
     container.innerHTML = "";
-    
+     
     const list = top5.filter(item => {
       const level = getRiskLevel(item.risk);
       if (filter === "all") return true;
@@ -1821,7 +1832,7 @@
       const levelLabel = level === "high" ? "High" : level === "med" ? "Medium" : "Low";
       // Pick title based on lang
       const title = currentLang === 'id' ? item.title : (item.titleEn || item.title);
-      
+       
       const div = document.createElement("div");
       div.className = `risk-card level-${level}`;
       div.innerHTML = `
@@ -1864,10 +1875,10 @@
     const C = parseInt(inputC.value);
     const R = L * C;
     const level = getRiskLevel(R);
-    
+     
     resBox.setAttribute("data-level", level);
     resScore.textContent = R;
-    
+     
     if (currentLang === 'id') {
       resLevel.textContent = level === "high" ? "High / Critical" : level === "med" ? "Medium" : "Low";
       resDesc.textContent = level === "high" ? "Perlu tinjauan mendalam, stop work jika perlu." : 
@@ -1887,7 +1898,7 @@
   // 7. Sidenav Toggle for Mobile
   const sidenavHeaderGroup = document.getElementById("sidenavHeaderGroup");
   const sidenavMobile = document.getElementById("sidenavMobile");
-  
+   
   if (sidenavHeaderGroup && sidenavMobile) {
     sidenavHeaderGroup.addEventListener("click", () => {
       // Only toggle if on mobile width
@@ -1897,13 +1908,17 @@
     });
   }
 
-  // NAV Scroll
+  // FIXED: Updated scroll logic to handle default anchor behavior
   document.querySelectorAll(".nav-link, .nav-sublink").forEach(link => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+      // Prevent default anchor jump to allow smooth scroll logic
+      e.preventDefault(); 
       const target = document.getElementById(link.getAttribute("data-target"));
       if(target) {
+        // Updated offset logic
         const offset = target.getBoundingClientRect().top + window.scrollY - 20;
         window.scrollTo({top: offset, behavior: 'smooth'});
+        
         if(link.classList.contains('nav-link')) {
            document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
            link.classList.add('active');
@@ -1922,10 +1937,10 @@
     let stored = localStorage.getItem("hra-theme");
     if (!stored) stored = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
     applyTheme(stored);
-    
+     
     // Set default language to English and render content
     setLanguage('en');
-    
+     
     // Open first accordion
     const firstAcc = document.querySelector(".acc-item");
     if(firstAcc) {
