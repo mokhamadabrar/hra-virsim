@@ -5,7 +5,7 @@
   <title>HRA – Material Handling</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO Standard Description (Fixed for PageSpeed) -->
+  <!-- SEO Standard Description -->
   <meta name="description" content="High Risk Activity – Material Handling in construction project areas. Safety guidelines, risk assessment HRA, top 5 highest risks, and risk matrix." />
 
   <!-- SEO & Social Media Sharing (Open Graph) -->
@@ -18,8 +18,16 @@
   <!-- Favicon -->
   <link rel="icon" href="https://hra-virsim.pages.dev/img/virsim_red.webp" type="image/webp" />
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- PERFORMANCE FIX 1: LCP Preload -->
+  <!-- Preload hero image dengan prioritas tinggi agar browser menemukannya segera (Fixes LCP Discovery) -->
+  <link rel="preload" as="image" href="https://hra-virsim.pages.dev/img/material-handling.webp" fetchpriority="high" />
+
+  <!-- PERFORMANCE FIX 2: Async Google Fonts -->
+  <!-- Mencegah font memblokir render awal (Fixes Render Blocking) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
 
   <style>
     :root {
@@ -27,12 +35,11 @@
       --bg-card: #ffffff;
       --bg-soft: #f9fafc;
       /* FIXED: Darkened accent color for better contrast (WCAG AA Pass) */
-      /* Old was #5465ff which is too light for white text */
       --accent: #3545cc; 
       --accent-soft: #e2e6ff;
       --accent-dark: #2a37a3;
       --text-main: #1f2933;
-      --text-muted: #4b5563; /* Darkened slightly for readability */
+      --text-muted: #4b5563;
       --border-soft: #e2e8f0;
       --risk-low: #92d050;
       --risk-med: #fff066;
@@ -61,7 +68,7 @@
       --bg-main: #020617;
       --bg-card: #020617;
       --bg-soft: #020617;
-      --accent: #6d28d9; /* Adjusted for dark mode contrast */
+      --accent: #6d28d9;
       --accent-soft: rgba(109, 40, 217, 0.25);
       --accent-dark: #e5e7ff;
       --text-main: #e5e7eb;
@@ -1941,11 +1948,13 @@
     // Set default language to English and render content
     setLanguage('en');
      
-    // Open first accordion
-    const firstAcc = document.querySelector(".acc-item");
-    if(firstAcc) {
-       firstAcc.querySelector(".acc-body").style.maxHeight = firstAcc.querySelector(".acc-body").scrollHeight + "px";
-    }
+    // PERFORMANCE FIX 3: Wrapped accordion init in requestAnimationFrame (Fixes Forced Reflow)
+    requestAnimationFrame(() => {
+        const firstAcc = document.querySelector(".acc-item");
+        if(firstAcc) {
+           firstAcc.querySelector(".acc-body").style.maxHeight = firstAcc.querySelector(".acc-body").scrollHeight + "px";
+        }
+    });
   })();
 
 </script>
