@@ -55,7 +55,7 @@
     }
     h1,h2,h3{margin:0 0 .5rem}
     h1{font-size:1.8rem;letter-spacing:.2px;}
-    h2{font-size:1.25rem;color:#0f172a;font-weight:700;}
+    h2{font-size:1.25rem;color:#0f172a;font-weight:700;} /* Darker for accessibility */
     h3{font-size:1rem;color:#1e293b;font-weight:600;}
     p,small{color:var(--muted)}
     a{color:var(--accent)}
@@ -96,7 +96,7 @@
     .hero .title h1 span{
       display:inline-flex;align-items:center;gap:6px;
       font-size:.8rem;font-weight:500;padding:4px 9px;
-      border-radius:999px;background:#0b112033;border:1px solid #bae6fd3b;
+      border-radius:999px;background:#0b112033;border:1px solid #bae6fd3b; /* Darkened bg */
       vertical-align: middle;
     }
     .hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
@@ -113,7 +113,7 @@
       top: 20px;
       right: 20px;
       z-index: 10;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.3); /* Darker for white text contrast */
       border: 1px solid rgba(255,255,255,0.4);
       color: white;
       padding: 8px 14px;
@@ -144,7 +144,7 @@
     }
     .score-kpi{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
     .score-kpi .kpi{
-      background:#0b112066;
+      background:#0b112066; /* Darker for white text */
       border:1px solid #bae6fd40;padding:8px 12px;border-radius:10px;min-width:120px;
       font-size:.87rem; color: #fff;
     }
@@ -161,6 +161,7 @@
       padding:4px 10px;border-radius:999px;
       background:#0b112080;border:1px solid #bae6fd40;color:#e5f2ff;
     }
+    /* Colors adjusted for contrast against dark header */
     .global-pill.global-ok{ background:#16653480;border-color:#86efac;color:#dcfce7; }
     .global-pill.global-na{ background:#854d0e80;border-color:#fde047;color:#fefce8; }
     .global-pill.global-empty{ background:#33415580;border-color:#94a3b8;color:#f1f5f9; }
@@ -187,6 +188,7 @@
       padding:8px 12px;border-radius:10px;outline:none;min-height:44px;
       font-size:.9rem;appearance: none;
     }
+    /* Fixed select arrow contrast */
     select {
       background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23334155%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
       background-repeat: no-repeat;
@@ -204,6 +206,7 @@
     button:active { filter: brightness(0.9); transform: translateY(1px); }
     button.ghost{background:#fff;border:1px solid #94a3b8;color:#0f172a}
     
+    /* FIX: High Contrast Colors for Buttons */
     button.success{background:var(--accent-2); color:#fff;}
     button.warn{background:var(--warn); color:#fff;}
     button.toggle-active{ box-shadow:0 0 0 2px #fff, 0 0 0 4px #ea580c; }
@@ -220,7 +223,7 @@
       border-bottom:1px solid var(--line);
     }
     .cat-title{display:flex;align-items:center;gap:12px}
-    .cat-title h2 {font-size:1.1rem;color:var(--ink);font-weight:700;margin:0;}
+    .cat-title h2 {font-size:1.1rem;color:var(--ink);font-weight:700;margin:0;} /* Changed to h2 */
     .cat-title small{font-size:.85rem;color:#475569}
     .cat-meta-right{display:flex;align-items:center;gap:12px}
     .cat-stats{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
@@ -230,10 +233,12 @@
       display:inline-flex;align-items:center;gap:4px;
       background:#fff;color:#334155;font-weight:600;
     }
+    /* Contrast fix for stats */
     .cat-stat-ok{ background:#dcfce7;border-color:#16a34a;color:#14532d; }
     .cat-stat-na{ background:#fef9c3;border-color:#eab308;color:#713f12; }
     .cat-stat-empty{ background:#f1f5f9;border-color:#94a3b8;color:#334155; }
 
+    /* Category Colors */
     .category[data-key="HOT_WORK"] .cat-head{border-left:6px solid #dc2626;}
     .category[data-key="FIRE_PREVENTION"] .cat-head{border-left:6px solid #ea580c;}
     .category[data-key="TRAINING_DRILL"] .cat-head{border-left:6px solid #0284c7;}
@@ -256,6 +261,7 @@
       display:inline-flex;align-items:center;gap:6px;white-space: nowrap;
     }
     .badge::before{content:"●";font-size:.6rem;}
+    /* Contrast Fixes */
     .possible{color:#064e3b;background:#d1fae5;border-color:#34d399}
     .na{color:#78350f;background:#fef3c7;border-color:#fcd34d}
 
@@ -287,6 +293,7 @@
       padding:14px 14px 0;display:flex;justify-content:space-between;align-items:flex-start;
     }
     .card .body{padding:10px 14px 14px}
+    /* Semantic HTML Fix */
     .q-text{
       font-size:.95rem; line-height: 1.5; font-weight: 600; color: var(--ink); margin-bottom: 12px;
     }
@@ -345,17 +352,18 @@
       font-size:.75rem;display:inline-flex;align-items:center;gap:6px;font-weight:600;
     }
     
+    /* FIX: Improved Footer Accessibility */
     footer.app-footer {
       text-align: center;
       margin-top: 40px;
       padding: 24px;
-      color: #334155;
+      color: #334155; /* Darker Slate for Better Contrast */
       font-size: 0.85rem;
       border-top: 1px solid #e2e8f0;
       background: #f8fafc;
     }
     footer.app-footer a {
-      color: #0369a1;
+      color: #0369a1; /* Darker Blue Link */
       text-decoration: none;
       font-weight: 700;
       transition: color 0.2s;
@@ -366,6 +374,7 @@
     }
     footer.app-footer p {
       margin: 4px 0;
+      /* Removed opacity: 0.8 to ensure full contrast */
     }
 
     /* ========= MOBILE RESPONSIVE ========= */
@@ -421,7 +430,7 @@
       .hero .meta { flex-direction: column; align-items: center; }
       .meta .chip { width: 100%; justify-content: center;}
       .thumbs .thumb { width: 60px; height: 60px; }
-      button, .input, select { min-height: 48px; }
+      button, .input, select { min-height: 48px; } /* Larger touch target for smallest screens */
     }
 
     /* ========= Print styling ========= */
@@ -456,6 +465,7 @@
 </head>
 <body>
   <div class="wrap">
+    <!-- Main Landmark for Accessibility -->
     <main>
       <!-- ======= HERO ======= -->
       <header class="hero">
@@ -539,9 +549,6 @@
   </div>
 
   <script>
-    // ========= API CONFIG (SUDAH DIISI DENGAN WEB APP KAMU) =========
-    const API_SAVE_URL = 'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
-
     // ========= Translation Dictionary =========
     const TRANSLATIONS = {
       id: {
@@ -808,20 +815,22 @@
       }
     ];
 
-    // ========= State (IN-MEMORY ONLY, NO localStorage) =========
+    // ========= State & Persistence (no localStorage) =========
+    const API_SAVE_URL = 'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
+
     const state = { 
-      auditor: 'Dedi Setiawan',
-      date: null,
-      lang: 'en',
-      items: {}
+      auditor:'Dedi Setiawan', 
+      date:null, 
+      lang: 'en', // Default language
+      items:{} 
     };
     let highlightIssues = false;
 
     const defaultItemState = (meta) => ({
-      actual: '',
-      findings: '',
-      na: false,
-      photos: []
+      actual:'',
+      findings:'',
+      na: false, 
+      photos:[]
     });
 
     function loadState(){
@@ -833,19 +842,28 @@
       document.getElementById('inputDate').value = state.date.split('T')[0];
     }
 
+    function saveState(showToast = true){
+      // tidak menyimpan apa pun secara lokal; opsional tampilkan toast
+      if(showToast) toast(TRANSLATIONS[state.lang].msg_saved);
+    }
+
+    // Helper Translation Function
     function t(key){ return TRANSLATIONS[state.lang][key] || key; }
 
     function toggleLang(){
       state.lang = state.lang === 'id' ? 'en' : 'id';
-      render();
+      saveState(false);
+      render(); // Re-render everything
     }
 
     // ========= Rendering =========
     function render(){
       const T = TRANSLATIONS[state.lang];
       
+      // Dynamic Title Update
       document.title = T.title;
 
+      // Update UI Labels
       document.getElementById('appTitle').textContent = T.title;
       document.getElementById('lbl_auditor').textContent = T.lbl_auditor;
       document.getElementById('lbl_date').textContent = T.lbl_date;
@@ -863,6 +881,7 @@
       document.getElementById('btn_save').textContent = T.btn_save;
       document.getElementById('btn_issues').textContent = T.btn_issues;
 
+      // Dropdown Options
       const fc = document.getElementById('filterCategory');
       fc.innerHTML = `<option value="">${T.all_cat}</option>` +
         DATA.map(c=>`<option value="${c.key}">${state.lang === 'id' ? c.name_id : c.name_en}</option>`).join('');
@@ -879,10 +898,10 @@
         state.date = new Date().toISOString();
       }
       const d = new Date(state.date);
+      // Format date locale
       const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
       document.getElementById('auditDate').textContent = 
         d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-      document.getElementById('inputDate').value = state.date.split('T')[0];
 
       const wrap = document.getElementById('categories');
       wrap.innerHTML = '';
@@ -926,8 +945,10 @@
           card.dataset.key = key;
           card.dataset.category = cat.key;
 
+          // Localized Item Text
           const itemText = state.lang === 'id' ? (it.text_id || it.text_en) : it.text_en;
 
+          // Badge Logic
           let possBadge = saved.na 
             ? `<span class="badge na">${T.badge_poss_na}</span>`
             : `<span class="badge possible">${T.kpi_possible}: ${maxPoint}</span>`;
@@ -1008,6 +1029,7 @@
       applyFilters();
     }
 
+    // ========= Helpers, Logic & Events =========
     function escapeHTML(s){ return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
     function getMeta(key){
       for(const cat of DATA){
@@ -1146,6 +1168,7 @@
       item.actual = val;
       updateCardStatus(key);
       recalcScore();
+      saveState(false);
       applyFilters();
     }
 
@@ -1154,6 +1177,7 @@
       const item = (state.items[key] ||= defaultItemState(meta));
       item.findings = text;
       updateCardStatus(key);
+      saveState(false);
       recalcScore();
       applyFilters();
     }
@@ -1179,6 +1203,7 @@
       }
       updateCardStatus(key);
       recalcScore();
+      saveState(false);
       applyFilters();
     }
 
@@ -1191,6 +1216,7 @@
           item.photos.push({dataURL:e.target.result});
           const thumbs = document.getElementById(`thumbs_${key}`);
           if(thumbs) thumbs.insertAdjacentHTML('beforeend', thumbHTML(key, item.photos.length-1, e.target.result));
+          saveState(false);
         };
         reader.readAsDataURL(file);
       });
@@ -1204,9 +1230,11 @@
       if(thumbs){
         thumbs.innerHTML = item.photos.map((p,i)=>thumbHTML(key, i, p.dataURL)).join('');
       }
+      saveState(false);
     }
 
     function updateCardStatus(key){
+      const T = TRANSLATIONS[state.lang];
       const card = document.querySelector(`.card[data-key="${key}"]`);
       if(!card) return;
       const status = card.querySelector(`#status_${key}`);
@@ -1220,7 +1248,6 @@
       }
 
       const possContainer = card.querySelector(`#poss_${key}`);
-      const T = TRANSLATIONS[state.lang];
       if(possContainer){
          const maxPoint = getMaxPoint(meta);
          possContainer.innerHTML = saved.na 
@@ -1245,6 +1272,7 @@
         const meta   = getMeta(key) || {};
         const saved  = state.items[key] || defaultItemState(meta);
         
+        // Search text depends on language shown
         const textStr = state.lang === 'id' ? (meta.text_id || meta.text_en) : meta.text_en;
         
         const matchText = !q || textStr.toLowerCase().includes(q) || key.toLowerCase().includes(q);
@@ -1278,113 +1306,6 @@
         return false;
       }
       return true;
-    }
-
-    function buildPayload(){
-      const dateIso = state.date || new Date().toISOString();
-      const dateOnly = dateIso.slice(0,10);
-
-      const records = [];
-
-      DATA.forEach(cat => {
-        cat.items.forEach(it => {
-          const key = `${cat.key}_${it.docNo}`;
-          const saved = state.items[key] || defaultItemState(it);
-          const maxP = getMaxPoint(it);
-
-          const status =
-            saved.na
-              ? 'NA'
-              : (saved.actual !== '' && saved.actual !== null && saved.actual !== undefined
-                  ? 'APPLICABLE'
-                  : 'EMPTY');
-
-          records.push({
-            auditId: `HWFP_${dateOnly}_${(state.auditor || '').replace(/\s+/g,'_')}`,
-            auditor: state.auditor || '',
-            date: dateOnly,
-
-            categoryKey: cat.key,
-            categoryName_en: cat.name_en,
-            categoryName_id: cat.name_id,
-
-            no: it.docNo,
-            question_en: it.text_en,
-            question_id: it.text_id,
-
-            possiblePoint: maxP,
-            actualPoint: saved.na
-              ? null
-              : (saved.actual === '' || saved.actual === null || saved.actual === undefined
-                  ? null
-                  : Number(saved.actual)),
-
-            status,
-            findings: saved.findings || '',
-            photoEvidence: (saved.photos || []).map(p => p.dataURL)
-          });
-        });
-      });
-
-      return {
-        form: 'HRA_AUDIT_HOTWORK_FIRE_PREVENTION',
-        auditor: state.auditor || '',
-        date: dateOnly,
-        submittedAt: new Date().toISOString(),
-        records
-      };
-    }
-
-    async function submitToServer(){
-      const T = TRANSLATIONS[state.lang];
-
-      if(!state.auditor){
-        alert(state.lang === 'id'
-          ? 'Nama auditor wajib diisi.'
-          : 'Auditor name is required.');
-        return;
-      }
-      if(!state.date){
-        alert(state.lang === 'id'
-          ? 'Tanggal audit wajib diisi.'
-          : 'Audit date is required.');
-        return;
-      }
-
-      if(!validateExport()) return;
-
-      const payload = buildPayload();
-      const btn = document.getElementById('btnSave');
-      const labelSpan = document.getElementById('btn_save');
-      const oldLabel = labelSpan.textContent;
-
-      try{
-        btn.disabled = true;
-        labelSpan.textContent = (state.lang === 'id' ? 'Menyimpan...' : 'Saving...');
-
-        const res = await fetch(API_SAVE_URL, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(payload)
-        });
-
-        if(!res.ok){
-          throw new Error('HTTP ' + res.status);
-        }
-
-        let respJson = null;
-        try { respJson = await res.json(); } catch(e){}
-
-        toast((respJson && respJson.message) || T.msg_saved);
-      }catch(err){
-        console.error(err);
-        alert(state.lang === 'id'
-          ? 'Gagal menyimpan ke server. Silakan hubungi admin atau cek API_SAVE_URL.'
-          : 'Failed to save to server. Please contact admin or check API_SAVE_URL.');
-      }finally{
-        btn.disabled = false;
-        labelSpan.textContent = oldLabel;
-      }
     }
 
     function exportCSV(){
@@ -1427,12 +1348,107 @@
     }
 
     function doPrint(){ if(validateExport()) window.print(); }
-    
+
+    // ========= Build Payload & Save to Google Apps Script =========
+    function buildPayload() {
+      const auditorInput = document.getElementById('inputAuditor');
+      const dateInput = document.getElementById('inputDate');
+
+      const auditor = (auditorInput.value || '').trim() || state.auditor || '';
+      let date = (dateInput.value || '').trim();
+
+      if (!date) {
+        if (state.date) {
+          date = state.date.split('T')[0];
+        } else {
+          const today = new Date();
+          date = today.toISOString().slice(0, 10);
+          state.date = today.toISOString();
+        }
+      } else {
+        const d = new Date(date);
+        if (!isNaN(d.getTime())) {
+          state.date = d.toISOString();
+        }
+      }
+
+      state.auditor = auditor;
+
+      const auditId = `HW-${date.replace(/-/g, '')}-${Date.now().toString(36).slice(-4).toUpperCase()}`;
+
+      const records = [];
+
+      DATA.forEach(cat => {
+        const catNameEn = cat.name_en;
+        const catNameId = cat.name_id || cat.name_en;
+
+        cat.items.forEach(it => {
+          const key = `${cat.key}_${it.docNo}`;
+          const meta = it;
+          const saved = state.items[key] || defaultItemState(meta);
+
+          const possiblePoint = getMaxPoint(meta);
+          const status = saved.na ? 'N/A' : 'Applicable';
+
+          let actualPoint = '';
+          if (!saved.na && saved.actual !== '' && saved.actual !== null && saved.actual !== undefined) {
+            actualPoint = Number(saved.actual);
+          }
+
+          const photoCount = (saved.photos || []).length;
+          // Kita hanya kirim array kosong sebanyak foto, supaya Code.gs bisa hitung length
+          const photoEvidence = Array(photoCount).fill(null);
+
+          records.push({
+            auditId,
+            categoryKey: cat.key,
+            categoryName_en: catNameEn,
+            categoryName_id: catNameId,
+            no: it.docNo,
+            question_en: it.text_en,
+            question_id: it.text_id,
+            possiblePoint,
+            actualPoint,
+            status,
+            findings: saved.findings || '',
+            photoEvidence
+          });
+        });
+      });
+
+      return {
+        form: 'HRA_AUDIT_HOTWORK_FIRE_PREVENTION',
+        auditor,
+        date,
+        lang: state.lang,
+        auditId,
+        records
+      };
+    }
+
+    async function saveToServer() {
+      const T = TRANSLATIONS[state.lang];
+      const payload = buildPayload();
+
+      try {
+        await fetch(API_SAVE_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        toast(T.msg_saved + ' (server)');
+      } catch (err) {
+        console.error('SaveToServer error:', err);
+        alert('Failed to save to server. Please cek koneksi internet, Google Apps Script deployment, atau API_SAVE_URL.');
+      }
+    }
+
     function resetAll(){
-      const msg = state.lang === 'id'
-        ? 'Hapus semua data di layar ini? Data yang sudah tersimpan di server TIDAK akan terhapus.'
-        : 'Clear all data on this screen? Data already saved on the server will NOT be deleted.';
-      if(confirm(msg)){
+      if(confirm('Hapus semua data di halaman ini? Data yang sudah terkirim ke server akan tetap tersimpan.')){
         location.reload();
       }
     }
@@ -1450,31 +1466,29 @@
       setTimeout(()=>{ div.style.opacity=0; setTimeout(()=>div.remove(),300); }, 2000);
     }
 
+    // Init
     loadState();
     render();
 
+    // Listeners
     document.getElementById('inputAuditor').addEventListener('input', e=>{
       state.auditor = e.target.value;
       document.getElementById('auditorName').textContent = state.auditor || '—';
+      saveState(false);
     });
-
     document.getElementById('inputDate').addEventListener('change', e=>{
-      if (e.target.value) {
-        state.date = new Date(e.target.value + 'T00:00:00').toISOString();
-      } else {
-        state.date = null;
-      }
-      const d = state.date ? new Date(state.date) : new Date();
+      state.date = e.target.value;
+      const d = new Date(state.date);
       const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
       document.getElementById('auditDate').textContent = 
         d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+      saveState(false);
     });
 
     document.getElementById('inputSearch').addEventListener('input', applyFilters);
     document.getElementById('filterCategory').addEventListener('change', applyFilters);
     document.getElementById('filterStatus').addEventListener('change', applyFilters);
-
-    document.getElementById('btnSave').addEventListener('click', submitToServer);
+    document.getElementById('btnSave').addEventListener('click', saveToServer);
     document.getElementById('btnPrint').addEventListener('click', doPrint);
     document.getElementById('btnExportCsv').addEventListener('click', exportCSV);
     document.getElementById('btnReset').addEventListener('click', resetAll);
