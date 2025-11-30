@@ -2,43 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <!-- Accessibility Fix: Allow user scaling -->
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes" />
   
-  <!-- ========= SEO & Meta Data ========= -->
   <title>HRA AUDIT - Hot Work & Fire Prevention</title>
   <meta name="description" content="Digital Field Audit Form for Hot Work & Fire Prevention. Professional HSE inspection tool to ensure compliance with safety standards and fire prevention regulations (NFPA/OSHA)." />
   <meta name="keywords" content="HRA Audit, Hot Work, Fire Prevention, HSE, Safety Audit, Fire Safety, NFPA, Virsim, Iwan Kurniawan, K3, Inspection Form, Digital Audit" />
   <meta name="author" content="Virsim & Iwan Kurniawan" />
   <meta name="theme-color" content="#0284c7" />
 
-  <!--Favicon-->
   <link rel="icon" type="image/webp" href="https://hra-virsim.pages.dev/img/virsim_red.webp" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hra-virsim.pages.dev/" />
   <meta property="og:title" content="HRA AUDIT - Hot Work & Fire Prevention" />
   <meta property="og:description" content="Digital Field Audit Form for Hot Work & Fire Prevention. Ensure workplace safety with the latest HRA standards." />
   <meta property="og:image" content="https://hra-virsim.pages.dev/img/hot-work-fire-prevention.webp" />
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:title" content="HRA AUDIT - Hot Work & Fire Prevention" />
   <meta property="twitter:description" content="Digital Field Audit Form for Hot Work & Fire Prevention." />
   <meta property="twitter:image" content="https://hra-virsim.pages.dev/img/hot-work-fire-prevention.webp" />
 
   <style>
-    /* ========= Typography & Theme ========= */
     :root{
       --bg:#f3f4f8;
       --card:#ffffff;
       --ink:#0f172a;
-      --muted:#334155; /* Darkened for contrast */
+      --muted:#334155;
       --accent:#0284c7;
       --accent-soft:#e0f2fe;
-      --accent-2:#15803d; /* Darker Green for better contrast */
-      --warn:#b45309;    /* Darker Orange/Amber for better contrast */
+      --accent-2:#15803d;
+      --warn:#b45309;
       --danger:#dc2626;
       --line:#cbd5e1;
       --chip:#0ea5e91a;
@@ -55,12 +49,11 @@
     }
     h1,h2,h3{margin:0 0 .5rem}
     h1{font-size:1.8rem;letter-spacing:.2px;}
-    h2{font-size:1.25rem;color:#0f172a;font-weight:700;} /* Darker for accessibility */
+    h2{font-size:1.25rem;color:#0f172a;font-weight:700;}
     h3{font-size:1rem;color:#1e293b;font-weight:600;}
     p,small{color:var(--muted)}
     a{color:var(--accent)}
 
-    /* ========= Layout ========= */
     .wrap{max-width:1280px;margin:24px auto 32px;padding:0 16px}
     
     header.hero{
@@ -96,7 +89,7 @@
     .hero .title h1 span{
       display:inline-flex;align-items:center;gap:6px;
       font-size:.8rem;font-weight:500;padding:4px 9px;
-      border-radius:999px;background:#0b112033;border:1px solid #bae6fd3b; /* Darkened bg */
+      border-radius:999px;background:#0b112033;border:1px solid #bae6fd3b;
       vertical-align: middle;
     }
     .hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
@@ -107,13 +100,12 @@
     }
     .meta .chip label{opacity:.9;font-weight:400;font-size:0.8rem}
 
-    /* Language Switcher */
     .lang-switch {
       position: absolute;
       top: 20px;
       right: 20px;
       z-index: 10;
-      background: rgba(0,0,0,0.3); /* Darker for white text contrast */
+      background: rgba(0,0,0,0.3);
       border: 1px solid rgba(255,255,255,0.4);
       color: white;
       padding: 8px 14px;
@@ -144,7 +136,7 @@
     }
     .score-kpi{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
     .score-kpi .kpi{
-      background:#0b112066; /* Darker for white text */
+      background:#0b112066;
       border:1px solid #bae6fd40;padding:8px 12px;border-radius:10px;min-width:120px;
       font-size:.87rem; color: #fff;
     }
@@ -161,13 +153,11 @@
       padding:4px 10px;border-radius:999px;
       background:#0b112080;border:1px solid #bae6fd40;color:#e5f2ff;
     }
-    /* Colors adjusted for contrast against dark header */
     .global-pill.global-ok{ background:#16653480;border-color:#86efac;color:#dcfce7; }
     .global-pill.global-na{ background:#854d0e80;border-color:#fde047;color:#fefce8; }
     .global-pill.global-empty{ background:#33415580;border-color:#94a3b8;color:#f1f5f9; }
     .global-pill.global-issue{ background:#9a341280;border-color:#fdba74;color:#ffedd5; }
 
-    /* ========= Toolbar ========= */
     .toolbar-shell{
       position:sticky;top:0;z-index:100;
       padding-top:14px;margin-top:14px;
@@ -188,7 +178,6 @@
       padding:8px 12px;border-radius:10px;outline:none;min-height:44px;
       font-size:.9rem;appearance: none;
     }
-    /* Fixed select arrow contrast */
     select {
       background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23334155%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
       background-repeat: no-repeat;
@@ -205,13 +194,10 @@
     }
     button:active { filter: brightness(0.9); transform: translateY(1px); }
     button.ghost{background:#fff;border:1px solid #94a3b8;color:#0f172a}
-    
-    /* FIX: High Contrast Colors for Buttons */
     button.success{background:var(--accent-2); color:#fff;}
     button.warn{background:var(--warn); color:#fff;}
     button.toggle-active{ box-shadow:0 0 0 2px #fff, 0 0 0 4px #ea580c; }
 
-    /* ========= Category & Cards ========= */
     .category{
       margin-top:20px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
       background:var(--card);
@@ -223,7 +209,7 @@
       border-bottom:1px solid var(--line);
     }
     .cat-title{display:flex;align-items:center;gap:12px}
-    .cat-title h2 {font-size:1.1rem;color:var(--ink);font-weight:700;margin:0;} /* Changed to h2 */
+    .cat-title h2 {font-size:1.1rem;color:var(--ink);font-weight:700;margin:0;}
     .cat-title small{font-size:.85rem;color:#475569}
     .cat-meta-right{display:flex;align-items:center;gap:12px}
     .cat-stats{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
@@ -233,12 +219,10 @@
       display:inline-flex;align-items:center;gap:4px;
       background:#fff;color:#334155;font-weight:600;
     }
-    /* Contrast fix for stats */
     .cat-stat-ok{ background:#dcfce7;border-color:#16a34a;color:#14532d; }
     .cat-stat-na{ background:#fef9c3;border-color:#eab308;color:#713f12; }
     .cat-stat-empty{ background:#f1f5f9;border-color:#94a3b8;color:#334155; }
 
-    /* Category Colors */
     .category[data-key="HOT_WORK"] .cat-head{border-left:6px solid #dc2626;}
     .category[data-key="FIRE_PREVENTION"] .cat-head{border-left:6px solid #ea580c;}
     .category[data-key="TRAINING_DRILL"] .cat-head{border-left:6px solid #0284c7;}
@@ -261,7 +245,6 @@
       display:inline-flex;align-items:center;gap:6px;white-space: nowrap;
     }
     .badge::before{content:"●";font-size:.6rem;}
-    /* Contrast Fixes */
     .possible{color:#064e3b;background:#d1fae5;border-color:#34d399}
     .na{color:#78350f;background:#fef3c7;border-color:#fcd34d}
 
@@ -293,7 +276,6 @@
       padding:14px 14px 0;display:flex;justify-content:space-between;align-items:flex-start;
     }
     .card .body{padding:10px 14px 14px}
-    /* Semantic HTML Fix */
     .q-text{
       font-size:.95rem; line-height: 1.5; font-weight: 600; color: var(--ink); margin-bottom: 12px;
     }
@@ -352,18 +334,17 @@
       font-size:.75rem;display:inline-flex;align-items:center;gap:6px;font-weight:600;
     }
     
-    /* FIX: Improved Footer Accessibility */
     footer.app-footer {
       text-align: center;
       margin-top: 40px;
       padding: 24px;
-      color: #334155; /* Darker Slate for Better Contrast */
+      color: #334155;
       font-size: 0.85rem;
       border-top: 1px solid #e2e8f0;
       background: #f8fafc;
     }
     footer.app-footer a {
-      color: #0369a1; /* Darker Blue Link */
+      color: #0369a1;
       text-decoration: none;
       font-weight: 700;
       transition: color 0.2s;
@@ -372,12 +353,8 @@
       color: #0c4a6e;
       text-decoration: underline;
     }
-    footer.app-footer p {
-      margin: 4px 0;
-      /* Removed opacity: 0.8 to ensure full contrast */
-    }
+    footer.app-footer p { margin: 4px 0; }
 
-    /* ========= MOBILE RESPONSIVE ========= */
     @media (max-width: 900px) {
       header.hero {
         grid-template-columns: 1fr; 
@@ -426,14 +403,13 @@
       .wrap { padding: 0 12px; margin-top: 16px; }
       h1 { font-size: 1.3rem; }
       h2 { font-size: 1.1rem; }
-      .form-row { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns:1fr; }
       .hero .meta { flex-direction: column; align-items: center; }
       .meta .chip { width: 100%; justify-content: center;}
       .thumbs .thumb { width: 60px; height: 60px; }
-      button, .input, select { min-height: 48px; } /* Larger touch target for smallest screens */
+      button, .input, select { min-height: 48px; }
     }
 
-    /* ========= Print styling ========= */
     @media print{
       body{background:#fff; font-size: 12px;}
       .wrap{max-width:none; margin:0; padding:0;}
@@ -465,9 +441,7 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- Main Landmark for Accessibility -->
     <main>
-      <!-- ======= HERO ======= -->
       <header class="hero">
         <button class="lang-switch" onclick="toggleLang()" aria-label="Switch Language">🇮🇩 ID / 🇬🇧 EN</button>
         <div class="title">
@@ -476,7 +450,7 @@
           <div class="meta">
             <div class="chip">
               <label id="lbl_auditor">Auditor:</label>
-              <strong id="auditorName">Dedi Setiawan</strong>
+              <strong id="auditorName">—</strong>
             </div>
             <div class="chip">
               <label id="lbl_date">Date:</label>
@@ -512,7 +486,6 @@
         </div>
       </header>
 
-      <!-- ======= TOOLBAR ======= -->
       <div class="toolbar-shell">
         <div class="toolbar">
           <div class="toolbar-group" style="flex:1;">
@@ -538,7 +511,6 @@
         </div>
       </div>
 
-      <!-- ======= CONTAINER KATEGORI ======= -->
       <div id="categories"></div>
     </main>
 
@@ -549,6 +521,9 @@
   </div>
 
   <script>
+    // ========= API URL (Google Apps Script Web App) =========
+    const API_SAVE_URL = 'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
+
     // ========= Translation Dictionary =========
     const TRANSLATIONS = {
       id: {
@@ -646,39 +621,17 @@
       {
         key:'HOT_WORK', name_en:'HOT WORK', name_id:'HOT WORK',
         items:[
-          {docNo:1, 
-           text_en:'Extinguishers are available in potential fire hazard areas such as warehouses, generators, hot work area, etc.', 
-           text_id:'APAR tersedia di area potensi bahaya kebakaran seperti gudang, generator, area kerja panas, dll.', possible:2},
-          {docNo:2, 
-           text_en:'Hot work permit available', 
-           text_id:'Ijin kerja panas tersedia', possible:2},
-          {docNo:3, 
-           text_en:'Extinguishers, fire blankets, are available for every welding and cutting torch.', 
-           text_id:'APAR, selimut api tersedia untuk setiap pengelasan dan pemotongan.', possible:2},
-          {docNo:4, 
-           text_en:'Extinguishers are checked regularly', 
-           text_id:'APAR diperiksa secara berkala', possible:2},
-          {docNo:5, 
-           text_en:'Flashback arresters are installed on gas delivery hoses.', 
-           text_id:'Flashback arrester terpasang pada selang pengiriman gas.', possible:2},
-          {docNo:6, 
-           text_en:'Fire hazard warning signs installed in potential fire locations', 
-           text_id:'Tanda peringatan bahaya kebakaran dipasang di lokasi potensi kebakaran', possible:2},
-          {docNo:7, 
-           text_en:'Extinguishers are easily accessible and access to equipment is available', 
-           text_id:'APAR mudah diakses dan akses ke peralatan tersedia', possible:2},
-          {docNo:8, 
-           text_en:'Extinguishers are in good condition (seals & locking needles in place, hoses not cracked, pressure in green mark, not expired)', 
-           text_id:'APAR dalam kondisi baik (segel & jarum pengunci ada, selang tidak retak, tekanan di tanda hijau, tidak kadaluarsa)', possible:2},
-          {docNo:9, 
-           text_en:'Extinguisher signs installed and in good condition', 
-           text_id:'Tanda APAR terpasang dan dalam kondisi baik', possible:2},
-          {docNo:10, 
-           text_en:'PPE for hot work is in good condition and worn properly', 
-           text_id:'APD untuk kerja panas dalam kondisi baik dan dipakai dengan benar', possible:2},
-          {docNo:11, 
-           text_en:'Hot work equipment and tools are proper and in good condition for use', 
-           text_id:'Peralatan dan alat kerja panas layak dan dalam kondisi baik untuk digunakan', possible:2},
+          {docNo:1, text_en:'Extinguishers are available in potential fire hazard areas such as warehouses, generators, hot work area, etc.', text_id:'APAR tersedia di area potensi bahaya kebakaran seperti gudang, generator, area kerja panas, dll.', possible:2},
+          {docNo:2, text_en:'Hot work permit available', text_id:'Ijin kerja panas tersedia', possible:2},
+          {docNo:3, text_en:'Extinguishers, fire blankets, are available for every welding and cutting torch.', text_id:'APAR, selimut api tersedia untuk setiap pengelasan dan pemotongan.', possible:2},
+          {docNo:4, text_en:'Extinguishers are checked regularly', text_id:'APAR diperiksa secara berkala', possible:2},
+          {docNo:5, text_en:'Flashback arresters are installed on gas delivery hoses.', text_id:'Flashback arrester terpasang pada selang pengiriman gas.', possible:2},
+          {docNo:6, text_en:'Fire hazard warning signs installed in potential fire locations', text_id:'Tanda peringatan bahaya kebakaran dipasang di lokasi potensi kebakaran', possible:2},
+          {docNo:7, text_en:'Extinguishers are easily accessible and access to equipment is available', text_id:'APAR mudah diakses dan akses ke peralatan tersedia', possible:2},
+          {docNo:8, text_en:'Extinguishers are in good condition (seals & locking needles in place, hoses not cracked, pressure in green mark, not expired)', text_id:'APAR dalam kondisi baik (segel & jarum pengunci ada, selang tidak retak, tekanan di tanda hijau, tidak kadaluarsa)', possible:2},
+          {docNo:9, text_en:'Extinguisher signs installed and in good condition', text_id:'Tanda APAR terpasang dan dalam kondisi baik', possible:2},
+          {docNo:10, text_en:'PPE for hot work is in good condition and worn properly', text_id:'APD untuk kerja panas dalam kondisi baik dan dipakai dengan benar', possible:2},
+          {docNo:11, text_en:'Hot work equipment and tools are proper and in good condition for use', text_id:'Peralatan dan alat kerja panas layak dan dalam kondisi baik untuk digunakan', possible:2},
         ]
       },
       {
@@ -815,55 +768,49 @@
       }
     ];
 
-    // ========= State & Persistence (no localStorage) =========
-    const API_SAVE_URL = 'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
-
-    const state = { 
-      auditor:'Dedi Setiawan', 
-      date:null, 
-      lang: 'en', // Default language
-      items:{} 
+    // ========= State (tanpa localStorage) =========
+    const state = {
+      auditor: '',
+      date: null,
+      lang: 'id',
+      items: {}
     };
     let highlightIssues = false;
+    let currentAuditId = "";
 
-    const defaultItemState = (meta) => ({
-      actual:'',
-      findings:'',
-      na: false, 
-      photos:[]
+    const defaultItemState = meta => ({
+      actual: '',
+      findings: '',
+      na: false,
+      photos: []
     });
 
-    function loadState(){
-      if (!state.date) {
-        state.date = new Date().toISOString();
-      }
-      document.getElementById('inputAuditor').value = state.auditor || '';
-      document.getElementById('auditorName').textContent = state.auditor || '—';
-      document.getElementById('inputDate').value = state.date.split('T')[0];
-    }
-
-    function saveState(showToast = true){
-      // tidak menyimpan apa pun secara lokal; opsional tampilkan toast
-      if(showToast) toast(TRANSLATIONS[state.lang].msg_saved);
-    }
-
-    // Helper Translation Function
     function t(key){ return TRANSLATIONS[state.lang][key] || key; }
+
+    // ========= Init basic state =========
+    function initState() {
+      const today = new Date().toISOString().slice(0,10);
+      state.date = today;
+
+      const inputAuditor = document.getElementById('inputAuditor');
+      const inputDate = document.getElementById('inputDate');
+      const auditorName = document.getElementById('auditorName');
+
+      if (inputAuditor) inputAuditor.value = state.auditor;
+      if (auditorName) auditorName.textContent = state.auditor || '—';
+      if (inputDate) inputDate.value = today;
+    }
 
     function toggleLang(){
       state.lang = state.lang === 'id' ? 'en' : 'id';
-      saveState(false);
-      render(); // Re-render everything
+      render();
     }
 
     // ========= Rendering =========
     function render(){
       const T = TRANSLATIONS[state.lang];
-      
-      // Dynamic Title Update
-      document.title = T.title;
 
-      // Update UI Labels
+      document.title = T.title;
       document.getElementById('appTitle').textContent = T.title;
       document.getElementById('lbl_auditor').textContent = T.lbl_auditor;
       document.getElementById('lbl_date').textContent = T.lbl_date;
@@ -873,7 +820,6 @@
       document.getElementById('kpi_possible').textContent = T.kpi_possible;
       document.getElementById('kpi_actual').textContent = T.kpi_actual;
       document.getElementById('kpi_score').textContent = T.kpi_score;
-      
       document.getElementById('lbl_filter').textContent = T.lbl_filter;
       document.getElementById('inputSearch').placeholder = T.input_search;
       document.getElementById('lbl_identity').textContent = T.lbl_identity;
@@ -881,7 +827,6 @@
       document.getElementById('btn_save').textContent = T.btn_save;
       document.getElementById('btn_issues').textContent = T.btn_issues;
 
-      // Dropdown Options
       const fc = document.getElementById('filterCategory');
       fc.innerHTML = `<option value="">${T.all_cat}</option>` +
         DATA.map(c=>`<option value="${c.key}">${state.lang === 'id' ? c.name_id : c.name_en}</option>`).join('');
@@ -895,12 +840,11 @@
       `;
 
       if(!state.date){
-        state.date = new Date().toISOString();
+        state.date = new Date().toISOString().slice(0,10);
       }
       const d = new Date(state.date);
-      // Format date locale
       const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
-      document.getElementById('auditDate').textContent = 
+      document.getElementById('auditDate').textContent =
         d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
       const wrap = document.getElementById('categories');
@@ -945,10 +889,8 @@
           card.dataset.key = key;
           card.dataset.category = cat.key;
 
-          // Localized Item Text
           const itemText = state.lang === 'id' ? (it.text_id || it.text_en) : it.text_en;
 
-          // Badge Logic
           let possBadge = saved.na 
             ? `<span class="badge na">${T.badge_poss_na}</span>`
             : `<span class="badge possible">${T.kpi_possible}: ${maxPoint}</span>`;
@@ -1004,9 +946,7 @@
                       onchange="onPhotosSelected('${key}', this.files)" />
                   </div>
                 </div>
-                <div class="thumbs" id="thumbs_${key}">
-                  ${saved.photos.map((p,idx)=>thumbHTML(key, idx, p.dataURL)).join('')}
-                </div>
+                <div class="thumbs" id="thumbs_${key}">${saved.photos.map((p,idx)=>thumbHTML(key, idx, p.dataURL)).join('')}</div>
               </div>
             </div>
             <div class="foot">
@@ -1029,15 +969,7 @@
       applyFilters();
     }
 
-    // ========= Helpers, Logic & Events =========
-    function escapeHTML(s){ return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-    function getMeta(key){
-      for(const cat of DATA){
-        const found = cat.items.find(i => `${cat.key}_${i.docNo}` === key);
-        if(found) return found;
-      }
-      return null;
-    }
+    // ========= Helpers =========
     function thumbHTML(key, idx, url){
       const altText = `Foto bukti ${idx + 1}`;
       return `
@@ -1047,8 +979,15 @@
         </div>
       `;
     }
+    function getMeta(key){
+      for(const cat of DATA){
+        const found = cat.items.find(i => `${cat.key}_${i.docNo}` === key);
+        if(found) return found;
+      }
+      return null;
+    }
     function getMaxPoint(meta){ return (meta.possible === null) ? 2 : meta.possible; }
-    
+
     function statusClass(saved, meta){
       if(!meta) return 'status-mid';
       if(saved.na) return 'status-mid';
@@ -1157,6 +1096,7 @@
       }
     }
 
+    // ========= Event handlers =========
     function onActualChange(key, val){
       const T = TRANSLATIONS[state.lang];
       const v = Number(val||0);
@@ -1168,7 +1108,6 @@
       item.actual = val;
       updateCardStatus(key);
       recalcScore();
-      saveState(false);
       applyFilters();
     }
 
@@ -1177,7 +1116,6 @@
       const item = (state.items[key] ||= defaultItemState(meta));
       item.findings = text;
       updateCardStatus(key);
-      saveState(false);
       recalcScore();
       applyFilters();
     }
@@ -1203,7 +1141,6 @@
       }
       updateCardStatus(key);
       recalcScore();
-      saveState(false);
       applyFilters();
     }
 
@@ -1216,7 +1153,6 @@
           item.photos.push({dataURL:e.target.result});
           const thumbs = document.getElementById(`thumbs_${key}`);
           if(thumbs) thumbs.insertAdjacentHTML('beforeend', thumbHTML(key, item.photos.length-1, e.target.result));
-          saveState(false);
         };
         reader.readAsDataURL(file);
       });
@@ -1230,7 +1166,6 @@
       if(thumbs){
         thumbs.innerHTML = item.photos.map((p,i)=>thumbHTML(key, i, p.dataURL)).join('');
       }
-      saveState(false);
     }
 
     function updateCardStatus(key){
@@ -1272,7 +1207,6 @@
         const meta   = getMeta(key) || {};
         const saved  = state.items[key] || defaultItemState(meta);
         
-        // Search text depends on language shown
         const textStr = state.lang === 'id' ? (meta.text_id || meta.text_en) : meta.text_en;
         
         const matchText = !q || textStr.toLowerCase().includes(q) || key.toLowerCase().includes(q);
@@ -1333,9 +1267,9 @@
             catName, it.docNo, itemText.replace(/\n/g,' '),
             s.na ? 'NA' : maxP,
             s.actual ?? '',
-            s.na ? 'N/A' : `${s.actual}/${maxP}`,
+            s.na ? 'N/A' : `${s.actual||''}/${maxP}`,
             (s.findings||'').replace(/\n/g,' '),
-            s.photos?.length || 0
+            (s.photos?.length || 0)
           ]);
         });
       });
@@ -1349,106 +1283,8 @@
 
     function doPrint(){ if(validateExport()) window.print(); }
 
-    // ========= Build Payload & Save to Google Apps Script =========
-    function buildPayload() {
-      const auditorInput = document.getElementById('inputAuditor');
-      const dateInput = document.getElementById('inputDate');
-
-      const auditor = (auditorInput.value || '').trim() || state.auditor || '';
-      let date = (dateInput.value || '').trim();
-
-      if (!date) {
-        if (state.date) {
-          date = state.date.split('T')[0];
-        } else {
-          const today = new Date();
-          date = today.toISOString().slice(0, 10);
-          state.date = today.toISOString();
-        }
-      } else {
-        const d = new Date(date);
-        if (!isNaN(d.getTime())) {
-          state.date = d.toISOString();
-        }
-      }
-
-      state.auditor = auditor;
-
-      const auditId = `HW-${date.replace(/-/g, '')}-${Date.now().toString(36).slice(-4).toUpperCase()}`;
-
-      const records = [];
-
-      DATA.forEach(cat => {
-        const catNameEn = cat.name_en;
-        const catNameId = cat.name_id || cat.name_en;
-
-        cat.items.forEach(it => {
-          const key = `${cat.key}_${it.docNo}`;
-          const meta = it;
-          const saved = state.items[key] || defaultItemState(meta);
-
-          const possiblePoint = getMaxPoint(meta);
-          const status = saved.na ? 'N/A' : 'Applicable';
-
-          let actualPoint = '';
-          if (!saved.na && saved.actual !== '' && saved.actual !== null && saved.actual !== undefined) {
-            actualPoint = Number(saved.actual);
-          }
-
-          const photoCount = (saved.photos || []).length;
-          // Kita hanya kirim array kosong sebanyak foto, supaya Code.gs bisa hitung length
-          const photoEvidence = Array(photoCount).fill(null);
-
-          records.push({
-            auditId,
-            categoryKey: cat.key,
-            categoryName_en: catNameEn,
-            categoryName_id: catNameId,
-            no: it.docNo,
-            question_en: it.text_en,
-            question_id: it.text_id,
-            possiblePoint,
-            actualPoint,
-            status,
-            findings: saved.findings || '',
-            photoEvidence
-          });
-        });
-      });
-
-      return {
-        form: 'HRA_AUDIT_HOTWORK_FIRE_PREVENTION',
-        auditor,
-        date,
-        lang: state.lang,
-        auditId,
-        records
-      };
-    }
-
-    async function saveToServer() {
-      const T = TRANSLATIONS[state.lang];
-      const payload = buildPayload();
-
-      try {
-        await fetch(API_SAVE_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8'
-          },
-          body: JSON.stringify(payload)
-        });
-
-        toast(T.msg_saved + ' (server)');
-      } catch (err) {
-        console.error('SaveToServer error:', err);
-        alert('Failed to save to server. Please cek koneksi internet, Google Apps Script deployment, atau API_SAVE_URL.');
-      }
-    }
-
     function resetAll(){
-      if(confirm('Hapus semua data di halaman ini? Data yang sudah terkirim ke server akan tetap tersimpan.')){
+      if(confirm('Hapus semua isi form di layar? Data yang sudah tersimpan di server tidak ikut terhapus.')){
         location.reload();
       }
     }
@@ -1466,23 +1302,119 @@
       setTimeout(()=>{ div.style.opacity=0; setTimeout(()=>div.remove(),300); }, 2000);
     }
 
-    // Init
-    loadState();
+    // ========= Build payload & send to Google Sheets =========
+    function generateAuditId(){
+      const now = new Date();
+      const y = now.getFullYear();
+      const m = String(now.getMonth()+1).padStart(2,'0');
+      const d = String(now.getDate()).padStart(2,'0');
+      const rand = Math.random().toString(36).slice(2,6).toUpperCase();
+      return `HW-${y}${m}${d}-${rand}`;
+    }
+
+    function buildPayload(){
+      if (!currentAuditId) currentAuditId = generateAuditId();
+
+      const records = [];
+      DATA.forEach(cat=>{
+        const catName_en = cat.name_en;
+        const catName_id = cat.name_id || cat.name_en;
+        cat.items.forEach(it=>{
+          const key = `${cat.key}_${it.docNo}`;
+          const meta = it;
+          const saved = state.items[key] || defaultItemState(meta);
+          const possiblePoint = getMaxPoint(meta);
+          const isNA = saved.na === true;
+          const hasActual = saved.actual !== '' && saved.actual !== null && saved.actual !== undefined;
+          const actualVal = isNA ? null : (hasActual ? Number(saved.actual) : null);
+          const status = isNA ? 'N/A' : 'Applicable';
+
+          // kirim hanya jumlah foto (array dummy) supaya ringan
+          const photoCount = saved.photos ? saved.photos.length : 0;
+          const photoEvidence = new Array(photoCount).fill(null);
+
+          records.push({
+            auditId: currentAuditId,
+            categoryKey: cat.key,
+            categoryName_en: catName_en,
+            categoryName_id: catName_id,
+            no: it.docNo,
+            question_en: it.text_en,
+            question_id: it.text_id,
+            possiblePoint: possiblePoint,
+            actualPoint: actualVal,
+            status: status,
+            findings: saved.findings || '',
+            photoEvidence: photoEvidence
+          });
+        });
+      });
+
+      return {
+        form: 'HRA_AUDIT_HOTWORK_FIRE_PREVENTION',
+        auditor: state.auditor || '',
+        date: state.date || new Date().toISOString().slice(0,10),
+        records: records
+      };
+    }
+
+    async function saveToServer(){
+      const payload = buildPayload();
+
+      if (!payload.auditor) {
+        alert(state.lang === 'id' ? 'Nama auditor belum diisi.' : 'Auditor name is required.');
+        return;
+      }
+      if (!payload.date) {
+        alert(state.lang === 'id' ? 'Tanggal audit belum diisi.' : 'Audit date is required.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSave');
+      if (btn) { btn.disabled = true; btn.style.opacity = '0.7'; }
+
+      try{
+        const res = await fetch(API_SAVE_URL, {
+          method: 'POST',
+          headers: { 'Content-Type':'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+
+        let ok = false;
+        let msg = '';
+        try {
+          const data = await res.json();
+          ok = !!(data && data.ok !== false);
+          msg = data && (data.message || data.error) || '';
+        } catch(e) {
+          ok = res.ok || res.status === 0;
+        }
+
+        if(!ok) throw new Error(msg || 'Server error');
+
+        toast(state.lang === 'id' ? 'Data audit tersimpan di server.' : 'Audit data saved to server.');
+      }catch(err){
+        console.error(err);
+        alert('Failed to save to server. Please contact admin or check API_SAVE_URL.\n\n' + err.message);
+      }finally{
+        if (btn) { btn.disabled = false; btn.style.opacity = ''; }
+      }
+    }
+
+    // ========= Init =========
+    initState();
     render();
 
-    // Listeners
     document.getElementById('inputAuditor').addEventListener('input', e=>{
       state.auditor = e.target.value;
       document.getElementById('auditorName').textContent = state.auditor || '—';
-      saveState(false);
     });
     document.getElementById('inputDate').addEventListener('change', e=>{
       state.date = e.target.value;
       const d = new Date(state.date);
       const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
-      document.getElementById('auditDate').textContent = 
+      document.getElementById('auditDate').textContent =
         d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-      saveState(false);
     });
 
     document.getElementById('inputSearch').addEventListener('input', applyFilters);
