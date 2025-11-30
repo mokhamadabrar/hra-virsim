@@ -539,7 +539,7 @@
   </div>
 
   <script>
-    // ========= API CONFIG (GANTI DENGAN URL WEB APP GAS-MU) =========
+    // ========= API CONFIG (SUDAH DIISI DENGAN WEB APP KAMU) =========
     const API_SAVE_URL = 'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
 
     // ========= Translation Dictionary =========
@@ -810,7 +810,7 @@
 
     // ========= State (IN-MEMORY ONLY, NO localStorage) =========
     const state = { 
-      auditor: 'Dedi Setiawan', // boleh diubah ke '' jika mau kosong default
+      auditor: 'Dedi Setiawan',
       date: null,
       lang: 'en',
       items: {}
@@ -833,7 +833,6 @@
       document.getElementById('inputDate').value = state.date.split('T')[0];
     }
 
-    // Helper Translation Function
     function t(key){ return TRANSLATIONS[state.lang][key] || key; }
 
     function toggleLang(){
@@ -845,10 +844,8 @@
     function render(){
       const T = TRANSLATIONS[state.lang];
       
-      // Dynamic Title Update
       document.title = T.title;
 
-      // Update UI Labels
       document.getElementById('appTitle').textContent = T.title;
       document.getElementById('lbl_auditor').textContent = T.lbl_auditor;
       document.getElementById('lbl_date').textContent = T.lbl_date;
@@ -866,7 +863,6 @@
       document.getElementById('btn_save').textContent = T.btn_save;
       document.getElementById('btn_issues').textContent = T.btn_issues;
 
-      // Dropdown Options
       const fc = document.getElementById('filterCategory');
       fc.innerHTML = `<option value="">${T.all_cat}</option>` +
         DATA.map(c=>`<option value="${c.key}">${state.lang === 'id' ? c.name_id : c.name_en}</option>`).join('');
@@ -1012,7 +1008,6 @@
       applyFilters();
     }
 
-    // ========= Helpers, Logic & Events =========
     function escapeHTML(s){ return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
     function getMeta(key){
       for(const cat of DATA){
@@ -1285,7 +1280,6 @@
       return true;
     }
 
-    // ========= Build Payload untuk dikirim ke Database =========
     function buildPayload(){
       const dateIso = state.date || new Date().toISOString();
       const dateOnly = dateIso.slice(0,10);
@@ -1327,8 +1321,6 @@
 
             status,
             findings: saved.findings || '',
-
-            // Photo Evidence dikirim sebagai dataURL (base64)
             photoEvidence: (saved.photos || []).map(p => p.dataURL)
           });
         });
@@ -1343,7 +1335,6 @@
       };
     }
 
-    // ========= Kirim ke Server (SAVE) =========
     async function submitToServer(){
       const T = TRANSLATIONS[state.lang];
 
@@ -1459,11 +1450,9 @@
       setTimeout(()=>{ div.style.opacity=0; setTimeout(()=>div.remove(),300); }, 2000);
     }
 
-    // Init
     loadState();
     render();
 
-    // Listeners
     document.getElementById('inputAuditor').addEventListener('input', e=>{
       state.auditor = e.target.value;
       document.getElementById('auditorName').textContent = state.auditor || '—';
