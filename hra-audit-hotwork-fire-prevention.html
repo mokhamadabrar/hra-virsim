@@ -521,8 +521,9 @@
   </div>
 
 <script>
-  // ========= URL API GOOGLE APPS SCRIPT =========
-  const API_SAVE_URL = 'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
+  // ========= URL API GOOGLE APPS SCRIPT (WEB APP) =========
+  const API_SAVE_URL =
+    'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
 
   // ========= Translation Dictionary =========
   const TRANSLATIONS = {
@@ -616,16 +617,184 @@
     }
   };
 
-  // ========= Data Master (Dual Language) =========
-  const DATA = [/* === PAKAI PERSIS ARRAY DATA YANG SUDAH ADA (HOT_WORK s/d FIRE_PROTECTION) === */ 
-    // ---- COPY PERSIS BLOK DATA DARI KODE LAMA DI SINI ----
-    // (untuk menghemat ruang jawaban, tidak saya ulang; kamu bisa langsung copy blok DATA yang sudah kamu gunakan)
+  // ========= DATA MASTER (PERSIS DARI VERSI SEBELUMNYA) =========
+  const DATA = [
+    {
+      key:'HOT_WORK', name_en:'HOT WORK', name_id:'HOT WORK',
+      items:[
+        {docNo:1,
+         text_en:'Extinguishers are available in potential fire hazard areas such as warehouses, generators, hot work area, etc.',
+         text_id:'APAR tersedia di area potensi bahaya kebakaran seperti gudang, generator, area kerja panas, dll.', possible:2},
+        {docNo:2,
+         text_en:'Hot work permit available',
+         text_id:'Ijin kerja panas tersedia', possible:2},
+        {docNo:3,
+         text_en:'Extinguishers, fire blankets, are available for every welding and cutting torch.',
+         text_id:'APAR, selimut api tersedia untuk setiap pengelasan dan pemotongan.', possible:2},
+        {docNo:4,
+         text_en:'Extinguishers are checked regularly',
+         text_id:'APAR diperiksa secara berkala', possible:2},
+        {docNo:5,
+         text_en:'Flashback arresters are installed on gas delivery hoses.',
+         text_id:'Flashback arrester terpasang pada selang pengiriman gas.', possible:2},
+        {docNo:6,
+         text_en:'Fire hazard warning signs installed in potential fire locations',
+         text_id:'Tanda peringatan bahaya kebakaran dipasang di lokasi potensi kebakaran', possible:2},
+        {docNo:7,
+         text_en:'Extinguishers are easily accessible and access to equipment is available',
+         text_id:'APAR mudah diakses dan akses ke peralatan tersedia', possible:2},
+        {docNo:8,
+         text_en:'Extinguishers are in good condition (seals & locking needles in place, hoses not cracked, pressure in green mark, not expired)',
+         text_id:'APAR dalam kondisi baik (segel & jarum pengunci ada, selang tidak retak, tekanan di tanda hijau, tidak kadaluarsa)', possible:2},
+        {docNo:9,
+         text_en:'Extinguisher signs installed and in good condition',
+         text_id:'Tanda APAR terpasang dan dalam kondisi baik', possible:2},
+        {docNo:10,
+         text_en:'PPE for hot work is in good condition and worn properly',
+         text_id:'APD untuk kerja panas dalam kondisi baik dan dipakai dengan benar', possible:2},
+        {docNo:11,
+         text_en:'Hot work equipment and tools are proper and in good condition for use',
+         text_id:'Peralatan dan alat kerja panas layak dan dalam kondisi baik untuk digunakan', possible:2},
+      ]
+    },
+    {
+      key:'FIRE_PREVENTION', name_en:'FIRE PREVENTION', name_id:'PENCEGAHAN KEBAKARAN',
+      items:[
+        {docNo:12, text_en:'The owner has designated a person to be a fire prevention program superintendent?', text_id:'Pemilik telah menunjuk seseorang sebagai penanggung jawab program pencegahan kebakaran?', possible:2},
+        {docNo:13, text_en:'Superintendent has authority to enforce Model Code and NFPA standards as necessary?', text_id:'Penanggung jawab memiliki wewenang untuk menegakkan standar Model Code dan NFPA?', possible:2},
+        {docNo:14, text_en:'Where guard service is provided, superintendent is responsible for the guard service?', text_id:'Jika ada layanan penjagaan, penanggung jawab bertanggung jawab atas layanan tersebut?', possible:2},
+        {docNo:15, text_en:'Out of hours and night work control', text_id:'Kontrol kerja di luar jam kerja dan malam hari', possible:2},
+        {docNo:16, text_en:'Documentation and review', text_id:'Dokumentasi dan peninjauan', possible:2},
+        {docNo:17, text_en:'Superintendent shall develop & maintain an approved pre-fire plan with AHJ?', text_id:'Penanggung jawab harus mengembangkan & memelihara rencana pra-kebakaran yang disetujui dengan AHJ?', possible:2},
+        {docNo:18, text_en:'AHJ / fire code official to be notified of any changes affecting those plans?', text_id:'Pejabat AHJ / kode kebakaran diberitahu tentang perubahan yang mempengaruhi rencana tersebut?', possible:2},
+      ]
+    },
+    {
+      key:'TRAINING_DRILL', name_en:'TRAINING & DRILL', name_id:'PELATIHAN & LATIHAN',
+      items:[
+        {docNo:19, text_en:'Training of qualified & competent personnel is the responsibility of superintendent?', text_id:'Pelatihan personel yang berkualifikasi & kompeten adalah tanggung jawab penanggung jawab?', possible:2},
+        {docNo:20, text_en:'Method exists to identify individuals who completed this training?', text_id:'Ada metode untuk mengidentifikasi individu yang telah menyelesaikan pelatihan ini?', possible:2},
+        {docNo:21, text_en:'Conducted fire emergency drill by internal or external?', text_id:'Melakukan latihan darurat kebakaran oleh internal atau eksternal?', possible:2},
+      ]
+    },
+    {
+      key:'WATER_SUPPLY', name_en:'WATER SUPPLY', name_id:'PASOKAN AIR',
+      items:[
+        {docNo:22, text_en:'Approved water supply for fire protection available as soon as combustibles arrive on site?', text_id:'Pasokan air yang disetujui untuk proteksi kebakaran tersedia segera setelah bahan mudah terbakar tiba di lokasi?', possible:2},
+        {docNo:23, text_en:'Care to prevent blocking or obscuration of building water supply?', text_id:'Perhatian untuk mencegah penyumbatan atau pengaburan pasokan air bangunan?', possible:2},
+        {docNo:24, text_en:'Hydrants in service prior to combustibles accumulating on site?', text_id:'Hidran beroperasi sebelum bahan mudah terbakar menumpuk di lokasi?', possible:2},
+        {docNo:25, text_en:'Hydrants flagged with vertical 2x4 painted red for visibility?', text_id:'Hidran ditandai dengan tiang vertikal dicat merah untuk visibilitas?', possible:2},
+        {docNo:26, text_en:'Any impairment to water supply / automatic sprinklers addressed immediately?', text_id:'Setiap gangguan pada pasokan air / sprinkler otomatis segera ditangani?', possible:2},
+        {docNo:27, text_en:'Where hydrants are subject to vehicle impact, guard posts or protection provided?', text_id:'Jika hidran rentan tertabrak kendaraan, disediakan tiang pelindung?', possible:2},
+      ]
+    },
+    {
+      key:'SITE_ACCESS', name_en:'SITE ACCESS', name_id:'AKSES LOKASI',
+      items:[
+        {docNo:28, text_en:'Address numbers / lot numbers plainly visible at fire apparatus access point?', text_id:'Nomor alamat / nomor lot terlihat jelas di titik akses pemadam kebakaran?', possible:2},
+        {docNo:29, text_en:'Access roads sufficient width and clearance for fire department use?', text_id:'Jalan akses memiliki lebar dan ruang yang cukup untuk penggunaan pemadam kebakaran?', possible:2},
+        {docNo:30, text_en:'Vehicle access via roads capable of supporting fire apparatus loading?', text_id:'Akses kendaraan melalui jalan mampu menahan beban alat pemadam kebakaran?', possible:2},
+        {docNo:31, text_en:'Roadway subbase + 6" base compacted ≥95%; grades of 15%?', text_id:'Subbase jalan + 6" base dipadatkan ≥95%; kemiringan 15%?', possible:2},
+        {docNo:32, text_en:'Grades that exceed 15% shall be paved?', text_id:'Kemiringan yang melebihi 15% harus diaspal?', possible:2},
+        {docNo:33, text_en:'Minimum 14 ft clearance to allow aerial apparatus maneuver?', text_id:'Ruang minimum 14 kaki untuk manuver alat udara?', possible:2},
+        {docNo:34, text_en:'Dead-end fire access roads >150 ft provided with approved turnarounds?', text_id:'Jalan akses buntu >150 kaki dilengkapi dengan area putar balik yang disetujui?', possible:2},
+        {docNo:35, text_en:'Approved vehicle access within 100 ft of building access?', text_id:'Akses kendaraan yang disetujui dalam jarak 100 kaki dari akses bangunan?', possible:2},
+        {docNo:36, text_en:'Security fences/gates not placed across fire access roads without fire dept approval?', text_id:'Pagar keamanan/gerbang tidak ditempatkan melintasi jalan akses kebakaran tanpa persetujuan pemadam kebakaran?', possible:2},
+      ]
+    },
+    {
+      key:'EMERGENCY_REPORTING', name_en:'EMERGENCY REPORTING', name_id:'PELAPORAN DARURAT',
+      items:[
+        {docNo:37, text_en:'Readily accessible emergency telephone provided at construction site; address & fire dept numbers posted?', text_id:'Telepon darurat yang mudah diakses disediakan di lokasi konstruksi; alamat & nomor pemadam kebakaran dipasang?', possible:2},
+      ]
+    },
+    {
+      key:'TEMP_HEATING', name_en:'TEMPORARY HEATING EQUIPMENT', name_id:'PERALATAN PEMANAS SEMENTARA',
+      items:[
+        {docNo:38, text_en:'All devices listed/labeled per IMC or IFGC?', text_id:'Semua perangkat terdaftar/dilabeli sesuai IMC atau IFGC?', possible:2},
+        {docNo:39, text_en:'Install/maintain/use temporary heating devices per listing terms?', text_id:'Pasang/pelihara/gunakan perangkat pemanas sementara sesuai ketentuan?', possible:2},
+        {docNo:40, text_en:'Fuel supplies for LP gas fired heaters comply with IFGC Chapter 38?', text_id:'Pasokan bahan bakar untuk pemanas gas LP mematuhi IFGC Bab 38?', possible:2},
+        {docNo:41, text_en:'Use of temporary heating devices supervised/maintained by competent personnel only?', text_id:'Penggunaan perangkat pemanas sementara diawasi/dipelihara oleh personel kompeten saja?', possible:2},
+        {docNo:42, text_en:'Equipment located so exhausts do not discharge against combustibles?', text_id:'Peralatan ditempatkan agar gas buang tidak mengarah ke bahan mudah terbakar?', possible:2},
+        {docNo:43, text_en:'Exhausts piped to outside of building?', text_id:'Gas buang disalurkan ke luar bangunan?', possible:2},
+        {docNo:44, text_en:'Equipment shall not be refueled while in operation?', text_id:'Peralatan tidak boleh diisi ulang saat beroperasi?', possible:2},
+        {docNo:45, text_en:'Fuel stored in approved area outside of building?', text_id:'Bahan bakar disimpan di area yang disetujui di luar bangunan?', possible:2},
+      ]
+    },
+    {
+      key:'SMOKING', name_en:'SMOKING', name_id:'MEROKOK',
+      items:[
+        {docNo:46, text_en:'Smoking prohibited unless in approved areas?', text_id:'Dilarang merokok kecuali di area yang disetujui?', possible:2},
+        {docNo:47, text_en:'Approved smoking areas clearly designated?', text_id:'Area merokok yang disetujui ditandai dengan jelas?', possible:2},
+        {docNo:48, text_en:'Appropriate signs posted as per site layout?', text_id:'Tanda yang sesuai dipasang sesuai tata letak lokasi?', possible:2},
+      ]
+    },
+    {
+      key:'MOTORIZED_EQUIPMENT', name_en:'MOTORIZED EQUIPMENT', name_id:'PERALATAN BERMOTOR',
+      items:[
+        {docNo:49, text_en:'Exterior areas of the property illuminated?', text_id:'Area eksterior properti diterangi?', possible:2},
+        {docNo:50, text_en:'Perimeter of the property protected by a fence?', text_id:'Keliling properti dilindungi oleh pagar?', possible:2},
+      ]
+    },
+    {
+      key:'HOUSEKEEPING', name_en:'HOUSEKEEPING', name_id:'KEBERSIHAN',
+      items:[
+        {docNo:51, text_en:'Trees/vegetation cut back to provide ≥100 ft clearance around perimeter?', text_id:'Pohon/vegetasi dipangkas untuk memberikan jarak ≥100 kaki di sekitar keliling?', possible:2},
+        {docNo:52, text_en:'Combustible materials & trash removed regularly?', text_id:'Bahan mudah terbakar & sampah dibuang secara teratur?', possible:2},
+        {docNo:53, text_en:'Good housekeeping incl. cleaning dust >1/8 in (3.18 mm) depth?', text_id:'Kebersihan yang baik termasuk membersihkan debu >1/8 inci (3,18 mm)?', possible:2},
+        {docNo:54, text_en:'If smoking allowed, restricted to certain areas?', text_id:'Jika merokok diizinkan, dibatasi pada area tertentu?', possible:2},
+        {docNo:55, text_en:'Storage rooms/trash rooms separated by 1-hour barriers or protected by sprinklers?', text_id:'Ruang penyimpanan/ruang sampah dipisahkan oleh penghalang 1 jam atau dilindungi oleh sprinkler?', possible:2},
+      ]
+    },
+    {
+      key:'UTILITIES', name_en:'UTILITIES', name_id:'UTILITAS',
+      items:[
+        {docNo:56, text_en:'Electrical appliances in flammable atmospheres listed/approved (UL etc.)?', text_id:'Peralatan listrik di atmosfer mudah terbakar terdaftar/disetujui (UL dll.)?', possible:2},
+        {docNo:57, text_en:'Electrical systems in areas with flammable liquids listed/approved for Class I, Div 2?', text_id:'Sistem listrik di area dengan cairan mudah terbakar terdaftar/disetujui untuk Kelas I, Div 2?', possible:2},
+        {docNo:58, text_en:'Electrical equipment in wet areas have GFCI / isolated supplies?', text_id:'Peralatan listrik di area basah memiliki GFCI / pasokan terisolasi?', possible:2},
+        {docNo:59, text_en:'Gas/oil fired equipment maintained per manufacturer recommendations?', text_id:'Peralatan berbahan bakar gas/minyak dipelihara sesuai rekomendasi pabrikan?', possible:2},
+        {docNo:60, text_en:'Wood-fired boilers present?', text_id:'Boiler berbahan bakar kayu ada?', possible:2},
+        {docNo:61, text_en:'Temporary heating devices operated per recommended safe practices?', text_id:'Perangkat pemanas sementara dioperasikan sesuai praktik aman yang direkomendasikan?', possible:2},
+      ]
+    },
+    {
+      key:'FLAMMABLE_LIQUIDS', name_en:'FLAMMABLE & COMBUSTIBLE LIQUIDS', name_id:'CAIRAN MUDAH TERBAKAR',
+      items:[
+        {docNo:62, text_en:'Storage/use/handling at construction sites per IFC; ventilation provided?', text_id:'Penyimpanan/penggunaan/penanganan di lokasi konstruksi sesuai IFC; ventilasi disediakan?', possible:2},
+        {docNo:63, text_en:'Storage areas clear of vegetation & waste; not used for combustibles?', text_id:'Area penyimpanan bersih dari vegetasi & limbah; tidak digunakan untuk bahan mudah terbakar?', possible:2},
+        {docNo:64, text_en:'Sources of ignition & smoking prohibited in storage areas; signage per IFC?', text_id:'Sumber pengapian & merokok dilarang di area penyimpanan; tanda sesuai IFC?', possible:2},
+        {docNo:65, text_en:'Liquids kept in approved safety containers?', text_id:'Cairan disimpan dalam wadah keselamatan yang disetujui?', possible:2},
+        {docNo:66, text_en:'Leaking vessels repaired or removed; spills cleaned & disposed properly?', text_id:'Wadah bocor diperbaiki atau dipindahkan; tumpahan dibersihkan & dibuang dengan benar?', possible:2},
+        {docNo:67, text_en:'Flammable liquids/gases in listed/approved containers?', text_id:'Cairan/gas mudah terbakar dalam wadah terdaftar/disetujui?', possible:2},
+        {docNo:68, text_en:'Equipment using gasoline/diesel stored in separate building or segregated room w/ firewalls & auto-closing fire doors?', text_id:'Peralatan menggunakan bensin/diesel disimpan di bangunan terpisah atau ruangan terpisah dengan dinding api & pintu api otomatis?', possible:2},
+        {docNo:69, text_en:'Refueling by trained/designated personnel only and in specified ventilated areas?', text_id:'Pengisian ulang oleh personel terlatih/ditunjuk saja dan di area berventilasi yang ditentukan?', possible:2},
+        {docNo:70, text_en:'Proper bonding/grounding before transferring flammable liquids?', text_id:'Bonding/grounding yang tepat sebelum memindahkan cairan mudah terbakar?', possible:2},
+        {docNo:71, text_en:'Compressed gases stored separately, away from ignition sources and secured?', text_id:'Gas bertekanan disimpan secara terpisah, jauh dari sumber pengapian dan diamankan?', possible:2},
+        {docNo:72, text_en:'If blasting operations performed, explosives stored per recommended practices?', text_id:'Jika operasi peledakan dilakukan, bahan peledak disimpan sesuai praktik yang direkomendasikan?', possible:2},
+      ]
+    },
+    {
+      key:'STORAGE', name_en:'STORAGE', name_id:'PENYIMPANAN',
+      items:[
+        {docNo:73, text_en:'Lumber for framing/forms stored in separate facilities, preferably outside?', text_id:'Kayu untuk rangka/bekisting disimpan di fasilitas terpisah, sebaiknya di luar?', possible:2},
+        {docNo:74, text_en:'Lumber stored horizontally and wrapped in tight bundles?', text_id:'Kayu disimpan secara horizontal dan dibungkus dalam bundel yang rapat?', possible:2},
+      ]
+    },
+    {
+      key:'FIRE_PROTECTION', name_en:'FIRE PROTECTION', name_id:'PROTEKSI KEBAKARAN',
+      items:[
+        {docNo:75, text_en:'Sufficient number of listed/approved portable fire extinguishers properly located & maintained (NFPA 10/Model Code)?', text_id:'Jumlah APAR portabel terdaftar/disetujui yang cukup, ditempatkan & dipelihara dengan benar (NFPA 10/Model Code)?', possible:2},
+        {docNo:76, text_en:'Employees trained in the use of portable fire extinguishers?', text_id:'Karyawan terlatih dalam penggunaan APAR portabel?', possible:2},
+        {docNo:77, text_en:'Fire alarms/detectors/fixed protection (sprinklers) installed in temporary structures?', text_id:'Alarm kebakaran/detektor/proteksi tetap (sprinkler) dipasang di struktur sementara?', possible:2},
+        {docNo:78, text_en:'In buildings ≥4 stories, at least one standpipe for FD during construction?', text_id:'Di bangunan ≥4 lantai, setidaknya satu standpipe untuk pemadam kebakaran selama konstruksi?', possible:2},
+      ]
+    }
   ];
 
-  // ========= State =========
+  // ========= STATE (TANPA LOCALSTORAGE) =========
   const state = {
     auditor: '',
-    date: null,       // format YYYY-MM-DD
+    date: null,   // YYYY-MM-DD
     lang: 'en',
     items: {}
   };
@@ -640,41 +809,33 @@
   });
 
   // Helper Translation
-  function t(key) {
-    return TRANSLATIONS[state.lang][key] || key;
-  }
+  function t(key) { return TRANSLATIONS[state.lang][key] || key; }
 
   function toggleLang() {
     state.lang = state.lang === 'id' ? 'en' : 'id';
     render();
   }
 
-  // ========= Rendering =========
+  // ========= RENDERING =========
   function render() {
     const T = TRANSLATIONS[state.lang];
 
-    // Default tanggal
     if (!state.date) {
       state.date = new Date().toISOString().slice(0, 10);
     }
 
-    // Sinkron identitas di toolbar & header
     document.getElementById('inputAuditor').value = state.auditor || '';
     document.getElementById('auditorName').textContent = state.auditor || '—';
     document.getElementById('inputDate').value = state.date;
 
     const [y, m, d] = state.date.split('-');
-    const dateObj = (y && m && d) ? new Date(Number(y), Number(m) - 1, Number(d)) : new Date();
+    const dObj = (y && m && d) ? new Date(+y, +m - 1, +d) : new Date();
     const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
     document.getElementById('auditDate').textContent =
-      dateObj.toLocaleDateString(dateLocale, {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-      });
+      dObj.toLocaleDateString(dateLocale,
+        {weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
-    // Dynamic Title
     document.title = T.title;
-
-    // Update label
     document.getElementById('appTitle').textContent = T.title;
     document.getElementById('lbl_auditor').textContent = T.lbl_auditor;
     document.getElementById('lbl_date').textContent = T.lbl_date;
@@ -691,11 +852,9 @@
     document.getElementById('btn_save').textContent = T.btn_save;
     document.getElementById('btn_issues').textContent = T.btn_issues;
 
-    // Dropdown kategori
     const fc = document.getElementById('filterCategory');
     fc.innerHTML = `<option value="">${T.all_cat}</option>` +
-      DATA.map(c => `<option value="${c.key}">${state.lang === 'id' ? c.name_id : c.name_en}</option>`).join('');
-
+      DATA.map(c=>`<option value="${c.key}">${state.lang==='id'?(c.name_id||c.name_en):c.name_en}</option>`).join('');
     const fs = document.getElementById('filterStatus');
     fs.innerHTML = `
       <option value="">${T.all_stat}</option>
@@ -704,17 +863,15 @@
       <option value="empty">${T.stat_empty}</option>
     `;
 
-    // Render cards
     const wrap = document.getElementById('categories');
     wrap.innerHTML = '';
 
-    DATA.forEach(cat => {
+    DATA.forEach(cat=>{
       const catDiv = document.createElement('section');
       catDiv.className = 'category';
       catDiv.dataset.key = cat.key;
 
-      const catName = state.lang === 'id' ? (cat.name_id || cat.name_en) : cat.name_en;
-
+      const catName = state.lang==='id' ? (cat.name_id||cat.name_en) : cat.name_en;
       const head = document.createElement('div');
       head.className = 'cat-head';
       head.innerHTML = `
@@ -724,7 +881,8 @@
         </div>
         <div class="cat-meta-right">
           <div class="cat-stats" id="catStats_${cat.key}"></div>
-          <button class="ghost" style="padding:4px 10px;font-size:0.8rem" onclick="toggleCategory('${cat.key}')">${T.hide_show}</button>
+          <button class="ghost" style="padding:4px 10px;font-size:0.8rem"
+            onclick="toggleCategory('${cat.key}')">${T.hide_show}</button>
         </div>
       `;
 
@@ -733,43 +891,42 @@
       const grid = document.createElement('div');
       grid.className = 'grid';
 
-      cat.items.forEach(it => {
+      cat.items.forEach(it=>{
         const key = `${cat.key}_${it.docNo}`;
         const meta = it;
         let saved = state.items[key];
-        if (!saved) {
+        if(!saved){
           saved = defaultItemState(meta);
           state.items[key] = saved;
         }
+        const maxPoint = (meta.possible===null)?2:meta.possible;
 
-        const maxPoint = (meta.possible === null) ? 2 : meta.possible;
         const card = document.createElement('div');
         card.className = 'card';
         card.dataset.key = key;
         card.dataset.category = cat.key;
 
-        const itemText = state.lang === 'id' ? (it.text_id || it.text_en) : it.text_en;
-
-        let possBadge = saved.na
+        const itemText = state.lang==='id' ? (it.text_id||it.text_en) : it.text_en;
+        const possBadge = saved.na
           ? `<span class="badge na">${T.badge_poss_na}</span>`
           : `<span class="badge possible">${T.kpi_possible}: ${maxPoint}</span>`;
 
         const disabledAttr = saved.na ? 'disabled' : '';
         const actualValue = saved.na ? '' :
-          (saved.actual !== undefined && saved.actual !== null ? saved.actual : '');
+          (saved.actual!==undefined && saved.actual!==null ? saved.actual : '');
 
         const actualField = `
           <input id="actual_${key}" type="number" class="input" min="0" max="${maxPoint}" step="1"
             ${disabledAttr}
             value="${actualValue}"
-            placeholder="${saved.na ? '—' : '0'}"
+            placeholder="${saved.na?'—':'0'}"
             oninput="onActualChange('${key}', this.value)" />
         `;
-
         const statusField = `
-          <select id="status_sel_${key}" class="input" onchange="onNAChange('${key}', this.value==='na')">
-            <option value="ok" ${saved.na ? '' : 'selected'}>${T.opt_app}</option>
-            <option value="na" ${saved.na ? 'selected' : ''}>${T.opt_na}</option>
+          <select id="status_sel_${key}" class="input"
+            onchange="onNAChange('${key}', this.value==='na')">
+            <option value="ok" ${saved.na?'':'selected'}>${T.opt_app}</option>
+            <option value="na" ${saved.na?'selected':''}>${T.opt_na}</option>
           </select>
         `;
 
@@ -793,20 +950,22 @@
             <div class="findings">
               <label>${T.card_findings}</label>
               <textarea placeholder="${T.card_findings_ph}"
-                oninput="onFindingsChange('${key}', this.value)">${saved.findings || ''}</textarea>
+                oninput="onFindingsChange('${key}', this.value)">${saved.findings||''}</textarea>
             </div>
             <div class="photo">
               <div class="photo-head">
                 <div class="photo-head-title">${T.card_photo}</div>
                 <div style="position:relative;overflow:hidden;display:inline-block;">
-                  <button type="button" class="ghost" style="font-size:0.8rem;padding:4px 10px;">${T.card_photo_btn}</button>
-                  <input type="file" accept="image/*" multiple capture="environment" aria-label="Upload Photo for Item ${it.docNo}"
+                  <button type="button" class="ghost"
+                    style="font-size:0.8rem;padding:4px 10px;">${T.card_photo_btn}</button>
+                  <input type="file" accept="image/*" multiple capture="environment"
+                    aria-label="Upload Photo for Item ${it.docNo}"
                     style="position:absolute;left:0;top:0;opacity:0;cursor:pointer;width:100%;height:100%;"
                     onchange="onPhotosSelected('${key}', this.files)" />
                 </div>
               </div>
               <div class="thumbs" id="thumbs_${key}">
-                ${saved.photos.map((p, idx) => thumbHTML(key, idx, p.dataURL)).join('')}
+                ${saved.photos.map((p,idx)=>thumbHTML(key, idx, p.dataURL)).join('')}
               </div>
             </div>
           </div>
@@ -830,20 +989,17 @@
     applyFilters();
   }
 
-  function escapeHTML(s) {
-    return String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  }
-
-  function getMeta(key) {
-    for (const cat of DATA) {
+  // ========= HELPERS & LOGIC =========
+  function getMeta(key){
+    for(const cat of DATA){
       const found = cat.items.find(i => `${cat.key}_${i.docNo}` === key);
-      if (found) return found;
+      if(found) return found;
     }
     return null;
   }
 
-  function thumbHTML(key, idx, url) {
-    const altText = `Foto bukti ${idx + 1}`;
+  function thumbHTML(key, idx, url){
+    const altText = `Foto bukti ${idx+1}`;
     return `
       <div class="thumb">
         <img src="${url}" alt="${altText}" />
@@ -852,71 +1008,69 @@
     `;
   }
 
-  function getMaxPoint(meta) {
-    return (meta.possible === null) ? 2 : meta.possible;
-  }
+  function getMaxPoint(meta){ return (meta.possible===null)?2:meta.possible; }
 
-  function statusClass(saved, meta) {
-    if (!meta) return 'status-mid';
-    if (saved.na) return 'status-mid';
-    const hasActual = saved.actual !== '' && saved.actual !== null && saved.actual !== undefined;
-    if (!hasActual) return 'status-mid';
-    const act = Number(saved.actual || 0);
+  function statusClass(saved, meta){
+    if(!meta) return 'status-mid';
+    if(saved.na) return 'status-mid';
+    const hasActual = saved.actual!=='' && saved.actual!==null && saved.actual!==undefined;
+    if(!hasActual) return 'status-mid';
+    const act = Number(saved.actual||0);
     const pos = getMaxPoint(meta);
-    const ratio = pos > 0 ? act / pos : 0;
-    if (ratio >= 0.75) return 'status-good';
-    if (ratio >= 0.4) return 'status-mid';
+    const ratio = pos>0 ? act/pos : 0;
+    if(ratio>=0.75) return 'status-good';
+    if(ratio>=0.4) return 'status-mid';
     return 'status-low';
   }
 
-  function statusText(saved, meta) {
+  function statusText(saved, meta){
     const T = TRANSLATIONS[state.lang];
-    if (!meta) return 'N/A';
-    if (saved.na) return 'N/A';
-    const hasActual = saved.actual !== '' && saved.actual !== null && saved.actual !== undefined;
-    if (!hasActual) return `⚠️ ${T.stat_empty}`;
-    const act = Number(saved.actual || 0);
+    if(!meta) return 'N/A';
+    if(saved.na) return 'N/A';
+    const hasActual = saved.actual!=='' && saved.actual!==null && saved.actual!==undefined;
+    if(!hasActual) return `⚠️ ${T.stat_empty}`;
+    const act = Number(saved.actual||0);
     const pos = getMaxPoint(meta);
     return `${T.kpi_score}: ${act}/${pos}`;
   }
 
-  function isIssue(meta, saved) {
-    if (!meta) return false;
-    if (saved.na) {
-      const notes = (saved.findings || '').trim();
+  function isIssue(meta, saved){
+    if(!meta) return false;
+    if(saved.na){
+      const notes = (saved.findings||'').trim();
       return !notes;
     }
-    const hasActual = saved.actual !== '' && saved.actual !== null && saved.actual !== undefined;
-    if (!hasActual) return true;
+    const hasActual = saved.actual!=='' && saved.actual!==null && saved.actual!==undefined;
+    if(!hasActual) return true;
     const actual = Number(saved.actual);
     const pos = getMaxPoint(meta);
-    if (pos > 0 && actual < pos) return true;
+    if(pos>0 && actual<pos) return true;
     return false;
   }
 
-  function recalcScore() {
+  function recalcScore(){
     const T = TRANSLATIONS[state.lang];
-    let possible = 0, actual = 0;
-    DATA.forEach(cat => {
-      cat.items.forEach(it => {
+    let possible =0, actual=0;
+    DATA.forEach(cat=>{
+      cat.items.forEach(it=>{
         const key = `${cat.key}_${it.docNo}`;
         const saved = state.items[key] || defaultItemState(it);
-        if (saved.na) return;
+        if(saved.na) return;
         possible += getMaxPoint(it);
-        actual += Number(saved.actual || 0);
+        actual   += Number(saved.actual||0);
       });
     });
-    const pct = possible > 0 ? Math.round((actual / possible) * 100) : 0;
+    const pct = possible>0 ? Math.round((actual/possible)*100) : 0;
     document.getElementById('kpiPossible').textContent = possible;
-    document.getElementById('kpiActual').textContent = actual;
-    document.getElementById('kpiPct').textContent = pct + '%';
-    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('kpiActual').textContent   = actual;
+    document.getElementById('kpiPct').textContent       = pct+'%';
+    document.getElementById('progressFill').style.width = pct+'%';
 
     let rating = '—';
-    if (possible > 0) {
-      if (pct >= 85) rating = T.rating_excellent;
-      else if (pct >= 70) rating = T.rating_good;
-      else if (pct >= 50) rating = T.rating_need_improvement;
+    if(possible>0){
+      if(pct>=85) rating = T.rating_excellent;
+      else if(pct>=70) rating = T.rating_good;
+      else if(pct>=50) rating = T.rating_need_improvement;
       else rating = T.rating_critical;
     }
     document.getElementById('kpiRating').textContent = rating;
@@ -925,18 +1079,18 @@
     recalcGlobalStats();
   }
 
-  function recalcCategoryStats() {
-    DATA.forEach(cat => {
-      let complete = 0, na = 0, empty = 0;
-      cat.items.forEach(it => {
+  function recalcCategoryStats(){
+    DATA.forEach(cat=>{
+      let complete=0, na=0, empty=0;
+      cat.items.forEach(it=>{
         const key = `${cat.key}_${it.docNo}`;
         const saved = state.items[key] || defaultItemState(it);
-        if (saved.na) na++;
-        else if (saved.actual !== '' && saved.actual !== null) complete++;
+        if(saved.na) na++;
+        else if(saved.actual!=='' && saved.actual!==null) complete++;
         else empty++;
       });
       const container = document.getElementById(`catStats_${cat.key}`);
-      if (container) {
+      if(container){
         container.innerHTML = `
           <span class="cat-stat-pill cat-stat-ok">✅ ${complete}</span>
           <span class="cat-stat-pill cat-stat-na">N/A ${na}</span>
@@ -946,19 +1100,19 @@
     });
   }
 
-  function recalcGlobalStats() {
+  function recalcGlobalStats(){
     const T = TRANSLATIONS[state.lang];
-    let total = 0, issues = 0;
-    DATA.forEach(cat => {
-      cat.items.forEach(it => {
+    let total=0, issues=0;
+    DATA.forEach(cat=>{
+      cat.items.forEach(it=>{
         total++;
         const key = `${cat.key}_${it.docNo}`;
         const saved = state.items[key] || defaultItemState(it);
-        if (isIssue(it, saved)) issues++;
+        if(isIssue(it, saved)) issues++;
       });
     });
     const el = document.getElementById('globalSummary');
-    if (el) {
+    if(el){
       el.innerHTML = `
         <span class="global-pill">${T.total}: ${total}</span>
         <span class="global-pill global-issue">⚠️ ${issues} ${T.issues}</span>
@@ -966,20 +1120,20 @@
     }
   }
 
-  function onActualChange(key, val) {
+  function onActualChange(key, val){
     const T = TRANSLATIONS[state.lang];
-    const v = Number(val || 0);
+    const v = Number(val||0);
     const meta = getMeta(key);
     const item = (state.items[key] ||= defaultItemState(meta));
     const maxP = getMaxPoint(meta);
-    if (v > maxP) { alert(`${T.msg_max} ${maxP}`); return; }
-    if (v < 0) { alert(T.msg_neg); return; }
+    if(v>maxP){ alert(`${T.msg_max} ${maxP}`); return; }
+    if(v<0){ alert(T.msg_neg); return; }
     item.actual = val;
     updateCardStatus(key);
     recalcScore();
   }
 
-  function onFindingsChange(key, text) {
+  function onFindingsChange(key, text){
     const meta = getMeta(key);
     const item = (state.items[key] ||= defaultItemState(meta));
     item.findings = text;
@@ -987,20 +1141,20 @@
     recalcScore();
   }
 
-  function onNAChange(key, isNA) {
+  function onNAChange(key, isNA){
     const meta = getMeta(key);
     const item = (state.items[key] ||= defaultItemState(meta));
     item.na = isNA;
     const card = document.querySelector(`.card[data-key="${key}"]`);
-    if (card) {
+    if(card){
       const input = card.querySelector('input[type="number"]');
-      if (input) {
-        if (isNA) {
+      if(input){
+        if(isNA){
           item.actual = '';
           input.value = '';
           input.placeholder = '—';
           input.disabled = true;
-        } else {
+        }else{
           input.placeholder = '0';
           input.disabled = false;
         }
@@ -1010,46 +1164,47 @@
     recalcScore();
   }
 
-  function onPhotosSelected(key, files) {
+  function onPhotosSelected(key, files){
     const meta = getMeta(key);
     const item = (state.items[key] ||= defaultItemState(meta));
-    [...files].forEach(file => {
+    [...files].forEach(file=>{
       const reader = new FileReader();
-      reader.onload = e => {
-        item.photos.push({ dataURL: e.target.result });
+      reader.onload = e=>{
+        item.photos.push({dataURL:e.target.result});
         const thumbs = document.getElementById(`thumbs_${key}`);
-        if (thumbs) thumbs.insertAdjacentHTML('beforeend', thumbHTML(key, item.photos.length - 1, e.target.result));
+        if(thumbs) thumbs.insertAdjacentHTML('beforeend',
+          thumbHTML(key, item.photos.length-1, e.target.result));
       };
       reader.readAsDataURL(file);
     });
   }
 
-  function removePhoto(key, idx) {
+  function removePhoto(key, idx){
     const item = state.items[key];
-    if (!item) return;
-    item.photos.splice(idx, 1);
+    if(!item) return;
+    item.photos.splice(idx,1);
     const thumbs = document.getElementById(`thumbs_${key}`);
-    if (thumbs) {
-      thumbs.innerHTML = item.photos.map((p, i) => thumbHTML(key, i, p.dataURL)).join('');
+    if(thumbs){
+      thumbs.innerHTML = item.photos
+        .map((p,i)=>thumbHTML(key, i, p.dataURL)).join('');
     }
   }
 
-  function updateCardStatus(key) {
-    const T = TRANSLATIONS[state.lang];
+  function updateCardStatus(key){
     const card = document.querySelector(`.card[data-key="${key}"]`);
-    if (!card) return;
-    const status = card.querySelector(`#status_${key}`);
+    if(!card) return;
     const meta = getMeta(key);
     const saved = state.items[key] || defaultItemState(meta);
 
-    if (status) {
+    const status = card.querySelector(`#status_${key}`);
+    if(status){
       status.className = `pill ${statusClass(saved, meta)}`;
       const spanText = status.querySelector('span');
-      if (spanText) spanText.textContent = statusText(saved, meta);
+      if(spanText) spanText.textContent = statusText(saved, meta);
     }
-
     const possContainer = card.querySelector(`#poss_${key}`);
-    if (possContainer) {
+    const T = TRANSLATIONS[state.lang];
+    if(possContainer){
       const maxPoint = getMaxPoint(meta);
       possContainer.innerHTML = saved.na
         ? `<span class="badge na">${T.badge_poss_na}</span>`
@@ -1057,30 +1212,30 @@
     }
   }
 
-  function toggleCategory(catKey) {
+  function toggleCategory(catKey){
     const sec = document.querySelector(`.category[data-key="${catKey}"] .cat-body`);
-    if (sec) sec.style.display = (sec.style.display === 'none') ? '' : 'none';
+    if(sec) sec.style.display = (sec.style.display==='none') ? '' : 'none';
   }
 
-  function applyFilters() {
-    const q = document.getElementById('inputSearch').value.trim().toLowerCase();
+  function applyFilters(){
+    const q    = document.getElementById('inputSearch').value.trim().toLowerCase();
     const fCat = document.getElementById('filterCategory').value;
     const fSts = document.getElementById('filterStatus').value;
 
-    document.querySelectorAll('.card').forEach(card => {
-      const key = card.dataset.key;
+    document.querySelectorAll('.card').forEach(card=>{
+      const key    = card.dataset.key;
       const catKey = card.dataset.category;
-      const meta = getMeta(key) || {};
-      const saved = state.items[key] || defaultItemState(meta);
+      const meta   = getMeta(key) || {};
+      const saved  = state.items[key] || defaultItemState(meta);
 
-      const textStr = state.lang === 'id' ? (meta.text_id || meta.text_en) : meta.text_en;
+      const textStr = state.lang==='id' ? (meta.text_id||meta.text_en) : meta.text_en;
 
       const matchText = !q || textStr.toLowerCase().includes(q) || key.toLowerCase().includes(q);
-      const matchCat = !fCat || fCat === catKey;
+      const matchCat  = !fCat || fCat===catKey;
       let matchSts = true;
-      if (fSts === 'complete') matchSts = !saved.na && saved.actual !== '' && saved.actual !== null;
-      else if (fSts === 'na') matchSts = saved.na === true;
-      else if (fSts === 'empty') matchSts = !saved.na && (saved.actual === '' || saved.actual === null);
+      if(fSts==='complete') matchSts = !saved.na && saved.actual!=='' && saved.actual!==null;
+      else if(fSts==='na') matchSts = saved.na===true;
+      else if(fSts==='empty') matchSts = !saved.na && (saved.actual==='' || saved.actual===null);
 
       const issueFlag = isIssue(meta, saved);
       card.classList.toggle('issue', issueFlag);
@@ -1089,135 +1244,129 @@
     });
   }
 
-  function validateExport() {
+  function validateExport(){
     const T = TRANSLATIONS[state.lang];
     const missing = [];
-    DATA.forEach(cat => {
-      cat.items.forEach(it => {
+    DATA.forEach(cat=>{
+      cat.items.forEach(it=>{
         const key = `${cat.key}_${it.docNo}`;
         const saved = state.items[key] || {};
-        if (saved.na && (!saved.findings || !saved.findings.trim())) {
-          missing.push(`${state.lang === 'id' ? cat.name_id : cat.name_en} — No. ${it.docNo}`);
+        if(saved.na && (!saved.findings || !saved.findings.trim())){
+          missing.push(`${state.lang==='id'?cat.name_id:cat.name_en} — No. ${it.docNo}`);
         }
       });
     });
-    if (missing.length) {
+    if(missing.length){
       alert(T.msg_export + '\n\n' + missing.join('\n'));
       return false;
     }
     return true;
   }
 
-  function exportCSV() {
-    if (!validateExport()) return;
+  function exportCSV(){
+    if(!validateExport()) return;
     const T = TRANSLATIONS[state.lang];
     const rows = [[
-      state.lang === 'id' ? 'Kategori' : 'Category',
+      state.lang==='id'?'Kategori':'Category',
       'No',
-      state.lang === 'id' ? 'Item' : 'Item',
+      state.lang==='id'?'Item':'Item',
       T.kpi_possible,
       T.kpi_actual,
       T.card_status,
-      state.lang === 'id' ? 'Temuan' : 'Findings',
-      state.lang === 'id' ? 'Jml Foto' : 'Photo Count'
+      state.lang==='id'?'Temuan':'Findings',
+      state.lang==='id'?'Jml Foto':'Photo Count'
     ]];
-    DATA.forEach(cat => {
-      cat.items.forEach(it => {
+    DATA.forEach(cat=>{
+      cat.items.forEach(it=>{
         const key = `${cat.key}_${it.docNo}`;
         const s = state.items[key] || {};
         const maxP = getMaxPoint(it);
-        const itemText = state.lang === 'id' ? (it.text_id || it.text_en) : it.text_en;
-        const catName = state.lang === 'id' ? (cat.name_id || cat.name_en) : cat.name_en;
-
+        const itemText = state.lang==='id' ? (it.text_id||it.text_en) : it.text_en;
+        const catName  = state.lang==='id' ? (cat.name_id||cat.name_en) : cat.name_en;
         rows.push([
-          catName, it.docNo, itemText.replace(/\n/g, ' '),
-          s.na ? 'NA' : maxP,
+          catName, it.docNo, itemText.replace(/\n/g,' '),
+          s.na?'NA':maxP,
           s.actual ?? '',
-          s.na ? 'N/A' : `${s.actual || ''}/${maxP}`,
-          (s.findings || '').replace(/\n/g, ' '),
-          (s.photos || []).length
+          s.na ? 'N/A' : `${s.actual||''}/${maxP}`,
+          (s.findings||'').replace(/\n/g,' '),
+          (s.photos||[]).length
         ]);
       });
     });
-    const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n');
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const csv = rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+    const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = `HRA_Audit_${state.lang}_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.href = url; a.download = `HRA_Audit_${state.lang}_${new Date().toISOString().slice(0,10)}.csv`;
     a.click();
   }
 
-  function doPrint() {
-    if (validateExport()) window.print();
-  }
+  function doPrint(){ if(validateExport()) window.print(); }
 
-  function resetAll() {
-    if (confirm('Hapus semua data di form ini? (Data yang sudah tersimpan di database tidak terhapus)')) {
+  function resetAll(){
+    if(confirm('Hapus semua data di form ini? (Data di database tidak terhapus)')){
       state.auditor = '';
-      state.date = null;
-      state.items = {};
-      lastAuditId = null;
-      document.getElementById('inputAuditor').value = '';
-      document.getElementById('inputDate').value = '';
-      document.getElementById('auditorName').textContent = '—';
+      state.date    = null;
+      state.items   = {};
+      lastAuditId   = null;
       render();
     }
   }
 
-  function toast(msg) {
+  function toast(msg){
     const div = document.createElement('div');
     div.textContent = msg;
     Object.assign(div.style, {
-      position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)',
-      background: '#0f172a', color: '#fff', padding: '10px 20px', borderRadius: '30px',
-      zIndex: 9999, fontSize: '0.85rem', boxShadow: '0 10px 25px rgba(0,0,0,0.3)', opacity: 0, transition: '0.3s'
+      position:'fixed', bottom:'20px', left:'50%', transform:'translateX(-50%)',
+      background:'#0f172a', color:'#fff', padding:'10px 20px', borderRadius:'30px',
+      zIndex:9999, fontSize:'0.85rem', boxShadow:'0 10px 25px rgba(0,0,0,0.3)', opacity:0, transition:'0.3s'
     });
     document.body.appendChild(div);
-    setTimeout(() => div.style.opacity = 1, 10);
-    setTimeout(() => { div.style.opacity = 0; setTimeout(() => div.remove(), 300); }, 2000);
+    setTimeout(()=>div.style.opacity=1,10);
+    setTimeout(()=>{ div.style.opacity=0; setTimeout(()=>div.remove(),300); },2000);
   }
 
-  // ========= SAVE KE GOOGLE SHEETS =========
-  function generateAuditId() {
-    const baseDate = state.date || new Date().toISOString().slice(0, 10);
-    const clean = baseDate.replace(/-/g, '');
-    const rand = Math.random().toString(36).substr(2, 4).toUpperCase();
+  // ========= KIRIM KE GOOGLE SHEETS =========
+  function generateAuditId(){
+    const baseDate = state.date || new Date().toISOString().slice(0,10);
+    const clean = baseDate.replace(/-/g,'');
+    const rand  = Math.random().toString(36).substr(2,4).toUpperCase();
     return `HW-${clean}-${rand}`;
   }
 
-  function buildPayloadForSave() {
+  function buildPayloadForSave(){
     const auditorInput = document.getElementById('inputAuditor').value.trim();
-    const dateInput = document.getElementById('inputDate').value;
+    const dateInput    = document.getElementById('inputDate').value;
 
-    if (!auditorInput) {
-      alert(state.lang === 'id' ? 'Nama auditor wajib diisi.' : 'Auditor name is required.');
+    if(!auditorInput){
+      alert(state.lang==='id'?'Nama auditor wajib diisi.':'Auditor name is required.');
       document.getElementById('inputAuditor').focus();
       return null;
     }
-    if (!dateInput) {
-      alert(state.lang === 'id' ? 'Tanggal audit wajib diisi.' : 'Audit date is required.');
+    if(!dateInput){
+      alert(state.lang==='id'?'Tanggal audit wajib diisi.':'Audit date is required.');
       document.getElementById('inputDate').focus();
       return null;
     }
 
     state.auditor = auditorInput;
-    state.date = dateInput;
+    state.date    = dateInput;
 
-    if (!lastAuditId) {
+    if(!lastAuditId){
       lastAuditId = generateAuditId();
     }
 
     const records = [];
-    DATA.forEach(cat => {
+    DATA.forEach(cat=>{
       const catNameEn = cat.name_en;
       const catNameId = cat.name_id || cat.name_en;
-      cat.items.forEach(it => {
-        const key = `${cat.key}_${it.docNo}`;
+      cat.items.forEach(it=>{
+        const key   = `${cat.key}_${it.docNo}`;
         const saved = state.items[key] || defaultItemState(it);
-        const maxPoint = getMaxPoint(it);
-        const actual =
-          saved.na ? null :
-            (saved.actual === '' || saved.actual === null || saved.actual === undefined
+        const maxP  = getMaxPoint(it);
+        const actual = saved.na
+          ? null
+          : (saved.actual==='' || saved.actual===null || saved.actual===undefined
               ? null
               : Number(saved.actual));
 
@@ -1229,7 +1378,7 @@
           no: it.docNo,
           question_en: it.text_en,
           question_id: it.text_id,
-          possiblePoint: maxPoint,
+          possiblePoint: maxP,
           actualPoint: actual,
           status: saved.na ? 'N/A' : 'Applicable',
           findings: saved.findings || '',
@@ -1246,54 +1395,45 @@
     };
   }
 
-  async function saveToServer() {
+  async function saveToServer(){
     const core = buildPayloadForSave();
-    if (!core) return;
+    if(!core) return;
 
     const payload = {
       form: 'HRA_AUDIT_HOTWORK_FIRE_PREVENTION',
       auditor: core.auditorName,
-      date: core.auditDate,
+      date:    core.auditDate,
       auditId: core.auditId,
       records: core.records
     };
 
-    try {
-      const res = await fetch(API_SAVE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+    try{
+      const res = await fetch(API_SAVE_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(payload)
       });
-
-      if (!res.ok) {
-        throw new Error('HTTP ' + res.status);
-      }
-
+      if(!res.ok) throw new Error('HTTP '+res.status);
       const result = await res.json();
-      if (!result.ok) {
-        throw new Error(result.error || 'Unknown error from API');
-      }
-
+      if(!result.ok) throw new Error(result.error || 'Unknown error from API');
       const count = result.records ?? core.records.length;
-      toast((state.lang === 'id'
+      toast((state.lang==='id'
         ? `Tersimpan ${count} baris. Audit ID: `
         : `Saved ${count} rows. Audit ID: `) + core.auditId);
-
-    } catch (err) {
+    }catch(err){
       console.error(err);
-      alert('Failed to save to server: ' + err.message);
+      alert('Failed to save to server: '+err.message);
     }
   }
 
   // ========= INIT & EVENT LISTENERS =========
   render();
 
-  document.getElementById('inputAuditor').addEventListener('input', e => {
+  document.getElementById('inputAuditor').addEventListener('input', e=>{
     state.auditor = e.target.value;
     document.getElementById('auditorName').textContent = state.auditor || '—';
   });
-
-  document.getElementById('inputDate').addEventListener('change', e => {
+  document.getElementById('inputDate').addEventListener('change', e=>{
     state.date = e.target.value;
     render();
   });
@@ -1306,7 +1446,7 @@
   document.getElementById('btnPrint').addEventListener('click', doPrint);
   document.getElementById('btnExportCsv').addEventListener('click', exportCSV);
   document.getElementById('btnReset').addEventListener('click', resetAll);
-  document.getElementById('btnIssues').addEventListener('click', () => {
+  document.getElementById('btnIssues').addEventListener('click', ()=>{
     highlightIssues = !highlightIssues;
     document.body.classList.toggle('issues-on', highlightIssues);
     document.getElementById('btnIssues').classList.toggle('toggle-active', highlightIssues);
