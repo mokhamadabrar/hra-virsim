@@ -1598,9 +1598,15 @@
     };
   }
 
-  async function saveToServer(){
+async function saveToServer(){
     const core = buildPayloadForSave();
     if(!core) return;
+
+    // Tombol loading state (opsional, agar user tahu sedang proses)
+    const btnSave = document.getElementById('btnSave');
+    const originalText = btnSave.innerHTML;
+    btnSave.innerHTML = '<span>⏳</span> Sending...';
+    btnSave.disabled = true;
 
     const payload = {
       form: 'HRA_AUDIT_HOTWORK_FIRE_PREVENTION',
@@ -1611,24 +1617,35 @@
     };
 
     try{
-      const res = await fetch(API_SAVE_URL,{
-        method:'POST',
-        // biarkan header default (text/plain) agar tidak memicu preflight CORS
-        body:JSON.stringify(payload)
+      // PERBAIKAN DISINI: 
+      // 1. Hapus 'headers' 
+      // 2. Gunakan method POST standar
+      // 3. Data dikirim sebagai string di body
+      const res = await fetch(API_SAVE_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload)
       });
+
       if(!res.ok) throw new Error('HTTP '+res.status);
+      
       const result = await res.json();
+      
       if(!result.ok) throw new Error(result.error || 'Unknown error from API');
+      
       const count = result.records ?? core.records.length;
       toast((state.lang==='id'
         ? `Tersimpan ${count} baris. Audit ID: `
         : `Saved ${count} rows. Audit ID: `) + core.auditId);
+
     }catch(err){
       console.error(err);
-      alert('Failed to save to server: '+err.message);
+      alert('Gagal menyimpan / Failed to save: ' + err.message);
+    }finally{
+      // Kembalikan tombol ke semula
+      btnSave.innerHTML = originalText;
+      btnSave.disabled = false;
     }
   }
-
   render();
 
   document.getElementById('inputAuditor').addEventListener('input', e=>{
