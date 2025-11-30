@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +55,7 @@
     }
     h1,h2,h3{margin:0 0 .5rem}
     h1{font-size:1.8rem;letter-spacing:.2px;}
-    h2{font-size:1.25rem;color:#0f172a;font-weight:700;} /* Darker for accessibility */
+    h2{font-size:1.25rem;color:#0f172a;font-weight:700;}
     h3{font-size:1rem;color:#1e293b;font-weight:600;}
     p,small{color:var(--muted)}
     a{color:var(--accent)}
@@ -97,7 +96,7 @@
     .hero .title h1 span{
       display:inline-flex;align-items:center;gap:6px;
       font-size:.8rem;font-weight:500;padding:4px 9px;
-      border-radius:999px;background:#0b112033;border:1px solid #bae6fd3b; /* Darkened bg */
+      border-radius:999px;background:#0b112033;border:1px solid #bae6fd3b;
       vertical-align: middle;
     }
     .hero .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
@@ -114,7 +113,7 @@
       top: 20px;
       right: 20px;
       z-index: 10;
-      background: rgba(0,0,0,0.3); /* Darker for white text contrast */
+      background: rgba(0,0,0,0.3);
       border: 1px solid rgba(255,255,255,0.4);
       color: white;
       padding: 8px 14px;
@@ -145,7 +144,7 @@
     }
     .score-kpi{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
     .score-kpi .kpi{
-      background:#0b112066; /* Darker for white text */
+      background:#0b112066;
       border:1px solid #bae6fd40;padding:8px 12px;border-radius:10px;min-width:120px;
       font-size:.87rem; color: #fff;
     }
@@ -162,7 +161,6 @@
       padding:4px 10px;border-radius:999px;
       background:#0b112080;border:1px solid #bae6fd40;color:#e5f2ff;
     }
-    /* Colors adjusted for contrast against dark header */
     .global-pill.global-ok{ background:#16653480;border-color:#86efac;color:#dcfce7; }
     .global-pill.global-na{ background:#854d0e80;border-color:#fde047;color:#fefce8; }
     .global-pill.global-empty{ background:#33415580;border-color:#94a3b8;color:#f1f5f9; }
@@ -189,7 +187,6 @@
       padding:8px 12px;border-radius:10px;outline:none;min-height:44px;
       font-size:.9rem;appearance: none;
     }
-    /* Fixed select arrow contrast */
     select {
       background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23334155%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
       background-repeat: no-repeat;
@@ -207,7 +204,6 @@
     button:active { filter: brightness(0.9); transform: translateY(1px); }
     button.ghost{background:#fff;border:1px solid #94a3b8;color:#0f172a}
     
-    /* FIX: High Contrast Colors for Buttons */
     button.success{background:var(--accent-2); color:#fff;}
     button.warn{background:var(--warn); color:#fff;}
     button.toggle-active{ box-shadow:0 0 0 2px #fff, 0 0 0 4px #ea580c; }
@@ -224,7 +220,7 @@
       border-bottom:1px solid var(--line);
     }
     .cat-title{display:flex;align-items:center;gap:12px}
-    .cat-title h2 {font-size:1.1rem;color:var(--ink);font-weight:700;margin:0;} /* Changed to h2 */
+    .cat-title h2 {font-size:1.1rem;color:var(--ink);font-weight:700;margin:0;}
     .cat-title small{font-size:.85rem;color:#475569}
     .cat-meta-right{display:flex;align-items:center;gap:12px}
     .cat-stats{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
@@ -234,12 +230,10 @@
       display:inline-flex;align-items:center;gap:4px;
       background:#fff;color:#334155;font-weight:600;
     }
-    /* Contrast fix for stats */
     .cat-stat-ok{ background:#dcfce7;border-color:#16a34a;color:#14532d; }
     .cat-stat-na{ background:#fef9c3;border-color:#eab308;color:#713f12; }
     .cat-stat-empty{ background:#f1f5f9;border-color:#94a3b8;color:#334155; }
 
-    /* Category Colors */
     .category[data-key="HOT_WORK"] .cat-head{border-left:6px solid #dc2626;}
     .category[data-key="FIRE_PREVENTION"] .cat-head{border-left:6px solid #ea580c;}
     .category[data-key="TRAINING_DRILL"] .cat-head{border-left:6px solid #0284c7;}
@@ -262,7 +256,6 @@
       display:inline-flex;align-items:center;gap:6px;white-space: nowrap;
     }
     .badge::before{content:"●";font-size:.6rem;}
-    /* Contrast Fixes */
     .possible{color:#064e3b;background:#d1fae5;border-color:#34d399}
     .na{color:#78350f;background:#fef3c7;border-color:#fcd34d}
 
@@ -294,7 +287,6 @@
       padding:14px 14px 0;display:flex;justify-content:space-between;align-items:flex-start;
     }
     .card .body{padding:10px 14px 14px}
-    /* Semantic HTML Fix */
     .q-text{
       font-size:.95rem; line-height: 1.5; font-weight: 600; color: var(--ink); margin-bottom: 12px;
     }
@@ -353,18 +345,17 @@
       font-size:.75rem;display:inline-flex;align-items:center;gap:6px;font-weight:600;
     }
     
-    /* FIX: Improved Footer Accessibility */
     footer.app-footer {
       text-align: center;
       margin-top: 40px;
       padding: 24px;
-      color: #334155; /* Darker Slate for Better Contrast */
+      color: #334155;
       font-size: 0.85rem;
       border-top: 1px solid #e2e8f0;
       background: #f8fafc;
     }
     footer.app-footer a {
-      color: #0369a1; /* Darker Blue Link */
+      color: #0369a1;
       text-decoration: none;
       font-weight: 700;
       transition: color 0.2s;
@@ -375,7 +366,6 @@
     }
     footer.app-footer p {
       margin: 4px 0;
-      /* Removed opacity: 0.8 to ensure full contrast */
     }
 
     /* ========= MOBILE RESPONSIVE ========= */
@@ -431,7 +421,7 @@
       .hero .meta { flex-direction: column; align-items: center; }
       .meta .chip { width: 100%; justify-content: center;}
       .thumbs .thumb { width: 60px; height: 60px; }
-      button, .input, select { min-height: 48px; } /* Larger touch target for smallest screens */
+      button, .input, select { min-height: 48px; }
     }
 
     /* ========= Print styling ========= */
@@ -466,7 +456,6 @@
 </head>
 <body>
   <div class="wrap">
-    <!-- Main Landmark for Accessibility -->
     <main>
       <!-- ======= HERO ======= -->
       <header class="hero">
@@ -550,6 +539,9 @@
   </div>
 
   <script>
+    // ========= API CONFIG (GANTI DENGAN URL WEB APP GAS-MU) =========
+    const API_SAVE_URL = 'https://script.google.com/macros/s/AKfycbzBWaYo5AEqMe3KL6rG6AGfPLzcqv0sAXuRJUJUkivw-Bc4ZoMNcurtv2edFsP3uX7W/exec';
+
     // ========= Translation Dictionary =========
     const TRANSLATIONS = {
       id: {
@@ -816,43 +808,29 @@
       }
     ];
 
-    // ========= State & Persistence =========
-    const KEY = 'HRA_AUDIT_HOTWORK_STATE_v5_MultiLang';
+    // ========= State (IN-MEMORY ONLY, NO localStorage) =========
     const state = { 
-      auditor:'Dedi Setiawan', 
-      date:null, 
-      lang: 'en', // Default language
-      items:{} 
+      auditor: 'Dedi Setiawan', // boleh diubah ke '' jika mau kosong default
+      date: null,
+      lang: 'en',
+      items: {}
     };
     let highlightIssues = false;
 
     const defaultItemState = (meta) => ({
-      actual:'',
-      findings:'',
-      na: false, 
-      photos:[]
+      actual: '',
+      findings: '',
+      na: false,
+      photos: []
     });
 
     function loadState(){
-      try{
-        const s = JSON.parse(localStorage.getItem(KEY));
-        if(s && typeof s === 'object'){
-          if(s.auditor !== undefined) state.auditor = s.auditor;
-          if(s.date !== undefined) state.date = s.date;
-          if(s.lang !== undefined) state.lang = s.lang;
-          if(s.items && typeof s.items === 'object') state.items = s.items;
-        }
-      }catch(e){}
-      
+      if (!state.date) {
+        state.date = new Date().toISOString();
+      }
       document.getElementById('inputAuditor').value = state.auditor || '';
       document.getElementById('auditorName').textContent = state.auditor || '—';
-      if(state.date) {
-        document.getElementById('inputDate').value = state.date.split('T')[0];
-      }
-    }
-    function saveState(showToast = true){
-      localStorage.setItem(KEY, JSON.stringify(state));
-      if(showToast) toast(TRANSLATIONS[state.lang].msg_saved);
+      document.getElementById('inputDate').value = state.date.split('T')[0];
     }
 
     // Helper Translation Function
@@ -860,8 +838,7 @@
 
     function toggleLang(){
       state.lang = state.lang === 'id' ? 'en' : 'id';
-      saveState(false);
-      render(); // Re-render everything
+      render();
     }
 
     // ========= Rendering =========
@@ -906,10 +883,10 @@
         state.date = new Date().toISOString();
       }
       const d = new Date(state.date);
-      // Format date locale
       const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
       document.getElementById('auditDate').textContent = 
         d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+      document.getElementById('inputDate').value = state.date.split('T')[0];
 
       const wrap = document.getElementById('categories');
       wrap.innerHTML = '';
@@ -953,10 +930,8 @@
           card.dataset.key = key;
           card.dataset.category = cat.key;
 
-          // Localized Item Text
           const itemText = state.lang === 'id' ? (it.text_id || it.text_en) : it.text_en;
 
-          // Badge Logic
           let possBadge = saved.na 
             ? `<span class="badge na">${T.badge_poss_na}</span>`
             : `<span class="badge possible">${T.kpi_possible}: ${maxPoint}</span>`;
@@ -1033,15 +1008,11 @@
         wrap.appendChild(catDiv);
       });
 
-      // Update footer note
-      const footerP = document.querySelector('.wrap > p');
-      if(footerP) footerP.textContent = T.footer_note;
-
       recalcScore();
       applyFilters();
     }
 
-    // ========= Helpers, Logic & Events (UNCHANGED LOGIC, JUST TRANSLATION HOOKS) =========
+    // ========= Helpers, Logic & Events =========
     function escapeHTML(s){ return String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
     function getMeta(key){
       for(const cat of DATA){
@@ -1129,7 +1100,6 @@
     }
 
     function recalcCategoryStats(){
-      const T = TRANSLATIONS[state.lang];
       DATA.forEach(cat=>{
         let complete = 0, na = 0, empty = 0;
         cat.items.forEach(it=>{
@@ -1181,7 +1151,6 @@
       item.actual = val;
       updateCardStatus(key);
       recalcScore();
-      saveState(false);
       applyFilters();
     }
 
@@ -1190,7 +1159,6 @@
       const item = (state.items[key] ||= defaultItemState(meta));
       item.findings = text;
       updateCardStatus(key);
-      saveState(false);
       recalcScore();
       applyFilters();
     }
@@ -1216,7 +1184,6 @@
       }
       updateCardStatus(key);
       recalcScore();
-      saveState(false);
       applyFilters();
     }
 
@@ -1229,7 +1196,6 @@
           item.photos.push({dataURL:e.target.result});
           const thumbs = document.getElementById(`thumbs_${key}`);
           if(thumbs) thumbs.insertAdjacentHTML('beforeend', thumbHTML(key, item.photos.length-1, e.target.result));
-          saveState(false);
         };
         reader.readAsDataURL(file);
       });
@@ -1243,11 +1209,9 @@
       if(thumbs){
         thumbs.innerHTML = item.photos.map((p,i)=>thumbHTML(key, i, p.dataURL)).join('');
       }
-      saveState(false);
     }
 
     function updateCardStatus(key){
-      const T = TRANSLATIONS[state.lang];
       const card = document.querySelector(`.card[data-key="${key}"]`);
       if(!card) return;
       const status = card.querySelector(`#status_${key}`);
@@ -1261,6 +1225,7 @@
       }
 
       const possContainer = card.querySelector(`#poss_${key}`);
+      const T = TRANSLATIONS[state.lang];
       if(possContainer){
          const maxPoint = getMaxPoint(meta);
          possContainer.innerHTML = saved.na 
@@ -1285,7 +1250,6 @@
         const meta   = getMeta(key) || {};
         const saved  = state.items[key] || defaultItemState(meta);
         
-        // Search text depends on language shown
         const textStr = state.lang === 'id' ? (meta.text_id || meta.text_en) : meta.text_en;
         
         const matchText = !q || textStr.toLowerCase().includes(q) || key.toLowerCase().includes(q);
@@ -1319,6 +1283,117 @@
         return false;
       }
       return true;
+    }
+
+    // ========= Build Payload untuk dikirim ke Database =========
+    function buildPayload(){
+      const dateIso = state.date || new Date().toISOString();
+      const dateOnly = dateIso.slice(0,10);
+
+      const records = [];
+
+      DATA.forEach(cat => {
+        cat.items.forEach(it => {
+          const key = `${cat.key}_${it.docNo}`;
+          const saved = state.items[key] || defaultItemState(it);
+          const maxP = getMaxPoint(it);
+
+          const status =
+            saved.na
+              ? 'NA'
+              : (saved.actual !== '' && saved.actual !== null && saved.actual !== undefined
+                  ? 'APPLICABLE'
+                  : 'EMPTY');
+
+          records.push({
+            auditId: `HWFP_${dateOnly}_${(state.auditor || '').replace(/\s+/g,'_')}`,
+            auditor: state.auditor || '',
+            date: dateOnly,
+
+            categoryKey: cat.key,
+            categoryName_en: cat.name_en,
+            categoryName_id: cat.name_id,
+
+            no: it.docNo,
+            question_en: it.text_en,
+            question_id: it.text_id,
+
+            possiblePoint: maxP,
+            actualPoint: saved.na
+              ? null
+              : (saved.actual === '' || saved.actual === null || saved.actual === undefined
+                  ? null
+                  : Number(saved.actual)),
+
+            status,
+            findings: saved.findings || '',
+
+            // Photo Evidence dikirim sebagai dataURL (base64)
+            photoEvidence: (saved.photos || []).map(p => p.dataURL)
+          });
+        });
+      });
+
+      return {
+        form: 'HRA_AUDIT_HOTWORK_FIRE_PREVENTION',
+        auditor: state.auditor || '',
+        date: dateOnly,
+        submittedAt: new Date().toISOString(),
+        records
+      };
+    }
+
+    // ========= Kirim ke Server (SAVE) =========
+    async function submitToServer(){
+      const T = TRANSLATIONS[state.lang];
+
+      if(!state.auditor){
+        alert(state.lang === 'id'
+          ? 'Nama auditor wajib diisi.'
+          : 'Auditor name is required.');
+        return;
+      }
+      if(!state.date){
+        alert(state.lang === 'id'
+          ? 'Tanggal audit wajib diisi.'
+          : 'Audit date is required.');
+        return;
+      }
+
+      if(!validateExport()) return;
+
+      const payload = buildPayload();
+      const btn = document.getElementById('btnSave');
+      const labelSpan = document.getElementById('btn_save');
+      const oldLabel = labelSpan.textContent;
+
+      try{
+        btn.disabled = true;
+        labelSpan.textContent = (state.lang === 'id' ? 'Menyimpan...' : 'Saving...');
+
+        const res = await fetch(API_SAVE_URL, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(payload)
+        });
+
+        if(!res.ok){
+          throw new Error('HTTP ' + res.status);
+        }
+
+        let respJson = null;
+        try { respJson = await res.json(); } catch(e){}
+
+        toast((respJson && respJson.message) || T.msg_saved);
+      }catch(err){
+        console.error(err);
+        alert(state.lang === 'id'
+          ? 'Gagal menyimpan ke server. Silakan hubungi admin atau cek API_SAVE_URL.'
+          : 'Failed to save to server. Please contact admin or check API_SAVE_URL.');
+      }finally{
+        btn.disabled = false;
+        labelSpan.textContent = oldLabel;
+      }
     }
 
     function exportCSV(){
@@ -1363,8 +1438,10 @@
     function doPrint(){ if(validateExport()) window.print(); }
     
     function resetAll(){
-      if(confirm('Hapus semua data? / Delete all data?')){
-        localStorage.removeItem(KEY);
+      const msg = state.lang === 'id'
+        ? 'Hapus semua data di layar ini? Data yang sudah tersimpan di server TIDAK akan terhapus.'
+        : 'Clear all data on this screen? Data already saved on the server will NOT be deleted.';
+      if(confirm(msg)){
         location.reload();
       }
     }
@@ -1390,21 +1467,25 @@
     document.getElementById('inputAuditor').addEventListener('input', e=>{
       state.auditor = e.target.value;
       document.getElementById('auditorName').textContent = state.auditor || '—';
-      saveState(false);
     });
+
     document.getElementById('inputDate').addEventListener('change', e=>{
-      state.date = e.target.value;
-      const d = new Date(state.date);
+      if (e.target.value) {
+        state.date = new Date(e.target.value + 'T00:00:00').toISOString();
+      } else {
+        state.date = null;
+      }
+      const d = state.date ? new Date(state.date) : new Date();
       const dateLocale = state.lang === 'id' ? 'id-ID' : 'en-US';
       document.getElementById('auditDate').textContent = 
         d.toLocaleDateString(dateLocale,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-      saveState(false);
     });
 
     document.getElementById('inputSearch').addEventListener('input', applyFilters);
     document.getElementById('filterCategory').addEventListener('change', applyFilters);
     document.getElementById('filterStatus').addEventListener('change', applyFilters);
-    document.getElementById('btnSave').addEventListener('click', ()=>saveState(true));
+
+    document.getElementById('btnSave').addEventListener('click', submitToServer);
     document.getElementById('btnPrint').addEventListener('click', doPrint);
     document.getElementById('btnExportCsv').addEventListener('click', exportCSV);
     document.getElementById('btnReset').addEventListener('click', resetAll);
